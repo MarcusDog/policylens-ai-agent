@@ -1,0 +1,14 @@
+{
+  "status": "NOT_FOUND",
+  "answer": "当前资料中未检索到相关依据。",
+  "citations": [],
+  "missing_information": [
+    "相关企业制度或产品说明"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 2,
+    "tool_calls": 1,
+    "completed": true
+  }
+}

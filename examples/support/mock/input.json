@@ -1,0 +1,13 @@
+{
+  "id": "R05",
+  "name": "support",
+  "scenario": "normal",
+  "question": "技术故障报修要提供什么资料？",
+  "relevant_docs": [
+    "D11"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "复现步骤"
+  ]
+}

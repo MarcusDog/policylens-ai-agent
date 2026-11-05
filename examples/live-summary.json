@@ -1,0 +1,8 @@
+{
+  "mode": "live",
+  "executed": false,
+  "status": "NOT_VERIFIED",
+  "reason": "Missing/invalid model configuration; no API request was made and no Mock fallback was used.",
+  "distinct_tool_paths": [],
+  "at_least_two_real_paths": false
+}

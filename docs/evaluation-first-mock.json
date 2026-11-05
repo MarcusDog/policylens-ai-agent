@@ -1,0 +1,1378 @@
+{
+  "mode": "mock",
+  "case_count": 16,
+  "cases_file": "D:\\求职\\小影科技\\ai-agent\\policylens\\data\\test_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "baseline": {
+      "metrics": {
+        "recall_at_5": 1.0,
+        "status_accuracy": 0.9375,
+        "conflict_detection_rate": 1,
+        "citation_validity_rate": 1.0,
+        "unsupported_answer_rate_proxy": 0,
+        "fact_regression_pass_rate": 1,
+        "mean_tool_calls": 2.125,
+        "mean_duration_ms": 6.928625
+      },
+      "cases": [
+        {
+          "case_id": "T01",
+          "name": "normal",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.929,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后30天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T02",
+          "name": "conflict",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 3,
+          "duration_ms": 7.161,
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T02.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "同范围报销期限分别为15、30天；未发现明确替代关系，暂不能确定执行哪项。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "制度优先级或明确替代关系"
+            ],
+            "clarification_question": "请财务确认当前应执行哪一项制度？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T03",
+          "name": "insufficient",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [
+            "D10"
+          ],
+          "recall_at_5": null,
+          "status_correct": false,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.671,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T03.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+            "citations": [
+              {
+                "doc_id": "D10",
+                "version_date": "2026-01-20",
+                "span_id": "s1",
+                "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T04",
+          "name": "paraphrase",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.9,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后30天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T05",
+          "name": "history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.477,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+            "citations": [
+              {
+                "doc_id": "D05",
+                "version_date": "2026-02-11",
+                "span_id": "s1",
+                "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T06",
+          "name": "tool_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 1,
+          "duration_ms": 0.39,
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T06.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "工具返回错误，尚不能完成资料核查。",
+            "citations": [],
+            "missing_information": [
+              "可用的文档工具结果"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 2,
+              "tool_calls": 1,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T07",
+          "name": "mutation",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 9.949,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T07.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后45天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后45天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T08",
+          "name": "removed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.304,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T08.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后30天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09a",
+          "name": "supersedes",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D07"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 7.195,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T09a.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后15天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09b",
+          "name": "scope",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "NEEDS_CLARIFICATION",
+          "tool_calls": 3,
+          "duration_ms": 7.251,
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/T09b.json",
+          "result": {
+            "status": "NEEDS_CLARIFICATION",
+            "answer": "制度按适用部门区分，需补充部门信息。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "员工所属部门"
+            ],
+            "clarification_question": "你属于哪个部门？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "R01",
+          "name": "vpn",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D06",
+            "D07",
+            "D10",
+            "D14"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.515,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/R01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
+            "citations": [
+              {
+                "doc_id": "D07",
+                "version_date": "2026-03-10",
+                "span_id": "s1",
+                "quote": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R02",
+          "name": "permission",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D07",
+            "D08",
+            "D09"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 7.548,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/R02.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。",
+            "citations": [
+              {
+                "doc_id": "D08",
+                "version_date": "2026-03-15",
+                "span_id": "s1",
+                "quote": "产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R03",
+          "name": "account",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D09",
+            "D10",
+            "D12",
+            "D14"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.756,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/R03.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+            "citations": [
+              {
+                "doc_id": "D14",
+                "version_date": "2026-05-04",
+                "span_id": "s1",
+                "quote": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R04",
+          "name": "device",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D10"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.498,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/R04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+            "citations": [
+              {
+                "doc_id": "D10",
+                "version_date": "2026-01-20",
+                "span_id": "s1",
+                "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R05",
+          "name": "support",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D05",
+            "D11",
+            "D14"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 11.105,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/R05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。",
+            "citations": [
+              {
+                "doc_id": "D11",
+                "version_date": "2026-05-01",
+                "span_id": "s1",
+                "quote": "技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R06",
+          "name": "leave",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D04",
+            "D06",
+            "D11",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 7.209,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/baseline/R06.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。",
+            "citations": [
+              {
+                "doc_id": "D06",
+                "version_date": "2026-04-01",
+                "span_id": "s1",
+                "quote": "请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        }
+      ]
+    },
+    "improved": {
+      "metrics": {
+        "recall_at_5": 1.0,
+        "status_accuracy": 0.9375,
+        "conflict_detection_rate": 1,
+        "citation_validity_rate": 1.0,
+        "unsupported_answer_rate_proxy": 0.0625,
+        "fact_regression_pass_rate": 0.9375,
+        "mean_tool_calls": 2.125,
+        "mean_duration_ms": 6.5690625
+      },
+      "cases": [
+        {
+          "case_id": "T01",
+          "name": "normal",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 7.918,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后30天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T02",
+          "name": "conflict",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 3,
+          "duration_ms": 7.578,
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T02.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "同范围报销期限分别为15、30天；未发现明确替代关系，暂不能确定执行哪项。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "制度优先级或明确替代关系"
+            ],
+            "clarification_question": "请财务确认当前应执行哪一项制度？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T03",
+          "name": "insufficient",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [
+            "D10"
+          ],
+          "recall_at_5": null,
+          "status_correct": false,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 7.151,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T03.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+            "citations": [
+              {
+                "doc_id": "D10",
+                "version_date": "2026-01-20",
+                "span_id": "s1",
+                "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T04",
+          "name": "paraphrase",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": false,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 7.225,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": true,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+            "citations": [
+              {
+                "doc_id": "D05",
+                "version_date": "2026-02-11",
+                "span_id": "s1",
+                "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T05",
+          "name": "history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.711,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+            "citations": [
+              {
+                "doc_id": "D05",
+                "version_date": "2026-02-11",
+                "span_id": "s1",
+                "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T06",
+          "name": "tool_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 1,
+          "duration_ms": 0.314,
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T06.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "工具返回错误，尚不能完成资料核查。",
+            "citations": [],
+            "missing_information": [
+              "可用的文档工具结果"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 2,
+              "tool_calls": 1,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T07",
+          "name": "mutation",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.689,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T07.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后45天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后45天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T08",
+          "name": "removed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.554,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T08.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后30天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09a",
+          "name": "supersedes",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D07"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 7.208,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T09a.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。员工应在费用发生后15天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09b",
+          "name": "scope",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "NEEDS_CLARIFICATION",
+          "tool_calls": 3,
+          "duration_ms": 7.481,
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/T09b.json",
+          "result": {
+            "status": "NEEDS_CLARIFICATION",
+            "answer": "制度按适用部门区分，需补充部门信息。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "员工所属部门"
+            ],
+            "clarification_question": "你属于哪个部门？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "R01",
+          "name": "vpn",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D06",
+            "D07",
+            "D10",
+            "D14"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.769,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/R01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
+            "citations": [
+              {
+                "doc_id": "D07",
+                "version_date": "2026-03-10",
+                "span_id": "s1",
+                "quote": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R02",
+          "name": "permission",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D07",
+            "D08",
+            "D09"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.709,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/R02.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。",
+            "citations": [
+              {
+                "doc_id": "D08",
+                "version_date": "2026-03-15",
+                "span_id": "s1",
+                "quote": "产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R03",
+          "name": "account",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D09",
+            "D10",
+            "D12",
+            "D14"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.705,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/R03.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+            "citations": [
+              {
+                "doc_id": "D14",
+                "version_date": "2026-05-04",
+                "span_id": "s1",
+                "quote": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R04",
+          "name": "device",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D10"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.606,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/R04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+            "citations": [
+              {
+                "doc_id": "D10",
+                "version_date": "2026-01-20",
+                "span_id": "s1",
+                "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R05",
+          "name": "support",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D05",
+            "D11",
+            "D14"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.682,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/R05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。",
+            "citations": [
+              {
+                "doc_id": "D11",
+                "version_date": "2026-05-01",
+                "span_id": "s1",
+                "quote": "技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "R06",
+          "name": "leave",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D04",
+            "D06",
+            "D11",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6.805,
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-mock-traces/mock/improved/R06.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "适用范围：全体员工。请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。",
+            "citations": [
+              {
+                "doc_id": "D06",
+                "version_date": "2026-04-01",
+                "span_id": "s1",
+                "quote": "请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

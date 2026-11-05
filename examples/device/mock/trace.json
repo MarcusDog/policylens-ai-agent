@@ -1,0 +1,183 @@
+{
+  "run_id": "70f90c9625bd400e81d96ed5b6cb0e7e",
+  "timestamp": "2026-11-05T17:10:55.451989+00:00",
+  "mode": "mock",
+  "model": "deterministic-offline-harness",
+  "question": "公司配的电脑丢了怎么办？",
+  "history_summary": [],
+  "model_calls": 3,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "duration_ms": 0.027
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_b5a725e68b194fe6",
+      "tool_args": {
+        "query": "公司配的电脑丢了怎么办？",
+        "top_k": 5,
+        "purpose": "Mock 固定检索步骤（非模型决策）"
+      },
+      "purpose": "Mock 固定检索步骤（非模型决策）",
+      "result_summary": {
+        "hits": 1
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D10",
+              "title": "企业设备使用规范",
+              "version_date": "2026-01-20",
+              "topic": "设备使用",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 1,
+                "rrf_score": 0.032787,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D10",
+                  "title": "企业设备使用规范",
+                  "version_date": "2026-01-20",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        }
+      },
+      "success": true,
+      "duration_ms": 4.01
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "duration_ms": 0.052
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_f30f0e572080437f",
+      "tool_args": {
+        "doc_id": "D10",
+        "span_id": "s1",
+        "purpose": "Mock 固定逐条读取候选原文"
+      },
+      "purpose": "Mock 固定逐条读取候选原文",
+      "result_summary": {
+        "doc_id": "D10",
+        "span_id": "s1"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "D10",
+          "title": "企业设备使用规范",
+          "version_date": "2026-01-20",
+          "topic": "设备使用",
+          "scope": "全体员工",
+          "supersedes": [],
+          "span_id": "s1",
+          "text": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "related_documents": [
+            {
+              "doc_id": "D10",
+              "title": "企业设备使用规范",
+              "scope": "全体员工",
+              "version_date": "2026-01-20",
+              "supersedes": [],
+              "span_ids": [
+                "s1"
+              ]
+            }
+          ]
+        }
+      },
+      "success": true,
+      "duration_ms": 0.29
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "final",
+      "tool_names": [],
+      "duration_ms": 0.052
+    },
+    {
+      "type": "validation",
+      "step": 3,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+        "citations": [
+          {
+            "doc_id": "D10",
+            "version_date": "2026-01-20",
+            "span_id": "s1",
+            "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "ANSWERED",
+    "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+    "citations": [
+      {
+        "doc_id": "D10",
+        "version_date": "2026-01-20",
+        "span_id": "s1",
+        "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+      }
+    ],
+    "missing_information": [],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 3,
+      "tool_calls": 2,
+      "completed": true
+    }
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 4.709,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+}

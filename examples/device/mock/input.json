@@ -1,0 +1,13 @@
+{
+  "id": "R04",
+  "name": "device",
+  "scenario": "normal",
+  "question": "公司配的电脑丢了怎么办？",
+  "relevant_docs": [
+    "D10"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "IT"
+  ]
+}

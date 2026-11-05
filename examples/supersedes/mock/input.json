@@ -1,0 +1,17 @@
+{
+  "id": "T09a",
+  "name": "supersedes",
+  "scenario": "supersedes",
+  "question": "当前有效的报销期限是几天？",
+  "relevant_docs": [
+    "D01",
+    "D02"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "15"
+  ],
+  "required_citations": [
+    "D02"
+  ]
+}

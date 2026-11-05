@@ -1,0 +1,14 @@
+{
+  "id": "R06",
+  "name": "leave",
+  "scenario": "normal",
+  "question": "病假要在什么系统申请，附什么证明？",
+  "relevant_docs": [
+    "D06"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "考勤",
+    "就诊证明"
+  ]
+}

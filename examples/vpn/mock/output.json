@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "适用范围：全体员工。申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
+  "citations": [
+    {
+      "doc_id": "D07",
+      "version_date": "2026-03-10",
+      "span_id": "s1",
+      "quote": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "completed": true
+  }
+}

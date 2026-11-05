@@ -1,0 +1,11 @@
+{
+  "id": "T09b",
+  "name": "scope",
+  "scenario": "scope",
+  "question": "报销申请应在多少天内提交？",
+  "relevant_docs": [
+    "D01",
+    "D02"
+  ],
+  "expected_status": "NEEDS_CLARIFICATION"
+}

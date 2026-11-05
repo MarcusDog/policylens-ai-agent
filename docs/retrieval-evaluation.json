@@ -1,0 +1,410 @@
+{
+  "mode": "retrieval-only",
+  "case_count": 16,
+  "cases_file": "data/test_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "baseline": {
+      "metrics": {
+        "recall_at_5": 1.0
+      },
+      "cases": [
+        {
+          "case_id": "T01",
+          "name": "normal",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T02",
+          "name": "conflict",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T03",
+          "name": "insufficient",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [],
+          "recall_at_5": null
+        },
+        {
+          "case_id": "T04",
+          "name": "paraphrase",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T05",
+          "name": "history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T06",
+          "name": "tool_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T07",
+          "name": "mutation",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T08",
+          "name": "removed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T09a",
+          "name": "supersedes",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D07"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T09b",
+          "name": "scope",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R01",
+          "name": "vpn",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D06",
+            "D07",
+            "D13",
+            "D14"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R02",
+          "name": "permission",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D07",
+            "D08",
+            "D09"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R03",
+          "name": "account",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D09",
+            "D10",
+            "D12",
+            "D14"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R04",
+          "name": "device",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D10"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R05",
+          "name": "support",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D05",
+            "D11",
+            "D14"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R06",
+          "name": "leave",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D04",
+            "D06",
+            "D11",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        }
+      ]
+    },
+    "improved": {
+      "metrics": {
+        "recall_at_5": 1.0
+      },
+      "cases": [
+        {
+          "case_id": "T01",
+          "name": "normal",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T02",
+          "name": "conflict",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T03",
+          "name": "insufficient",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [],
+          "recall_at_5": null
+        },
+        {
+          "case_id": "T04",
+          "name": "paraphrase",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T05",
+          "name": "history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T06",
+          "name": "tool_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T07",
+          "name": "mutation",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T08",
+          "name": "removed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T09a",
+          "name": "supersedes",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D07"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "T09b",
+          "name": "scope",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R01",
+          "name": "vpn",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D06",
+            "D07",
+            "D13",
+            "D14"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R02",
+          "name": "permission",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D07",
+            "D08",
+            "D09"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R03",
+          "name": "account",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D09",
+            "D10",
+            "D12",
+            "D14"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R04",
+          "name": "device",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D10"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R05",
+          "name": "support",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D05",
+            "D11",
+            "D14"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "R06",
+          "name": "leave",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D04",
+            "D06",
+            "D11",
+            "D13"
+          ],
+          "recall_at_5": 1.0
+        }
+      ]
+    }
+  }
+}

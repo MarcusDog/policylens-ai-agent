@@ -1,0 +1,270 @@
+{
+  "run_id": "3930df75da1b4fb2bbdf36405ddec432",
+  "timestamp": "2026-11-05T17:10:55.440380+00:00",
+  "mode": "mock",
+  "model": "deterministic-offline-harness",
+  "question": "刚入职怎么开企业账号？",
+  "history_summary": [],
+  "model_calls": 3,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "duration_ms": 0.029
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_c7c6396afa344e9c",
+      "tool_args": {
+        "query": "刚入职怎么开企业账号？",
+        "top_k": 5,
+        "purpose": "Mock 固定检索步骤（非模型决策）"
+      },
+      "purpose": "Mock 固定检索步骤（非模型决策）",
+      "result_summary": {
+        "hits": 4
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D14",
+              "title": "账号离职回收办法",
+              "version_date": "2026-05-04",
+              "topic": "账号回收",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 1,
+                "rrf_score": 0.032787,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D14",
+                  "title": "账号离职回收办法",
+                  "version_date": "2026-05-04",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D09",
+              "title": "新员工账号开通指南",
+              "version_date": "2026-02-20",
+              "topic": "账号开通",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "HR 确认入职后向 IT 提交账号开通工单，员工使用企业邮箱激活账号，并绑定多因素认证。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": 2,
+                "rrf_score": 0.032258,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D09",
+                  "title": "新员工账号开通指南",
+                  "version_date": "2026-02-20",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D12",
+              "title": "账号密码重置 FAQ",
+              "version_date": "2026-05-02",
+              "topic": "密码重置",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "忘记密码时通过企业登录页的找回密码入口验证企业邮箱；邮箱不可用时联系 IT 服务台核验身份。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 4,
+                "ngram_rank": 3,
+                "rrf_score": 0.031498,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D12",
+                  "title": "账号密码重置 FAQ",
+                  "version_date": "2026-05-02",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D10",
+              "title": "企业设备使用规范",
+              "version_date": "2026-01-20",
+              "topic": "设备使用",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+              "rank": 4,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D10",
+                  "title": "企业设备使用规范",
+                  "version_date": "2026-01-20",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        }
+      },
+      "success": true,
+      "duration_ms": 3.974
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "duration_ms": 0.061
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_ec2bebb2569441d3",
+      "tool_args": {
+        "doc_id": "D14",
+        "span_id": "s1",
+        "purpose": "Mock 固定逐条读取候选原文"
+      },
+      "purpose": "Mock 固定逐条读取候选原文",
+      "result_summary": {
+        "doc_id": "D14",
+        "span_id": "s1"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "D14",
+          "title": "账号离职回收办法",
+          "version_date": "2026-05-04",
+          "topic": "账号回收",
+          "scope": "全体员工",
+          "supersedes": [],
+          "span_id": "s1",
+          "text": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "related_documents": [
+            {
+              "doc_id": "D14",
+              "title": "账号离职回收办法",
+              "scope": "全体员工",
+              "version_date": "2026-05-04",
+              "supersedes": [],
+              "span_ids": [
+                "s1"
+              ]
+            }
+          ]
+        }
+      },
+      "success": true,
+      "duration_ms": 0.277
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "final",
+      "tool_names": [],
+      "duration_ms": 0.062
+    },
+    {
+      "type": "validation",
+      "step": 3,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "适用范围：全体员工。HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+        "citations": [
+          {
+            "doc_id": "D14",
+            "version_date": "2026-05-04",
+            "span_id": "s1",
+            "quote": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "ANSWERED",
+    "answer": "适用范围：全体员工。HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+    "citations": [
+      {
+        "doc_id": "D14",
+        "version_date": "2026-05-04",
+        "span_id": "s1",
+        "quote": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。"
+      }
+    ],
+    "missing_information": [],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 3,
+      "tool_calls": 2,
+      "completed": true
+    }
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 4.69,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+}

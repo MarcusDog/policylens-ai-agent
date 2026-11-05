@@ -1,0 +1,90 @@
+{
+  "run_id": "8a386f050b294fe0ad8e5096129801b7",
+  "timestamp": "2026-11-05T17:10:55.131884+00:00",
+  "mode": "mock",
+  "model": "deterministic-offline-harness",
+  "question": "公司在火星基地的宠物托管补贴标准是多少？",
+  "history_summary": [],
+  "model_calls": 2,
+  "tool_calls": 1,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "duration_ms": 0.03
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_1f1d3926742c401d",
+      "tool_args": {
+        "query": "公司在火星基地的宠物托管补贴标准是多少？",
+        "top_k": 5,
+        "purpose": "Mock 固定检索步骤（非模型决策）"
+      },
+      "purpose": "Mock 固定检索步骤（非模型决策）",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        }
+      },
+      "success": true,
+      "duration_ms": 3.498
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "final",
+      "tool_names": [],
+      "duration_ms": 0.023
+    },
+    {
+      "type": "validation",
+      "step": 2,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "NOT_FOUND",
+        "answer": "当前资料中未检索到相关依据。",
+        "citations": [],
+        "missing_information": [
+          "相关企业制度或产品说明"
+        ],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "NOT_FOUND",
+    "answer": "当前资料中未检索到相关依据。",
+    "citations": [],
+    "missing_information": [
+      "相关企业制度或产品说明"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 2,
+      "tool_calls": 1,
+      "completed": true
+    }
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 3.824,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+}

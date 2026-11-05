@@ -1,0 +1,13 @@
+{
+  "id": "R03",
+  "name": "account",
+  "scenario": "normal",
+  "question": "刚入职怎么开企业账号？",
+  "relevant_docs": [
+    "D09"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "HR"
+  ]
+}

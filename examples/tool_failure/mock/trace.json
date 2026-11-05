@@ -1,0 +1,92 @@
+{
+  "run_id": "3d37bdb279e94c198f9c7cd691c74d05",
+  "timestamp": "2026-11-05T17:10:55.350432+00:00",
+  "mode": "mock",
+  "model": "deterministic-offline-harness",
+  "question": "VPN 怎么申请？",
+  "history_summary": [],
+  "model_calls": 2,
+  "tool_calls": 1,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "duration_ms": 0.029
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_ef1e82b69704444d",
+      "tool_args": {
+        "query": "VPN 怎么申请？",
+        "top_k": 5,
+        "purpose": "Mock 固定检索步骤（非模型决策）"
+      },
+      "purpose": "Mock 固定检索步骤（非模型决策）",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        }
+      },
+      "success": false,
+      "duration_ms": 0.019
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "final",
+      "tool_names": [],
+      "duration_ms": 0.014
+    },
+    {
+      "type": "validation",
+      "step": 2,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "TOOL_ERROR",
+        "answer": "工具返回错误，尚不能完成资料核查。",
+        "citations": [],
+        "missing_information": [
+          "可用的文档工具结果"
+        ],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "TOOL_ERROR",
+    "answer": "工具返回错误，尚不能完成资料核查。",
+    "citations": [],
+    "missing_information": [
+      "可用的文档工具结果"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 2,
+      "tool_calls": 1,
+      "completed": false
+    }
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 0.391,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+}

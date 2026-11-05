@@ -1,0 +1,242 @@
+{
+  "run_id": "d1c818e909934fb1a927f9792d0933e7",
+  "timestamp": "2026-11-05T17:10:55.155008+00:00",
+  "mode": "mock",
+  "model": "deterministic-offline-harness",
+  "question": "那差旅报销呢？",
+  "history_summary": [
+    {
+      "role": "user",
+      "content": "报销需要准备什么？"
+    },
+    {
+      "role": "assistant",
+      "content": "日常报销需要发票、付款凭证和用途说明。"
+    }
+  ],
+  "model_calls": 3,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "duration_ms": 0.038
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_3799af274c36440a",
+      "tool_args": {
+        "query": "那差旅报销呢？ 报销需要准备什么？",
+        "top_k": 5,
+        "purpose": "Mock 固定检索步骤（非模型决策）"
+      },
+      "purpose": "Mock 固定检索步骤（非模型决策）",
+      "result_summary": {
+        "hits": 5
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D05",
+              "title": "差旅费用凭证 FAQ",
+              "version_date": "2026-02-11",
+              "topic": "差旅报销",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": null,
+                "rrf_score": 0.016393,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D01",
+              "title": "费用报销管理办法",
+              "version_date": "2026-01-10",
+              "topic": "报销期限",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "员工应在费用发生后30天内提交报销申请。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": null,
+                "rrf_score": 0.016129,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D03",
+              "title": "日常报销材料清单",
+              "version_date": "2026-02-02",
+              "topic": "报销材料",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "日常报销需要提供合规发票、付款凭证和费用用途说明，通过费用系统提交。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D04",
+              "title": "差旅出行审批流程",
+              "version_date": "2026-02-10",
+              "topic": "差旅审批",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。",
+              "rank": 4,
+              "ranking": {
+                "bm25_rank": 4,
+                "ngram_rank": null,
+                "rrf_score": 0.015625,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D13",
+              "title": "费用申请草稿保存指南",
+              "version_date": "2026-05-03",
+              "topic": "费用系统操作",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。",
+              "rank": 5,
+              "ranking": {
+                "bm25_rank": 5,
+                "ngram_rank": null,
+                "rrf_score": 0.015385,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        }
+      },
+      "success": true,
+      "duration_ms": 4.412
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "duration_ms": 0.055
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_8598129237f942ad",
+      "tool_args": {
+        "doc_id": "D05",
+        "span_id": "s1",
+        "purpose": "Mock 固定逐条读取候选原文"
+      },
+      "purpose": "Mock 固定逐条读取候选原文",
+      "result_summary": {
+        "doc_id": "D05",
+        "span_id": "s1"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "D05",
+          "title": "差旅费用凭证 FAQ",
+          "version_date": "2026-02-11",
+          "topic": "差旅报销",
+          "scope": "全体员工",
+          "supersedes": [],
+          "span_id": "s1",
+          "text": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "related_documents": []
+        }
+      },
+      "success": true,
+      "duration_ms": 0.242
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "final",
+      "tool_names": [],
+      "duration_ms": 0.06
+    },
+    {
+      "type": "validation",
+      "step": 3,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "适用范围：全体员工。差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+        "citations": [
+          {
+            "doc_id": "D05",
+            "version_date": "2026-02-11",
+            "span_id": "s1",
+            "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "ANSWERED",
+    "answer": "适用范围：全体员工。差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+    "citations": [
+      {
+        "doc_id": "D05",
+        "version_date": "2026-02-11",
+        "span_id": "s1",
+        "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+      }
+    ],
+    "missing_information": [],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 3,
+      "tool_calls": 2,
+      "completed": true
+    }
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 5.088,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+}

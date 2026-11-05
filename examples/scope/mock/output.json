@@ -1,0 +1,27 @@
+{
+  "status": "NEEDS_CLARIFICATION",
+  "answer": "制度按适用部门区分，需补充部门信息。",
+  "citations": [
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    },
+    {
+      "doc_id": "D02",
+      "version_date": "2026-03-01",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后15天内提交报销申请。"
+    }
+  ],
+  "missing_information": [
+    "员工所属部门"
+  ],
+  "clarification_question": "你属于哪个部门？",
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 3,
+    "completed": false
+  }
+}

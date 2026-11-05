@@ -1,0 +1,13 @@
+{"doc_id": "D01", "title": "费用报销管理办法", "version_date": "2026-01-10", "topic": "报销期限", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "员工应在费用发生后45天内提交报销申请。"}]}
+{"doc_id": "D03", "title": "日常报销材料清单", "version_date": "2026-02-02", "topic": "报销材料", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "日常报销需要提供合规发票、付款凭证和费用用途说明，通过费用系统提交。"}]}
+{"doc_id": "D04", "title": "差旅出行审批流程", "version_date": "2026-02-10", "topic": "差旅审批", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。"}]}
+{"doc_id": "D05", "title": "差旅费用凭证 FAQ", "version_date": "2026-02-11", "topic": "差旅报销", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"}]}
+{"doc_id": "D06", "title": "员工请假流程", "version_date": "2026-04-01", "topic": "请假流程", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。"}]}
+{"doc_id": "D07", "title": "VPN 远程访问申请", "version_date": "2026-03-10", "topic": "VPN申请", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。"}]}
+{"doc_id": "D08", "title": "产品项目权限说明", "version_date": "2026-03-15", "topic": "产品权限", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。"}]}
+{"doc_id": "D09", "title": "新员工账号开通指南", "version_date": "2026-02-20", "topic": "账号开通", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "HR 确认入职后向 IT 提交账号开通工单，员工使用企业邮箱激活账号，并绑定多因素认证。"}]}
+{"doc_id": "D10", "title": "企业设备使用规范", "version_date": "2026-01-20", "topic": "设备使用", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"}]}
+{"doc_id": "D11", "title": "技术支持服务指南", "version_date": "2026-05-01", "topic": "技术支持", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。"}]}
+{"doc_id": "D12", "title": "账号密码重置 FAQ", "version_date": "2026-05-02", "topic": "密码重置", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "忘记密码时通过企业登录页的找回密码入口验证企业邮箱；邮箱不可用时联系 IT 服务台核验身份。"}]}
+{"doc_id": "D13", "title": "费用申请草稿保存指南", "version_date": "2026-05-03", "topic": "费用系统操作", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。"}]}
+{"doc_id": "D14", "title": "账号离职回收办法", "version_date": "2026-05-04", "topic": "账号回收", "scope": "全体员工", "supersedes": [], "sections": [{"span_id": "s1", "text": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。"}]}

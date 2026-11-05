@@ -1,0 +1,13 @@
+{
+  "id": "R02",
+  "name": "permission",
+  "scenario": "normal",
+  "question": "产品项目的编辑权限由谁开通？",
+  "relevant_docs": [
+    "D08"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "项目负责人"
+  ]
+}

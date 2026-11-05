@@ -1,0 +1,4 @@
+[
+  {"role": "user", "content": "报销需要准备什么？"},
+  {"role": "assistant", "content": "日常报销需要发票、付款凭证和费用用途说明。"}
+]

@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "适用范围：全体员工。技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。",
+  "citations": [
+    {
+      "doc_id": "D11",
+      "version_date": "2026-05-01",
+      "span_id": "s1",
+      "quote": "技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "completed": true
+  }
+}

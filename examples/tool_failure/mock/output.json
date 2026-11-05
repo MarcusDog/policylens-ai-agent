@@ -1,0 +1,14 @@
+{
+  "status": "TOOL_ERROR",
+  "answer": "工具返回错误，尚不能完成资料核查。",
+  "citations": [],
+  "missing_information": [
+    "可用的文档工具结果"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 2,
+    "tool_calls": 1,
+    "completed": false
+  }
+}

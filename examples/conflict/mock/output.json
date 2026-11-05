@@ -1,0 +1,27 @@
+{
+  "status": "CONFLICT",
+  "answer": "同范围报销期限分别为15、30天；未发现明确替代关系，暂不能确定执行哪项。",
+  "citations": [
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    },
+    {
+      "doc_id": "D02",
+      "version_date": "2026-03-01",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后15天内提交报销申请。"
+    }
+  ],
+  "missing_information": [
+    "制度优先级或明确替代关系"
+  ],
+  "clarification_question": "请财务确认当前应执行哪一项制度？",
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 3,
+    "completed": false
+  }
+}

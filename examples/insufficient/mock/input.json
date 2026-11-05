@@ -1,0 +1,8 @@
+{
+  "id": "T03",
+  "name": "insufficient",
+  "scenario": "normal",
+  "question": "公司在火星基地的宠物托管补贴标准是多少？",
+  "relevant_docs": [],
+  "expected_status": "NOT_FOUND"
+}

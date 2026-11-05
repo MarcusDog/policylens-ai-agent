@@ -1,0 +1,24 @@
+{
+  "id": "T05",
+  "name": "history",
+  "scenario": "normal",
+  "question": "那差旅报销呢？",
+  "history": [
+    {
+      "role": "user",
+      "content": "报销需要准备什么？"
+    },
+    {
+      "role": "assistant",
+      "content": "日常报销需要发票、付款凭证和用途说明。"
+    }
+  ],
+  "relevant_docs": [
+    "D05"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "差旅申请",
+    "发票"
+  ]
+}

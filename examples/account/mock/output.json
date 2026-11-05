@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "适用范围：全体员工。HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
+  "citations": [
+    {
+      "doc_id": "D14",
+      "version_date": "2026-05-04",
+      "span_id": "s1",
+      "quote": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "completed": true
+  }
+}

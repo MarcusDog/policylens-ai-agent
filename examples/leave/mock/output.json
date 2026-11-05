@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "适用范围：全体员工。请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。",
+  "citations": [
+    {
+      "doc_id": "D06",
+      "version_date": "2026-04-01",
+      "span_id": "s1",
+      "quote": "请假须在考勤系统填写假别、起止时间和事由，提交直属主管审批；病假还需就诊证明。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "completed": true
+  }
+}

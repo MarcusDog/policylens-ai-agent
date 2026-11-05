@@ -1,0 +1,13 @@
+{
+  "id": "T04",
+  "name": "paraphrase",
+  "scenario": "normal",
+  "question": "花钱之后最晚隔多久得把报销单交上去？",
+  "relevant_docs": [
+    "D01"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "30"
+  ]
+}

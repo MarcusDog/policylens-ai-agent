@@ -1,0 +1,13 @@
+{
+  "id": "R01",
+  "name": "vpn",
+  "scenario": "normal",
+  "question": "在家连接公司网络，VPN 要走什么申请流程？",
+  "relevant_docs": [
+    "D07"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "工单"
+  ]
+}

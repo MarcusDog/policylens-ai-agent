@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "适用范围：全体员工。企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。",
+  "citations": [
+    {
+      "doc_id": "D10",
+      "version_date": "2026-01-20",
+      "span_id": "s1",
+      "quote": "企业设备包括公司配发的电脑，仅用于获准的工作用途，不得私自安装未经批准的软件；设备或电脑丢失须立即向 IT 服务台报告。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "completed": true
+  }
+}
