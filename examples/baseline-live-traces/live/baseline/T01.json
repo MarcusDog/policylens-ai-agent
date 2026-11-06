@@ -1,0 +1,544 @@
+{
+  "run_id": "cbfb66e6a1574c9c904253248cda26a4",
+  "timestamp": "2026-11-05T18:18:47.550720+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "员工报销申请必须在费用发生后多少天提交？",
+  "history_summary": [],
+  "model_calls": 5,
+  "tool_calls": 4,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfb898c4bd93e992a1f319fcd068e",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 109,
+          "prompt_tokens": 1275,
+          "total_tokens": 1384,
+          "completion_tokens_details": {
+            "reasoning_tokens": 5
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1152
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 4095.422
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_8edea7340ca540d69f236fb3",
+      "tool_args": {
+        "query": "报销申请提交时限 天",
+        "top_k": 5,
+        "purpose": "查找报销申请提交时限规定"
+      },
+      "purpose": "查找报销申请提交时限规定",
+      "result_summary": {
+        "hits": 5
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D01",
+              "title": "费用报销管理办法",
+              "version_date": "2026-01-10",
+              "topic": "报销期限",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "员工应在费用发生后30天内提交报销申请。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": null,
+                "rrf_score": 0.016393,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D13",
+              "title": "费用申请草稿保存指南",
+              "version_date": "2026-05-03",
+              "topic": "费用系统操作",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": null,
+                "rrf_score": 0.016129,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D03",
+              "title": "日常报销材料清单",
+              "version_date": "2026-02-02",
+              "topic": "报销材料",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "日常报销需要提供合规发票、付款凭证和费用用途说明，通过费用系统提交。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D07",
+              "title": "VPN 远程访问申请",
+              "version_date": "2026-03-10",
+              "topic": "VPN申请",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
+              "rank": 4,
+              "ranking": {
+                "bm25_rank": 4,
+                "ngram_rank": null,
+                "rrf_score": 0.015625,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D05",
+              "title": "差旅费用凭证 FAQ",
+              "version_date": "2026-02-11",
+              "topic": "差旅报销",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+              "rank": 5,
+              "ranking": {
+                "bm25_rank": 5,
+                "ngram_rank": null,
+                "rrf_score": 0.015385,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
+        }
+      },
+      "success": true,
+      "duration_ms": 3.975
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_77a88ea727e54d359c0c1a6d",
+      "tool_args": {
+        "query": "费用报销 制度",
+        "top_k": 5,
+        "purpose": "查找费用报销制度文档"
+      },
+      "purpose": "查找费用报销制度文档",
+      "result_summary": {
+        "hits": 4
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D01",
+              "title": "费用报销管理办法",
+              "version_date": "2026-01-10",
+              "topic": "报销期限",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "员工应在费用发生后30天内提交报销申请。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": null,
+                "rrf_score": 0.016393,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D03",
+              "title": "日常报销材料清单",
+              "version_date": "2026-02-02",
+              "topic": "报销材料",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "日常报销需要提供合规发票、付款凭证和费用用途说明，通过费用系统提交。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": null,
+                "rrf_score": 0.016129,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D13",
+              "title": "费用申请草稿保存指南",
+              "version_date": "2026-05-03",
+              "topic": "费用系统操作",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            },
+            {
+              "doc_id": "D05",
+              "title": "差旅费用凭证 FAQ",
+              "version_date": "2026-02-11",
+              "topic": "差旅报销",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+              "rank": 4,
+              "ranking": {
+                "bm25_rank": 4,
+                "ngram_rank": null,
+                "rrf_score": 0.015625,
+                "topic_expanded": false
+              },
+              "related_documents": []
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 8
+        }
+      },
+      "success": true,
+      "duration_ms": 0.585
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfb8cf59b3a5a6e2518a325eec041",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 53,
+          "prompt_tokens": 2757,
+          "total_tokens": 2810,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 2610.737
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_ee4ee3adea3e43aea2240cac",
+      "tool_args": {
+        "doc_id": "D01",
+        "span_id": "s1",
+        "purpose": "读取报销期限原文"
+      },
+      "purpose": "读取报销期限原文",
+      "result_summary": {
+        "doc_id": "D01",
+        "span_id": "s1"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "D01",
+          "title": "费用报销管理办法",
+          "version_date": "2026-01-10",
+          "topic": "报销期限",
+          "scope": "全体员工",
+          "supersedes": [],
+          "span_id": "s1",
+          "text": "员工应在费用发生后30天内提交报销申请。",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "related_documents": []
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 7
+        }
+      },
+      "success": true,
+      "duration_ms": 0.294
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfb8e0dadf544f634d8afab08f5f6",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 139,
+          "prompt_tokens": 2980,
+          "total_tokens": 3119,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2688
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 2677.853
+    },
+    {
+      "type": "validation",
+      "step": 3,
+      "valid": false,
+      "errors": [
+        "Citation must have been read successfully in THIS run at its current version",
+        "Read known same-topic candidate documents before deciding: D13"
+      ],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "根据《费用报销管理办法》（2026-01-10，适用于全体员工），员工应在费用发生后30天内提交报销申请。费用系统中的草稿状态不代表报销已提交。",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "version_date": "2026-01-10",
+            "span_id": "s1",
+            "quote": "员工应在费用发生后30天内提交报销申请。"
+          },
+          {
+            "doc_id": "D13",
+            "version_date": "2026-05-03",
+            "span_id": "s1",
+            "quote": "草稿状态不代表报销已经提交，也不代表审批通过"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    },
+    {
+      "type": "model",
+      "step": 4,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfb911f68247ce73826eca2af4841",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 55,
+          "prompt_tokens": 3176,
+          "total_tokens": 3231,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3072
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1697.635
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_b7f96460d03f403cadfd6f19",
+      "tool_args": {
+        "doc_id": "D13",
+        "span_id": "s1",
+        "purpose": "读取草稿保存指南原文"
+      },
+      "purpose": "读取草稿保存指南原文",
+      "result_summary": {
+        "doc_id": "D13",
+        "span_id": "s1"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "D13",
+          "title": "费用申请草稿保存指南",
+          "version_date": "2026-05-03",
+          "topic": "费用系统操作",
+          "scope": "全体员工",
+          "supersedes": [],
+          "span_id": "s1",
+          "text": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "related_documents": []
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 6
+        }
+      },
+      "success": true,
+      "duration_ms": 0.319
+    },
+    {
+      "type": "model",
+      "step": 5,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfb936aadb1c960f7e0528f7c86a1",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 156,
+          "prompt_tokens": 3417,
+          "total_tokens": 3573,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3200
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 2632.388
+    },
+    {
+      "type": "validation",
+      "step": 5,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "根据《费用报销管理办法》（2026-01-10，适用全体员工），员工应在费用发生后30天内提交报销申请。另据《费用申请草稿保存指南》（2026-05-03），费用系统中的草稿状态不代表报销已提交。",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "version_date": "2026-01-10",
+            "span_id": "s1",
+            "quote": "员工应在费用发生后30天内提交报销申请。"
+          },
+          {
+            "doc_id": "D13",
+            "version_date": "2026-05-03",
+            "span_id": "s1",
+            "quote": "草稿状态不代表报销已经提交，也不代表审批通过"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "ANSWERED",
+    "answer": "根据《费用报销管理办法》（2026-01-10，适用全体员工），员工应在费用发生后30天内提交报销申请。另据《费用申请草稿保存指南》（2026-05-03），费用系统中的草稿状态不代表报销已提交。",
+    "citations": [
+      {
+        "doc_id": "D01",
+        "version_date": "2026-01-10",
+        "span_id": "s1",
+        "quote": "员工应在费用发生后30天内提交报销申请。"
+      },
+      {
+        "doc_id": "D13",
+        "version_date": "2026-05-03",
+        "span_id": "s1",
+        "quote": "草稿状态不代表报销已经提交，也不代表审批通过"
+      }
+    ],
+    "missing_information": [],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 5,
+      "tool_calls": 4,
+      "completed": true
+    }
+  },
+  "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 13720.381,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 13605,
+    "completion_tokens": 512,
+    "total_tokens": 14117
+  }
+}

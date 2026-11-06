@@ -1,6 +1,6 @@
 {
-  "run_id": "d12f51d6fa7b41228688b859d2375f49",
-  "timestamp": "2026-11-05T17:10:55.224374+00:00",
+  "run_id": "4759f5b0bca140a280ec2ad8343c3b9a",
+  "timestamp": "2026-11-06T02:34:25.797042+00:00",
   "mode": "mock",
   "model": "deterministic-offline-harness",
   "question": "产品项目的编辑权限由谁开通？",
@@ -15,13 +15,14 @@
       "tool_names": [
         "search_docs"
       ],
-      "duration_ms": 0.026
+      "telemetry": {},
+      "duration_ms": 0.03
     },
     {
       "type": "tool",
       "step": 1,
       "tool_name": "search_docs",
-      "tool_call_id": "call_382ebd24a7194ea7",
+      "tool_call_id": "call_e4e61c0cd1ab4cfa",
       "tool_args": {
         "query": "产品项目的编辑权限由谁开通？",
         "top_k": 5,
@@ -110,10 +111,14 @@
           ],
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
         }
       },
       "success": true,
-      "duration_ms": 3.781
+      "duration_ms": 3.901
     },
     {
       "type": "model",
@@ -122,13 +127,14 @@
       "tool_names": [
         "read_doc_span"
       ],
-      "duration_ms": 0.05
+      "telemetry": {},
+      "duration_ms": 0.063
     },
     {
       "type": "tool",
       "step": 2,
       "tool_name": "read_doc_span",
-      "tool_call_id": "call_e965d083b7e04eaa",
+      "tool_call_id": "call_844d4e06ac6f4087",
       "tool_args": {
         "doc_id": "D08",
         "span_id": "s1",
@@ -152,17 +158,22 @@
           "text": "产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。",
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "related_documents": []
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 8
         }
       },
       "success": true,
-      "duration_ms": 0.219
+      "duration_ms": 0.258
     },
     {
       "type": "model",
       "step": 3,
       "action": "final",
       "tool_names": [],
-      "duration_ms": 0.053
+      "telemetry": {},
+      "duration_ms": 0.057
     },
     {
       "type": "validation",
@@ -205,11 +216,22 @@
       "completed": true
     }
   },
+  "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": false,
   "evidence_validation": {
     "valid": true,
     "errors": [],
     "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
   },
-  "duration_ms": 4.39,
-  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+  "duration_ms": 4.602,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
 }

@@ -337,6 +337,23 @@ def build():
         ],
     )
 
+    live_path = ROOT / "data/live_cases.jsonl"
+    live_cases = [
+        json.loads(s) for s in live_path.read_text(encoding="utf-8").splitlines()
+    ]
+    for case in live_cases:
+        case["required_patterns"] = [
+            r"(?<!\d)" + f + r"\s*天"
+            for f in case.get("required_facts", [])
+            if f.isdigit()
+        ]
+        if case["id"] in {"T01", "T04"}:
+            case["citation_obligations"] = [
+                {"trigger_pattern": "草稿", "quote_pattern": "草稿"},
+                {"trigger_pattern": "费用系统", "quote_pattern": "费用系统"},
+            ]
+    write_jsonl(live_path, live_cases)
+
 
 if __name__ == "__main__":
     build()

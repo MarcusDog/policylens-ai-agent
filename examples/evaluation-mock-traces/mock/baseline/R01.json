@@ -1,6 +1,6 @@
 {
-  "run_id": "9313dacbb620468382ee8201983ec383",
-  "timestamp": "2026-11-05T17:10:55.214440+00:00",
+  "run_id": "91883b70f32d405288ac169b41d0fc7c",
+  "timestamp": "2026-11-06T02:34:25.783434+00:00",
   "mode": "mock",
   "model": "deterministic-offline-harness",
   "question": "在家连接公司网络，VPN 要走什么申请流程？",
@@ -15,13 +15,14 @@
       "tool_names": [
         "search_docs"
       ],
-      "duration_ms": 0.029
+      "telemetry": {},
+      "duration_ms": 0.028
     },
     {
       "type": "tool",
       "step": 1,
       "tool_name": "search_docs",
-      "tool_call_id": "call_663d0b250a4f488e",
+      "tool_call_id": "call_af47983357b84161",
       "tool_args": {
         "query": "在家连接公司网络，VPN 要走什么申请流程？",
         "top_k": 5,
@@ -128,10 +129,14 @@
           ],
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
         }
       },
       "success": true,
-      "duration_ms": 3.601
+      "duration_ms": 3.659
     },
     {
       "type": "model",
@@ -140,13 +145,14 @@
       "tool_names": [
         "read_doc_span"
       ],
-      "duration_ms": 0.053
+      "telemetry": {},
+      "duration_ms": 0.062
     },
     {
       "type": "tool",
       "step": 2,
       "tool_name": "read_doc_span",
-      "tool_call_id": "call_dac80517a24d4ef0",
+      "tool_call_id": "call_e90d82d040834c9f",
       "tool_args": {
         "doc_id": "D07",
         "span_id": "s1",
@@ -170,17 +176,22 @@
           "text": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "related_documents": []
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 8
         }
       },
       "success": true,
-      "duration_ms": 0.23
+      "duration_ms": 0.25
     },
     {
       "type": "model",
       "step": 3,
       "action": "final",
       "tool_names": [],
-      "duration_ms": 0.058
+      "telemetry": {},
+      "duration_ms": 0.06
     },
     {
       "type": "validation",
@@ -223,11 +234,22 @@
       "completed": true
     }
   },
+  "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": false,
   "evidence_validation": {
     "valid": true,
     "errors": [],
     "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
   },
-  "duration_ms": 4.239,
-  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+  "duration_ms": 4.356,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
 }

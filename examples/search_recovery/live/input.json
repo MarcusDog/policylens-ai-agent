@@ -1,0 +1,19 @@
+{
+  "id": "C04",
+  "name": "search_recovery",
+  "scenario": "normal",
+  "question": "VPN 应该怎么申请？",
+  "expected_status": "ANSWERED",
+  "relevant_docs": [
+    "D07"
+  ],
+  "fail_tool": "search_docs",
+  "fail_count": 1,
+  "required_facts": [
+    "工单"
+  ],
+  "required_citations": [
+    "D07"
+  ],
+  "required_patterns": []
+}

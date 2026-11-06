@@ -14,9 +14,9 @@
 | T07 | 30 天替换为 45 天 | test_mutation | mutation |
 | T08 | 删除竞争文档 | test_mutation | removed |
 | T09 | 明确替代关系 / 部门范围 | test_conflicts | supersedes / scope |
-| T10 | 文档注入隔离 | test_agent_loop | injection（Live 待配置） |
+| T10 | 文档注入隔离 | test_agent_loop | injection（已保存 Live） |
 | T11 | 限额与 API 错误 | test_agent_loop | 单元测试 |
 | T12 | 非法 / 未读 / 过期引用 | test_citations | 单元测试 |
 
 Mock 记录仅证明运行时与工具路径真实执行，不证明真实模型推理。
-Live 凭据由用户稍后提供；不得虚构 Live 输出。
+本轮用户已提供 MiniMax 配置，Live 结果见 docs/06-live-evidence.md；不得用 Mock 冒充 Live。

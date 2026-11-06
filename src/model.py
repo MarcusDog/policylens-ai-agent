@@ -5,8 +5,10 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from dataclasses import dataclass, field
 from uuid import uuid4
+from urllib.parse import urlparse
 
 
 @dataclass
@@ -20,6 +22,8 @@ class ToolCall:
 class ModelReply:
     content: str | None = None
     tool_calls: list[ToolCall] = field(default_factory=list)
+    telemetry: dict = field(default_factory=dict)
+    _reasoning_content: str | None = field(default=None, repr=False, compare=False)
 
     def message(self) -> dict:
         msg: dict = {"role": "assistant", "content": self.content}
@@ -32,6 +36,9 @@ class ModelReply:
                 }
                 for c in self.tool_calls
             ]
+        if self._reasoning_content is not None:
+            # MiniMax needs this continuation in memory; never put it in Trace.
+            msg["reasoning_content"] = self._reasoning_content
         return msg
 
 
@@ -46,6 +53,21 @@ class LiveModel:
                 "Live requires OPENAI_API_KEY and MODEL_NAME (environment or --env-file)"
             )
         self.name = os.environ["MODEL_NAME"]
+        host = urlparse(os.getenv("OPENAI_BASE_URL", "")).hostname or ""
+        self.provider = os.getenv("MODEL_PROVIDER") or (
+            "minimax"
+            if host in {"api.minimax.cn", "api.minimax.io", "api.minimax.chat"}
+            else "openai-compatible"
+        )
+        self.reasoning_effort = os.getenv("MODEL_REASONING_EFFORT")
+        self.min_interval = float(os.getenv("MODEL_MIN_INTERVAL_SECONDS", "0"))
+        if not 0 <= self.min_interval <= 10:
+            raise ValueError("MODEL_MIN_INTERVAL_SECONDS must be within [0,10]")
+        self._last_request = 0.0
+        self.json_mode = (
+            os.getenv("MODEL_JSON_MODE", "off" if self.provider == "minimax" else "on")
+            == "on"
+        )
         self.client = OpenAI(
             api_key=os.environ["OPENAI_API_KEY"],
             base_url=os.getenv("OPENAI_BASE_URL") or None,
@@ -54,22 +76,48 @@ class LiveModel:
         )
 
     def complete(self, messages: list[dict], tools: list[dict]) -> ModelReply:
+        delay = self.min_interval - (time.monotonic() - self._last_request)
+        if delay > 0:
+            time.sleep(delay)
+        self._last_request = time.monotonic()
+        options: dict = {}
+        if self.json_mode:
+            options["response_format"] = {"type": "json_object"}
+        if self.provider == "minimax":
+            options["extra_body"] = {"reasoning_split": True}
+            if self.reasoning_effort:
+                options["reasoning_effort"] = self.reasoning_effort
         response = self.client.chat.completions.create(
             model=self.name,
             messages=messages,
             tools=tools,
             tool_choice="auto",
             parallel_tool_calls=False,
-            response_format={"type": "json_object"},
+            **options,
         )
         msg = response.choices[0].message
-        # Never store reasoning_content or raw SDK response objects.
+        usage = (
+            response.usage.model_dump(exclude_none=True)
+            if getattr(response, "usage", None)
+            else {}
+        )
         return ModelReply(
             msg.content,
             [
                 ToolCall(c.function.name, c.function.arguments, c.id)
                 for c in msg.tool_calls or []
             ],
+            telemetry={
+                "provider": self.provider,
+                "requested_model": self.name,
+                "actual_model": getattr(response, "model", self.name),
+                "response_id": getattr(response, "id", None),
+                "finish_reason": getattr(response.choices[0], "finish_reason", None),
+                "usage": usage,
+            },
+            _reasoning_content=getattr(msg, "reasoning_content", None)
+            if self.provider == "minimax"
+            else None,
         )
 
 

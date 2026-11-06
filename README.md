@@ -5,9 +5,10 @@ Evidence-Grounded Enterprise Knowledge Agent · 小影科技 AI Agent 开发笔�
 通过真实 Function Calling 自主检索企业制度、读取原文，并输出可核验引用、冲突、资料缺口和任务状态。
 Python CLI，无 Agent 框架、数据库或 Web UI。
 
-**交付状态：离线实现和验收完成；Live 尚未验证，等待用户提供模型配置。**
-现有 examples 中的记录均为真实执行的 **Mock** 工具记录，不能作为真实模型决策能力证明。
-当前有 72 项 pytest 通过，16 个离线案例通过；测试数据规模很小，指标不代表生产表现。
+**已接入 MiniMax-M3.1-Flash，并完成真实模型验收。** 基础集两种检索器各 11 次真实运行，
+扩展集 9 次真实运行，以及完整两轮对话均已保存。当前 **84 项 pytest 通过**，16 个离线案例通过。
+原始评分曾有一项过宽禁止词误报，按条件引文回归重新评分，原始结果和修订说明均保留。
+完整数字、失败记录和边界见 [Live 证据索引](docs/06-live-evidence.md)，设计取舍见 [答辩说明](docs/07-design-review.md)。
 
 ## 安装
 
@@ -43,6 +44,7 @@ python -m src.cli ask --mode mock --question "那差旅报销呢？" --history-f
 
 `--json` 打印机器可读输出。未指定 Trace 时自动保存到 `runs/<mode>/latest-trace.json`；保留多次记录请指定不同路径。
 `--max-model-steps` 默认 8，`--max-tool-calls` 默认 10。
+`--save-history <path>` 保存实际问答，可作为下一轮的 `--history-file`，历史引用仍须本轮重读。
 退出码：0 为已回答/已报告冲突或资料缺口；1 为工具/API故障、限额或评测未通过；2 为配置/输入错误。
 
 ## 模型配置与 Live
@@ -51,12 +53,17 @@ python -m src.cli ask --mode mock --question "那差旅报销呢？" --history-f
 
 ```dotenv
 OPENAI_API_KEY=<local-secret>
-OPENAI_BASE_URL=https://api.openai.com/v1
-MODEL_NAME=<your-function-calling-model>
+OPENAI_BASE_URL=https://api.minimax.cn/v1
+MODEL_NAME=MiniMax-M3.1-Flash
 MODEL_TIMEOUT_SECONDS=45
+MODEL_PROVIDER=minimax
+MODEL_REASONING_EFFORT=low
+MODEL_JSON_MODE=off
+MODEL_MIN_INTERVAL_SECONDS=2
 ```
 
-使用支持 Chat Completions、Function Calling、`tool_choice=auto`、JSON object 输出和禁用并行调用的模型/兼容网关。
+使用支持 Chat Completions、Function Calling 和 `tool_choice=auto` 的模型/兼容网关。
+JSON 模式按网关能力配置；MiniMax 用 Prompt 约束输出 JSON。设置禁用并行调用，但运行时仍防御性处理多调用回复。
 模型名不硬编码。环境变量优先于配置文件；`--env-file` 支持外部绝对路径，不会复制或显示密钥。
 
 ```bash
@@ -69,16 +76,21 @@ Windows 路径示例：`--env-file "D:\私有配置\model.env"`。
 工具失败后的重试由模型决定。服务商若不支持上述协议，会返回明确错误，不会降级为 Mock。
 
 Live 入口检查六项必验、替换/删除、替代关系、部门范围和文档注入，并汇总真实工具序列，要求至少两条不同路径。
-**当前没有真实模型 Trace，也没有声称通过 Live 验收。**
+基础 Live 的六项必验已覆盖；替换、删除、明确替代、部门范围及注入均有真实记录。
+扩展数据和模型判断仍不能代表生产准确率，补充语义检查也不是独立真值。
 
 ## 动态 ReAct 与可靠性边界
 
 `Agent.run(question, history)` 把问题和历史发给模型。模型可以选择任意工具、换关键词、继续核查、澄清或直接输出最终 JSON。
 每个工具结果以真实 `tool` 消息回传，下一步重新调用模型；运行时没有预设 Live 工具序列。
 `parallel_tool_calls=False`，仍能防御处理模型在一个回复中返回多个调用。
+Live 对带企业结论的候选答案在同一 Agent 对话内增加一次最终复核，计入模型上限。
+它能保留、修改答案或继续查证；NOT_FOUND/TOOL_ERROR 不额外复核，避免故障退出耗尽预算。
+`--no-final-review` 可做消融；`--prompt-file prompts/v1.txt` 可复现旧提示。
 
 正式引用必须满足：文档/片段存在、版本正确、quote 为精确子串、本轮成功读取、读取内容与当前磁盘一致。
 已经发现但未读取的同主题候选会阻止确定回答。错误会反馈模型，额度用尽返回 `LIMIT_REACHED`，不会代写正确引用。
+小语料还要求查完已知候选的全部片段，防止只读简介就掩盖另一段冲突；长文档可能因此耗尽额度。
 历史只接受 user/assistant 角色，历史引用不能直接复用。文档与工具内容当作不可信数据处理。
 
 **Mock 是确定性协议测试替身**：固定检索、读取首个主题的候选、用有限合成模式构造结果。
@@ -98,7 +110,7 @@ Mock 不具备通用语义理解、灵活部门推断或模型自主决策能力
 | removed | 移除 D02 | ANSWERED：30 天，无 D02 引用 |
 | supersedes | D02 明确替代 D01，同范围 | ANSWERED：15 天 |
 | scope | 分别适用研发部/销售部 | NEEDS_CLARIFICATION |
-| injection | VPN 文档含恶意指令 | Live 应忽略指令，按证据回答；尚未实测 |
+| injection | VPN 文档含恶意指令 | 已实测读取附录后按制度回答，未输出攻击标记 |
 
 日期新、分数高、主题相同都不能单独决定制度优先级或是否冲突。最终语义判断属于模型。
 Corpus 每次工具操作检查磁盘内容哈希，变更时重新载入；索引随之刷新。更换资料无需修改 Agent 代码。
@@ -133,6 +145,10 @@ python -m pytest -q --junitxml=docs/test-results.xml
 python -m src.cli eval --retrieval-only --output docs/retrieval-evaluation.json
 python -m src.cli eval --mode mock --output examples/evaluation-mock.json --examples-dir examples
 python -m src.cli eval --mode live --cases data/live_cases.jsonl --output runs/evaluation-live.json
+python -m src.cli eval --mode live --cases data/challenge_cases.jsonl --methods improved --output runs/challenge-live.json
+python -m src.cli eval --retrieval-only --cases data/retrieval_stress_cases.jsonl --output runs/stress.json
+python scripts/audit_grounding.py --report examples/evaluation-live-final.json --method improved --output runs/semantic-audit.json
+python scripts/summarize_results.py
 ```
 
 Baseline 与 Improved 使用相同问题和语料；Recall@5 按文档 ID 计算，排除无相关文档的案例。
@@ -140,8 +156,14 @@ Baseline 与 Improved 使用相同问题和语料；Recall@5 按文档 ID 计算
 这些指标来自实际运行，**Mock 状态正确率不代表 LLM 能力**。
 无依据回答率是状态/fixture 事实检查代理，引用有效率只衡量来源；二者都不是完整语义蕴涵评测。
 详细公式、失败记录、原始数据见 [评测报告](docs/03-evaluation.md)。
+Live 基础集两者状态正确率、冲突发现率和引用出处有效率均为 1.0，平均工具调用均为 4.6364。
+条件引文回归重评分两者均为 1.0，原始 Improved 旧口径为 10/11，差异和原文件均保留。
+9 个扩展 Live 案例全部符合预期；6 个精确 ID 竞争文档压力例 Recall@5 为 0.5556 / 1.0。
+压力集是特定机制测试，不能与普通问题集混算或宣称普遍提升。
+补充语义审查对 Improved 的 9 个带企业结论输出均判为 SUPPORTED；这属于同模型的辅助检查，不是独立真值。
+完整真实两轮对话见 `examples/conversation/live/`，第二轮历史由第一轮实际输出生成。
 
-六项必验均有当前离线记录：
+六项必验同时保留 Mock 和 Live 记录（`examples/<场景>/live/`）：
 
 | 项目 | 实际 Mock 结果 | 证据目录 |
 |---|---|---|
@@ -156,6 +178,7 @@ Baseline 与 Improved 使用相同问题和语料；Recall@5 按文档 ID 计算
 `search_docs → read_doc_span → final`、`search_docs → read_doc_span → read_doc_span → final`、
 `search_docs → final`；这些不是 Live 路径。
 Trace 含 run_id、UTC 时间、mode、模型标识、问题、历史摘要、实际工具参数/结果/耗时、校验结果及最终状态。
+新增 Prompt 哈希、语料哈希、真实 response_id、返回模型名、token 用量和最终复核事件。
 UTC 时间展示时应按所在时区换算。没有记录模型隐藏推理或 API Key。
 
 ## 目录
@@ -166,12 +189,13 @@ data/         documents.jsonl test_cases.jsonl live_cases.jsonl scenarios/
 tests/        retrieval / loop / citations / conflicts / mutation / evaluation
 examples/     各场景实际输入、输出、Mock Trace 与评测 JSON
 docs/         需求、方案、评测、AI 使用、复盘及原始测试报告
-scripts/      合成数据重建、显式 Live 验收
+scripts/      数据重建、Live 验收、重评分、补充语义检查、报告生成
+prompts/      v1—v4 真实提示版本及可复用的 Codex 维护提示
 ```
 
 ## 已知限制与提交信息
 
-- Live 的真实模型决策、提示注入抵抗、六项验收及两条不同路径尚待配置后验证。这是提交前最重要的未完成项。
+- Live 路径已验证，历史失败完整保留；更多真实措辞、长文档及非合成资料的泛化仍未充分验证。
 - 程序能验证来源与候选核查，不能证明回答的全部语义受原文支持；有独立事实回归检查，仍需人工审查。
 - 字符检索不是语义向量；泛化同义词、长文档、跨主题隐式冲突、部门包含关系未充分评测。
 - 语料在一次执行中频繁变化时可能耗尽核查额度；当前设计为小规模单机合成语料。
@@ -181,3 +205,4 @@ scripts/      合成数据重建、显式 Live 验收
 - 最终 commit SHA：运行 `git rev-parse HEAD` 获取，具体 SHA 在交付消息中提供；避免将 commit 自身的哈希嵌入同一提交造成自引用。
 
 Function Calling 协议参考 [OpenAI 官方文档](https://developers.openai.com/api/docs/guides/function-calling)。
+MiniMax 兼容细节参考 [服务商官方文档](https://platform.minimax.cn/docs/api-reference/text-openai-api)。

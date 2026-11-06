@@ -173,7 +173,11 @@ class Retriever:
         exact = {
             i
             for i, r in enumerate(self.rows)
-            if re.search(r"(?<!\w)" + re.escape(r["doc_id"]) + r"(?!\w)", query, re.I)
+            if re.search(
+                r"(?<![a-zA-Z0-9_])" + re.escape(r["doc_id"]) + r"(?![a-zA-Z0-9_])",
+                query,
+                re.I,
+            )
             or r["title"].lower() in query.lower()
         }
         # Require lexical content; single common characters must not retrieve the corpus.

@@ -1,0 +1,15 @@
+{
+  "status": "TOOL_ERROR",
+  "answer": "检索到《VPN 远程访问申请》(D07) 一条与问题直接相关的制度，但多次尝试读取原文均返回工具错误(INJECTED_FAILURE)，无法取得可引用的一手文本，因此本次不能给出带正式引用的答案。检索预览显示的内容（IT 服务台提交远程访问工单、注明用途和访问期限、主管与信息安全负责人审批）仅供参考，未经原文核验，不作为结论。",
+  "citations": [],
+  "missing_information": [
+    "《VPN 远程访问申请》(D07) 的可引用原文片段（read_doc_span 持续失败）",
+    "是否存在其他部门或角色的 VPN 申请例外规定"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 8,
+    "tool_calls": 8,
+    "completed": false
+  }
+}

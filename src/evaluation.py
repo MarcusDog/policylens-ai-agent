@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import re
+import time
 from pathlib import Path
 from statistics import mean
 
@@ -23,11 +26,26 @@ def read_cases(path: Path) -> list[dict]:
 def check_case(case: dict, result: dict) -> dict:
     answer = result["answer"]
     ids = {c["doc_id"] for c in result["citations"]}
+    obligations_pass = all(
+        not re.search(rule["trigger_pattern"], answer)
+        or any(
+            re.search(rule["quote_pattern"], citation["quote"])
+            for citation in result["citations"]
+        )
+        for rule in case.get("citation_obligations", [])
+    )
     return {
         "status_correct": result["status"] == case["expected_status"],
         # These small regression checks are semantic proxies, not an LLM judge.
         "fact_checks_pass": all(x in answer for x in case.get("required_facts", []))
-        and not any(x in answer for x in case.get("forbidden_facts", [])),
+        and not any(x in answer for x in case.get("forbidden_facts", []))
+        and all(
+            re.search(pattern, answer) for pattern in case.get("required_patterns", [])
+        )
+        and not any(
+            re.search(pattern, answer) for pattern in case.get("forbidden_patterns", [])
+        )
+        and obligations_pass,
         "citation_expectations_pass": set(case.get("required_citations", [])) <= ids
         and not (set(case.get("forbidden_citations", [])) & ids),
     }
@@ -40,12 +58,27 @@ def evaluate(
     output: Path,
     retrieval_only: bool = False,
     examples_dir: Path | None = None,
+    *,
+    system_prompt: str | None = None,
+    methods: tuple[str, ...] = ("baseline", "improved"),
+    progress=None,
+    final_review: bool | None = None,
+    case_delay_seconds: float = 0,
 ) -> dict:
     cases = read_cases(cases_path)
+    if (
+        not cases
+        or mode not in {"live", "mock"}
+        or not methods
+        or any(m not in {"baseline", "improved"} for m in methods)
+    ):
+        raise ValueError("Nonempty cases, valid mode and retrieval methods required")
     reports = {}
-    for method in ("baseline", "improved"):
+    for method in methods:
         rows = []
         for case in cases:
+            if case_delay_seconds:
+                time.sleep(min(max(case_delay_seconds, 0), 30))
             corpus = Corpus(root / "data/scenarios" / case["scenario"])
             # Context resolution is the model's responsibility; retrieval benchmark uses
             # the exact same question for both methods, with no oracle query rewrite.
@@ -69,6 +102,10 @@ def evaluate(
                     method=method,
                     fail_tool=case.get("fail_tool"),
                     fail_count=case.get("fail_count", 0),
+                    max_model_steps=case.get("max_model_steps", 8),
+                    max_tool_calls=case.get("max_tool_calls", 10),
+                    system_prompt=system_prompt,
+                    final_review=final_review,
                 )
                 trace_path = (
                     output.parent
@@ -96,6 +133,15 @@ def evaluate(
                     "status": result["status"],
                     "tool_calls": result["task_state"]["tool_calls"],
                     "duration_ms": agent.trace["duration_ms"],
+                    "model_calls": result["task_state"]["model_calls"],
+                    "token_usage": agent.trace["token_usage"],
+                    "prompt_sha256": agent.trace["prompt_sha256"],
+                    "corpus_digest": agent.trace["corpus_digest"],
+                    "api_errors": [
+                        e["error_type"]
+                        for e in agent.trace["events"]
+                        if e["type"] == "model_error"
+                    ],
                     "citation_count": len(result["citations"]),
                     "valid_citations": valid_citations,
                     "unsupported_answer": result["status"] == "ANSWERED"
@@ -119,6 +165,24 @@ def evaluate(
                     write_json(directory / "output.json", result)
                     write_json(directory / "trace.json", agent.trace)
             rows.append(row)
+            if progress:
+                progress(
+                    {
+                        "mode": mode,
+                        "method": method,
+                        "case_id": case["id"],
+                        "status": row.get("status", "RETRIEVED"),
+                    }
+                )
+            write_json(
+                output,
+                {
+                    "mode": "retrieval-only" if retrieval_only else mode,
+                    "complete": False,
+                    "reports": reports | {method: {"cases": rows}},
+                    "case_count": len(cases),
+                },
+            )
         recalls = [r["recall_at_5"] for r in rows if r["recall_at_5"] is not None]
         metrics = {"recall_at_5": mean(recalls) if recalls else None}
         if not retrieval_only:
@@ -140,11 +204,24 @@ def evaluate(
                 ),
                 "fact_regression_pass_rate": mean(r["fact_checks_pass"] for r in rows),
                 "mean_tool_calls": mean(r["tool_calls"] for r in rows),
+                "mean_model_calls": mean(r["model_calls"] for r in rows),
+                "mean_total_tokens": mean(
+                    r["token_usage"]["total_tokens"] for r in rows
+                ),
+                "case_pass_rate": mean(
+                    r["status_correct"]
+                    and r["fact_checks_pass"]
+                    and r["citation_expectations_pass"]
+                    for r in rows
+                ),
+                "api_error_rate": mean(bool(r["api_errors"]) for r in rows),
                 "mean_duration_ms": mean(r["duration_ms"] for r in rows),
             }
         reports[method] = {"metrics": metrics, "cases": rows}
     report = {
         "mode": "retrieval-only" if retrieval_only else mode,
+        "complete": True,
+        "cases_sha256": hashlib.sha256(cases_path.read_bytes()).hexdigest(),
         "case_count": len(cases),
         "cases_file": _portable_path(cases_path, root),
         "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",

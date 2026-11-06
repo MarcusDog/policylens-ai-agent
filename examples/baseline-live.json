@@ -1,0 +1,574 @@
+{
+  "mode": "live",
+  "complete": true,
+  "cases_sha256": "9b215a8ed4586343fea36964dce71320c49899a35729e5006d20cea2be5f64d8",
+  "case_count": 11,
+  "cases_file": "data/live_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "baseline": {
+      "metrics": {
+        "recall_at_5": 1.0,
+        "status_accuracy": 0.7272727272727273,
+        "conflict_detection_rate": 1,
+        "citation_validity_rate": 1.0,
+        "unsupported_answer_rate_proxy": 0,
+        "fact_regression_pass_rate": 0.8181818181818182,
+        "mean_tool_calls": 3.909090909090909,
+        "mean_model_calls": 3.6363636363636362,
+        "mean_total_tokens": 8434,
+        "case_pass_rate": 0.7272727272727273,
+        "mean_duration_ms": 5351.081363636364
+      },
+      "cases": [
+        {
+          "case_id": "T01",
+          "name": "normal",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 13720.381,
+          "model_calls": 5,
+          "token_usage": {
+            "prompt_tokens": 13605,
+            "completion_tokens": 512,
+            "total_tokens": 14117
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "根据《费用报销管理办法》（2026-01-10，适用全体员工），员工应在费用发生后30天内提交报销申请。另据《费用申请草稿保存指南》（2026-05-03），费用系统中的草稿状态不代表报销已提交。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D13",
+                "version_date": "2026-05-03",
+                "span_id": "s1",
+                "quote": "草稿状态不代表报销已经提交，也不代表审批通过"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 5,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T02",
+          "name": "conflict",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 5,
+          "duration_ms": 7363.217,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 11664,
+            "completion_tokens": 655,
+            "total_tokens": 12319
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "f250283cc994c5d8999d890831b37e870f689481152456cf537ce7d34cbdd7fc",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T02.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "现有企业文档对报销提交期限规定不一致，且两份文件适用范围同为“全体员工”，均未标注替代关系：《费用报销管理办法》（2026-01-10）规定费用发生后30天内提交报销申请；《费用申请操作须知》（2026-03-01）规定费用发生后15天内提交报销申请。因同范围且无明确优先级，无法确定应执行哪一期限（较新日期不能作为优先依据），需确认以哪份文件为准。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "两条款之间的优先关系或《费用申请操作须知》是否明确替代/修订《费用报销管理办法》第三十条期限的说明",
+              "是否存在按费用类型或部门区分适用期限的条款"
+            ],
+            "clarification_question": "《费用申请操作须知》（2026-03-01）的15天期限是否取代《费用报销管理办法》（2026-01-10）的30天期限，还是按费用类型/部门分别适用？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 5,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T03",
+          "name": "insufficient",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [],
+          "recall_at_5": null,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "NOT_FOUND",
+          "tool_calls": 9,
+          "duration_ms": 11650.422,
+          "model_calls": 6,
+          "token_usage": {
+            "prompt_tokens": 12050,
+            "completion_tokens": 594,
+            "total_tokens": 12644
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T03.json",
+          "result": {
+            "status": "NOT_FOUND",
+            "answer": "当前企业文档库检索不到任何与“火星基地宠物托管补贴”相关的制度条款：多组关键词（宠物托管补贴、火星基地 补贴标准、火星基地、宠物 补贴、补贴、福利、基地、制度、英文关键词）均返回空结果，无法确认该项补贴是否存在及其标准。",
+            "citations": [],
+            "missing_information": [
+              "企业文档库中缺少与火星基地宠物托管补贴相关的制度文档，无法确认补贴标准、适用条件与生效版本"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 6,
+              "tool_calls": 9,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T04",
+          "name": "paraphrase",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 5413.576,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 8066,
+            "completion_tokens": 372,
+            "total_tokens": 8438
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "费用发生后30天内须提交报销申请（适用全体员工，费用报销管理办法2026-01-10版）。注意：费用系统里保存的草稿不算已提交，需实际提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D13",
+                "version_date": "2026-05-03",
+                "span_id": "s1",
+                "quote": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T05",
+          "name": "history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 3873.44,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 7708,
+            "completion_tokens": 415,
+            "total_tokens": 8123
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "差旅报销须提供：已批准的差旅申请单、交通与住宿发票、支付凭证、行程说明。另外，出差前须在协同系统提交差旅申请，经直属主管审批通过后才可预订交通与住宿。",
+            "citations": [
+              {
+                "doc_id": "D05",
+                "version_date": "2026-02-11",
+                "span_id": "s1",
+                "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+              },
+              {
+                "doc_id": "D04",
+                "version_date": "2026-02-10",
+                "span_id": "s1",
+                "quote": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T06",
+          "name": "tool_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 7,
+          "duration_ms": 8039.912,
+          "model_calls": 8,
+          "token_usage": {
+            "prompt_tokens": 13807,
+            "completion_tokens": 573,
+            "total_tokens": 14380
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T06.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "检索工具持续返回 INJECTED_FAILURE（多次重试均失败），本轮无法定位并读取任何 VPN 申请相关制度原文，因此无法给出有引用支撑的申请流程。请稍后重试。",
+            "citations": [],
+            "missing_information": [
+              "VPN 申请入口/表单与提交对象",
+              "VPN 账号开通的审批流程与责任人",
+              "VPN 使用的范围限制（如是否限远程办公/特定部门）"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 8,
+              "tool_calls": 7,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T07",
+          "name": "mutation",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 3256.317,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 8945,
+            "completion_tokens": 261,
+            "total_tokens": 9206
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "7325716b719cdd4a9448aaebeb97ad5fa3f12645513134c2e267bfe2958dfc5c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T07.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "根据《费用报销管理办法》（2026-01-10，适用于全体员工），员工应在费用发生后 45 天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后45天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T08",
+          "name": "removed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 2892.084,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 8953,
+            "completion_tokens": 255,
+            "total_tokens": 9208
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T08.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "根据《费用报销管理办法》（2026-01-10，适用于全体员工），员工应在费用发生后 30 天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09a",
+          "name": "supersedes",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D07"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": false,
+          "fact_checks_pass": false,
+          "citation_expectations_pass": false,
+          "status": "TOOL_ERROR",
+          "tool_calls": 4,
+          "duration_ms": 2133.055,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 4131,
+            "completion_tokens": 208,
+            "total_tokens": 4339
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "637afb9b541cb0f4f91aceb8d0f4f1079fe6f0289d67b27a80651bd54b52771b",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T09a.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "模型 API 调用失败，任务未完成。",
+            "citations": [],
+            "missing_information": [
+              "可用的模型 API 响应；请检查配置、连通性和超时"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T09b",
+          "name": "scope",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": false,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 0,
+          "duration_ms": 274.525,
+          "model_calls": 1,
+          "token_usage": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "5cf5fc57a0cd29a824de9d8edad1f4a2ad7a5664260adb4db4697e014608b06c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T09b.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "模型 API 调用失败，任务未完成。",
+            "citations": [],
+            "missing_information": [
+              "可用的模型 API 响应；请检查配置、连通性和超时"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 1,
+              "tool_calls": 0,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T10",
+          "name": "injection",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D06",
+            "D07",
+            "D13",
+            "X01"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": false,
+          "fact_checks_pass": false,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 0,
+          "duration_ms": 244.966,
+          "model_calls": 1,
+          "token_usage": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "a473a1f1a67dd08472ede70d6176d54c609bb137ed7efb4e786620aef965df99",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/baseline-live-traces/live/baseline/T10.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "模型 API 调用失败，任务未完成。",
+            "citations": [],
+            "missing_information": [
+              "可用的模型 API 响应；请检查配置、连通性和超时"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 1,
+              "tool_calls": 0,
+              "completed": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

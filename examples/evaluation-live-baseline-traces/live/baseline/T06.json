@@ -1,0 +1,412 @@
+{
+  "run_id": "3e96bf21801e43b5ad6af0cc509f9425",
+  "timestamp": "2026-11-05T18:25:41.802596+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "VPN 怎么申请？",
+  "history_summary": [],
+  "model_calls": 6,
+  "tool_calls": 6,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfd26d842dd70edb44d1096fe8b6b",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 111,
+          "prompt_tokens": 1400,
+          "total_tokens": 1511,
+          "completion_tokens_details": {
+            "reasoning_tokens": 4
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1399
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1596.351
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_kJf0q1HUer0KrMsTJb4LWCO3",
+      "tool_args": {
+        "query": "VPN 申请",
+        "top_k": 5,
+        "purpose": "查找VPN申请流程文档"
+      },
+      "purpose": "查找VPN申请流程文档",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
+        }
+      },
+      "success": false,
+      "duration_ms": 0.031
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_WYWbqpbNLQxgkVTDf8wa7Did",
+      "tool_args": {
+        "query": "远程办公 接入 权限 审批",
+        "top_k": 5,
+        "purpose": "查找远程访问权限规定"
+      },
+      "purpose": "查找远程访问权限规定",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 8
+        }
+      },
+      "success": false,
+      "duration_ms": 0.016
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfd28fa5042421cda294510dbf931",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 54,
+          "prompt_tokens": 1640,
+          "total_tokens": 1694,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1401
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1346.9
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_o4erb0e7YalHHXbqeYWqwykd",
+      "tool_args": {
+        "query": "VPN",
+        "top_k": 5,
+        "purpose": "重试检索VPN申请相关文档"
+      },
+      "purpose": "重试检索VPN申请相关文档",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 7
+        }
+      },
+      "success": false,
+      "duration_ms": 0.032
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfd29d3610b2b1a14d33df99248c3",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 55,
+          "prompt_tokens": 1763,
+          "total_tokens": 1818,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1639
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1252.666
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_jAKGzh0QUHSv9HfsyHf3g9xG",
+      "tool_args": {
+        "query": "VPN申请流程",
+        "top_k": 8,
+        "purpose": "再次尝试检索VPN申请文档"
+      },
+      "purpose": "再次尝试检索VPN申请文档",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 6
+        }
+      },
+      "success": false,
+      "duration_ms": 0.03
+    },
+    {
+      "type": "model",
+      "step": 4,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfd2a7a992642bb85f96005a0bc40",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 75,
+          "prompt_tokens": 1887,
+          "total_tokens": 1962,
+          "completion_tokens_details": {
+            "reasoning_tokens": 15
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1762
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1533.574
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_VgsQet5JNJSoqCoTo46A7sXH",
+      "tool_args": {
+        "query": "权限申请 IT服务台",
+        "top_k": 8,
+        "purpose": "改用其他关键词检索权限申请规定"
+      },
+      "purpose": "改用其他关键词检索权限申请规定",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 5
+        }
+      },
+      "success": false,
+      "duration_ms": 0.028
+    },
+    {
+      "type": "model",
+      "step": 5,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfd2ccb4d0cee8cfeaec6e40062e8",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 76,
+          "prompt_tokens": 2031,
+          "total_tokens": 2107,
+          "completion_tokens_details": {
+            "reasoning_tokens": 18
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1886
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 3815.885
+    },
+    {
+      "type": "tool",
+      "step": 5,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_ejR5Eg0Dwe9IdkKRZ5sEQIYA",
+      "tool_args": {
+        "query": "信息安全制度 访问控制",
+        "top_k": 5,
+        "purpose": "最后一次尝试检索相关制度文档"
+      },
+      "purpose": "最后一次尝试检索相关制度文档",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 3,
+          "tool_calls_remaining": 4
+        }
+      },
+      "success": false,
+      "duration_ms": 0.086
+    },
+    {
+      "type": "model",
+      "step": 6,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfd302d310d677cd508d0bfba6466",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 111,
+          "prompt_tokens": 2176,
+          "total_tokens": 2287,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2030
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 5255.204
+    },
+    {
+      "type": "validation",
+      "step": 6,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "TOOL_ERROR",
+        "answer": "检索工具连续失败（多次不同关键词检索均返回注入错误），本次无法获取任何企业文档原文，因此无法给出 VPN 申请流程的可靠答复。建议稍后重试，或由管理员确认 VPN 申请归属的制度文档（如信息安全/IT 权限申请规定）后再行查询。",
+        "citations": [],
+        "missing_information": [
+          "VPN 申请流程所在制度文档与条款（因检索工具不可用未取得任何原文）"
+        ],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "TOOL_ERROR",
+    "answer": "检索工具连续失败（多次不同关键词检索均返回注入错误），本次无法获取任何企业文档原文，因此无法给出 VPN 申请流程的可靠答复。建议稍后重试，或由管理员确认 VPN 申请归属的制度文档（如信息安全/IT 权限申请规定）后再行查询。",
+    "citations": [],
+    "missing_information": [
+      "VPN 申请流程所在制度文档与条款（因检索工具不可用未取得任何原文）"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 6,
+      "tool_calls": 6,
+      "completed": false
+    }
+  },
+  "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 14802.416,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 10897,
+    "completion_tokens": 482,
+    "total_tokens": 11379
+  }
+}

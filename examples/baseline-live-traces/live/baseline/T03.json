@@ -1,0 +1,490 @@
+{
+  "run_id": "6dc99bbcf9f44b80ab9c4f045c51963e",
+  "timestamp": "2026-11-05T18:19:10.746329+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "公司在火星基地的宠物托管补贴标准是多少？",
+  "history_summary": [],
+  "model_calls": 6,
+  "tool_calls": 9,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfb9f44cdf1353289379167960e4b",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 112,
+          "prompt_tokens": 1275,
+          "total_tokens": 1387,
+          "completion_tokens_details": {
+            "reasoning_tokens": 5
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1274
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1680.545
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_8h390kanRPryvX6Kr6MIoL4W",
+      "tool_args": {
+        "query": "宠物托管补贴",
+        "top_k": 8,
+        "purpose": "查找宠物托管补贴相关制度条款"
+      },
+      "purpose": "查找宠物托管补贴相关制度条款",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
+        }
+      },
+      "success": true,
+      "duration_ms": 11.852
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_jX46j6W9d3yg4bevlM27oefs",
+      "tool_args": {
+        "query": "火星基地 补贴标准",
+        "top_k": 8,
+        "purpose": "查找火星基地相关补贴规定"
+      },
+      "purpose": "查找火星基地相关补贴规定",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 8
+        }
+      },
+      "success": true,
+      "duration_ms": 0.954
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfba1feb765d016e0ba8cc247061b",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 100,
+          "prompt_tokens": 1584,
+          "total_tokens": 1684,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1276
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 3458.448
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_KauDUoy2liTzQD2U1zC3P3iY",
+      "tool_args": {
+        "query": "火星基地",
+        "top_k": 8,
+        "purpose": "查找火星基地相关文档"
+      },
+      "purpose": "查找火星基地相关文档",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 7
+        }
+      },
+      "success": true,
+      "duration_ms": 0.663
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_qHnr1bt8R7yLQwZ90YzmgBMA",
+      "tool_args": {
+        "query": "宠物 补贴",
+        "top_k": 8,
+        "purpose": "查找宠物相关福利制度"
+      },
+      "purpose": "查找宠物相关福利制度",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 6
+        }
+      },
+      "success": true,
+      "duration_ms": 0.441
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfba4d1c204b6b81a93653af015dc",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 99,
+          "prompt_tokens": 1881,
+          "total_tokens": 1980,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1583
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1712.551
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_7EpIcosqrWfJkONKyt9QXipK",
+      "tool_args": {
+        "query": "补贴",
+        "top_k": 8,
+        "purpose": "通用检索企业文档库内容"
+      },
+      "purpose": "通用检索企业文档库内容",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 5
+        }
+      },
+      "success": true,
+      "duration_ms": 0.807
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_jyyxqOgykcg1nx52N0RPqsDP",
+      "tool_args": {
+        "query": "福利",
+        "top_k": 8,
+        "purpose": "通用检索企业文档库内容"
+      },
+      "purpose": "通用检索企业文档库内容",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 4
+        }
+      },
+      "success": true,
+      "duration_ms": 0.496
+    },
+    {
+      "type": "model",
+      "step": 4,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfba695c8f7a8fddc565040d2d5ed",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 115,
+          "prompt_tokens": 2177,
+          "total_tokens": 2292,
+          "completion_tokens_details": {
+            "reasoning_tokens": 14
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1880
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1597.306
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_dlDovHfM7NYjc9Jxg2s52fxL",
+      "tool_args": {
+        "query": "pet boarding allowance Mars base",
+        "top_k": 8,
+        "purpose": "尝试英文关键词检索"
+      },
+      "purpose": "尝试英文关键词检索",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 3
+        }
+      },
+      "success": true,
+      "duration_ms": 1.424
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_SDtF2zw9iBet12SZ5DyhPfwt",
+      "tool_args": {
+        "query": "制度",
+        "top_k": 8,
+        "purpose": "尝试检索制度类文档"
+      },
+      "purpose": "尝试检索制度类文档",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 2
+        }
+      },
+      "success": true,
+      "duration_ms": 0.556
+    },
+    {
+      "type": "model",
+      "step": 5,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfba71d8b7ba87db8f521cf5fc905",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 52,
+          "prompt_tokens": 2489,
+          "total_tokens": 2541,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2176
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1306.206
+    },
+    {
+      "type": "tool",
+      "step": 5,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_TppkgrmQblLhDPvpJZC9W54h",
+      "tool_args": {
+        "query": "基地",
+        "top_k": 8,
+        "purpose": "尝试列出可检索文档"
+      },
+      "purpose": "尝试列出可检索文档",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 3,
+          "tool_calls_remaining": 1
+        }
+      },
+      "success": true,
+      "duration_ms": 1.366
+    },
+    {
+      "type": "model",
+      "step": 6,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfba95184b5f44d79dd8a62b330d6",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 116,
+          "prompt_tokens": 2644,
+          "total_tokens": 2760,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2488
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1875.778
+    },
+    {
+      "type": "validation",
+      "step": 6,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "NOT_FOUND",
+        "answer": "当前企业文档库检索不到任何与“火星基地宠物托管补贴”相关的制度条款：多组关键词（宠物托管补贴、火星基地 补贴标准、火星基地、宠物 补贴、补贴、福利、基地、制度、英文关键词）均返回空结果，无法确认该项补贴是否存在及其标准。",
+        "citations": [],
+        "missing_information": [
+          "企业文档库中缺少与火星基地宠物托管补贴相关的制度文档，无法确认补贴标准、适用条件与生效版本"
+        ],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "NOT_FOUND",
+    "answer": "当前企业文档库检索不到任何与“火星基地宠物托管补贴”相关的制度条款：多组关键词（宠物托管补贴、火星基地 补贴标准、火星基地、宠物 补贴、补贴、福利、基地、制度、英文关键词）均返回空结果，无法确认该项补贴是否存在及其标准。",
+    "citations": [],
+    "missing_information": [
+      "企业文档库中缺少与火星基地宠物托管补贴相关的制度文档，无法确认补贴标准、适用条件与生效版本"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 6,
+      "tool_calls": 9,
+      "completed": true
+    }
+  },
+  "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 11650.422,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 12050,
+    "completion_tokens": 594,
+    "total_tokens": 12644
+  }
+}

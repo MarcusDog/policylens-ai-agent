@@ -1,0 +1,23 @@
+{
+  "id": "C06",
+  "name": "renamed",
+  "scenario": "renamed",
+  "question": "现在费用报销应在发生后几天内提交？",
+  "expected_status": "ANSWERED",
+  "relevant_docs": [
+    "R-82"
+  ],
+  "required_facts": [
+    "77"
+  ],
+  "required_citations": [
+    "R-82"
+  ],
+  "forbidden_citations": [
+    "D01",
+    "D02"
+  ],
+  "required_patterns": [
+    "(?<!\\d)77\\s*天"
+  ]
+}

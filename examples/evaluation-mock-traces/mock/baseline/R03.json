@@ -1,6 +1,6 @@
 {
-  "run_id": "1b5f25f91ec54ceaa0f05aaede14c424",
-  "timestamp": "2026-11-05T17:10:55.234537+00:00",
+  "run_id": "3f715d1dd9354aaa83b26cabd9c4f708",
+  "timestamp": "2026-11-06T02:34:25.811055+00:00",
   "mode": "mock",
   "model": "deterministic-offline-harness",
   "question": "刚入职怎么开企业账号？",
@@ -15,13 +15,14 @@
       "tool_names": [
         "search_docs"
       ],
-      "duration_ms": 0.023
+      "telemetry": {},
+      "duration_ms": 0.031
     },
     {
       "type": "tool",
       "step": 1,
       "tool_name": "search_docs",
-      "tool_call_id": "call_a6a1db969d8e4664",
+      "tool_call_id": "call_7ff369ec8488451c",
       "tool_args": {
         "query": "刚入职怎么开企业账号？",
         "top_k": 5,
@@ -110,10 +111,14 @@
           ],
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
         }
       },
       "success": true,
-      "duration_ms": 3.381
+      "duration_ms": 3.698
     },
     {
       "type": "model",
@@ -122,13 +127,14 @@
       "tool_names": [
         "read_doc_span"
       ],
-      "duration_ms": 0.052
+      "telemetry": {},
+      "duration_ms": 0.059
     },
     {
       "type": "tool",
       "step": 2,
       "tool_name": "read_doc_span",
-      "tool_call_id": "call_ff3459df084d42b8",
+      "tool_call_id": "call_7338a678ca54423c",
       "tool_args": {
         "doc_id": "D14",
         "span_id": "s1",
@@ -152,17 +158,22 @@
           "text": "HR 发起离职流程后，IT 在最后工作日回收企业账号和设备，并移交经批准的业务资料。",
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "related_documents": []
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 8
         }
       },
       "success": true,
-      "duration_ms": 0.242
+      "duration_ms": 0.263
     },
     {
       "type": "model",
       "step": 3,
       "action": "final",
       "tool_names": [],
-      "duration_ms": 0.055
+      "telemetry": {},
+      "duration_ms": 0.062
     },
     {
       "type": "validation",
@@ -205,11 +216,22 @@
       "completed": true
     }
   },
+  "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": false,
   "evidence_validation": {
     "valid": true,
     "errors": [],
     "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
   },
-  "duration_ms": 4.037,
-  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+  "duration_ms": 4.416,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
 }

@@ -1,0 +1,14 @@
+{
+  "status": "TOOL_ERROR",
+  "answer": "检索工具持续返回 INJECTED_FAILURE，本轮无法定位并读取 VPN 申请相关制度原文，因此无法给出可追溯的申请流程。当前问题（VPN 如何申请）暂无可引用的企业依据。",
+  "citations": [],
+  "missing_information": [
+    "VPN 申请流程文档（含申请入口、审批人、所需材料与时限）"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 6,
+    "tool_calls": 5,
+    "completed": false
+  }
+}

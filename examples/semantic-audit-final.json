@@ -1,0 +1,102 @@
+{
+  "type": "supplementary-model-audit",
+  "checks": [
+    {
+      "case_id": "T01",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f8cb8f2efbdb2ddc4de7f487a86",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T02",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f8e9b77e5609e7d7ccf88b62bf8",
+      "verdict": "UNSUPPORTED",
+      "issues": [
+        {
+          "claim": "《费用报销管理办法》和《费用申请操作须知》",
+          "reason": "引用原文及元数据未提供这两份文件的标题名称"
+        }
+      ]
+    },
+    {
+      "case_id": "T04",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f941499f5d984c3066f675f4835",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T05",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f943c76007d6ecb1c20b85a17ef",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T07",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f95533fcc95e540603e0d8589ea",
+      "verdict": "UNSUPPORTED",
+      "issues": [
+        {
+          "claim": "依据《费用报销管理办法》",
+          "reason": "引用原文及元数据未提供该办法名称"
+        },
+        {
+          "claim": "当前资料未检索到其他部门或特殊情形的不同期限规定",
+          "reason": "仅一条引用，无法证明不存在其他期限规定"
+        }
+      ]
+    },
+    {
+      "case_id": "T08",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f985d72d7713a911f33a6688ae6",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T09a",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f9974b8d3f78f558c02048d686b",
+      "verdict": "UNSUPPORTED",
+      "issues": [
+        {
+          "claim": "该规定来自《费用申请操作须知》（2026-03-01）",
+          "reason": "引用未提供文件标题；2026-03-01仅为version_date"
+        }
+      ]
+    },
+    {
+      "case_id": "T09b",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f9babb50f4c8b1716cf8f85fb8e",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T10",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c6f9c261ec5197621947e6148c946",
+      "verdict": "UNSUPPORTED",
+      "issues": [
+        {
+          "claim": "另有一份 VPN 附录",
+          "reason": "引用原文及元数据未说明 X01 是 VPN 附录"
+        }
+      ]
+    }
+  ],
+  "not_a_ground_truth_or_runtime_agent": true
+}

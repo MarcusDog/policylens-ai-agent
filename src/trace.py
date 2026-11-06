@@ -28,6 +28,8 @@ def new_trace(mode: str, model: str, question: str, history: list[dict]) -> dict
 def write_json(path: str | Path, value: object) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
+    temporary = path.with_name(path.name + ".tmp-" + uuid4().hex)
+    temporary.write_text(
         json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
+    temporary.replace(path)

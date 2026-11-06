@@ -1,0 +1,138 @@
+{
+  "mode": "retrieval-only",
+  "complete": true,
+  "cases_sha256": "dbf8b2d6e22b9f8298c1ab44e160f5250c5ee1d20537dd39e63c9251ea865250",
+  "case_count": 6,
+  "cases_file": "data/retrieval_stress_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "baseline": {
+      "metrics": {
+        "recall_at_5": 0.5555555555555556
+      },
+      "cases": [
+        {
+          "case_id": "S01",
+          "name": "exact_old_id",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01"
+          ],
+          "recall_at_5": 0.5
+        },
+        {
+          "case_id": "S02",
+          "name": "exact_other_id",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D02"
+          ],
+          "recall_at_5": 0.5
+        },
+        {
+          "case_id": "S03",
+          "name": "version_related",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01"
+          ],
+          "recall_at_5": 0.5
+        },
+        {
+          "case_id": "S04",
+          "name": "scope_related",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01"
+          ],
+          "recall_at_5": 0.5
+        },
+        {
+          "case_id": "S05",
+          "name": "renamed_exact",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "R-82"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "S06",
+          "name": "chain_related",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "VERSION_NEXT"
+          ],
+          "recall_at_5": 0.3333333333333333
+        }
+      ]
+    },
+    "improved": {
+      "metrics": {
+        "recall_at_5": 1.0
+      },
+      "cases": [
+        {
+          "case_id": "S01",
+          "name": "exact_old_id",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "S02",
+          "name": "exact_other_id",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "S03",
+          "name": "version_related",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "S04",
+          "name": "scope_related",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "S05",
+          "name": "renamed_exact",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "R-82"
+          ],
+          "recall_at_5": 1.0
+        },
+        {
+          "case_id": "S06",
+          "name": "chain_related",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "VERSION_NEXT"
+          ],
+          "recall_at_5": 1.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "T08",
+  "name": "removed",
+  "scenario": "removed",
+  "question": "报销提交期限是几天？",
+  "relevant_docs": [
+    "D01"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "30"
+  ],
+  "forbidden_citations": [
+    "D02"
+  ],
+  "required_patterns": [
+    "(?<!\\d)30\\s*天"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "LIMIT_REACHED",
+  "answer": "已达模型轮次上限，尚未形成有效答案。",
+  "citations": [],
+  "missing_information": [
+    "剩余文档核查与最终回答"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 1,
+    "tool_calls": 2,
+    "completed": false
+  }
+}

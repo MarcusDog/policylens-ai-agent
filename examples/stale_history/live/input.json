@@ -1,0 +1,25 @@
+{
+  "id": "C09",
+  "name": "stale_history",
+  "scenario": "mutation",
+  "question": "现在报销提交期限是多少天？",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "先前版本提到30天，引用D01。"
+    }
+  ],
+  "expected_status": "ANSWERED",
+  "relevant_docs": [
+    "D01"
+  ],
+  "required_facts": [
+    "45"
+  ],
+  "required_citations": [
+    "D01"
+  ],
+  "required_patterns": [
+    "(?<!\\d)45\\s*天"
+  ]
+}

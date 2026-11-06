@@ -1,0 +1,728 @@
+{
+  "run_id": "fcc2435ea7b34147b84b11da55fd8498",
+  "timestamp": "2026-11-05T18:24:45.070818+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "VPN 应该怎么申请？",
+  "history_summary": [],
+  "model_calls": 8,
+  "tool_calls": 7,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfced9f7d14c490a4dc1851353311",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 63,
+          "prompt_tokens": 1400,
+          "total_tokens": 1463,
+          "completion_tokens_details": {
+            "reasoning_tokens": 7
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1152.071
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_01a1acf4cbad743b946a47ac",
+      "tool_args": {
+        "query": "VPN 申请",
+        "top_k": 5,
+        "purpose": "查找 VPN 申请流程文档"
+      },
+      "purpose": "查找 VPN 申请流程文档",
+      "result_summary": {
+        "hits": 5
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D07",
+              "title": "VPN 远程访问申请",
+              "version_date": "2026-03-10",
+              "topic": "VPN申请",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 1,
+                "rrf_score": 0.032787,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D07",
+                  "title": "VPN 远程访问申请",
+                  "version_date": "2026-03-10",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D13",
+              "title": "费用申请草稿保存指南",
+              "version_date": "2026-05-03",
+              "topic": "费用系统操作",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": null,
+                "rrf_score": 0.016129,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D13",
+                  "title": "费用申请草稿保存指南",
+                  "version_date": "2026-05-03",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D01",
+              "title": "费用报销管理办法",
+              "version_date": "2026-01-10",
+              "topic": "报销期限",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "员工应在费用发生后30天内提交报销申请。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D01",
+                  "title": "费用报销管理办法",
+                  "version_date": "2026-01-10",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D04",
+              "title": "差旅出行审批流程",
+              "version_date": "2026-02-10",
+              "topic": "差旅审批",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。",
+              "rank": 4,
+              "ranking": {
+                "bm25_rank": 4,
+                "ngram_rank": null,
+                "rrf_score": 0.015625,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D04",
+                  "title": "差旅出行审批流程",
+                  "version_date": "2026-02-10",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D08",
+              "title": "产品项目权限说明",
+              "version_date": "2026-03-15",
+              "topic": "产品权限",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "产品项目成员默认具有查看权限；编辑权限须由项目负责人在成员管理页面授权，导出权限需另行申请。",
+              "rank": 5,
+              "ranking": {
+                "bm25_rank": 5,
+                "ngram_rank": null,
+                "rrf_score": 0.015385,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D08",
+                  "title": "产品项目权限说明",
+                  "version_date": "2026-03-15",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
+        }
+      },
+      "success": true,
+      "duration_ms": 4.193
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcee9dee84fabc3bd8a5ef69c193",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 54,
+          "prompt_tokens": 2476,
+          "total_tokens": 2530,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1400
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 778.776
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1acf4cee072889c03e7c0",
+      "tool_args": {
+        "doc_id": "D07",
+        "span_id": "s1",
+        "purpose": "读取 VPN 申请原文"
+      },
+      "purpose": "读取 VPN 申请原文",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 8
+        }
+      },
+      "success": false,
+      "duration_ms": 0.035
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcef495331c14df8ad58d8c9b0da",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 56,
+          "prompt_tokens": 2599,
+          "total_tokens": 2655,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2476
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 945.273
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1acf4d29077d2bd4da693",
+      "tool_args": {
+        "doc_id": "D07",
+        "span_id": "s1",
+        "purpose": "重试读取 VPN 申请原文"
+      },
+      "purpose": "重试读取 VPN 申请原文",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 7
+        }
+      },
+      "success": false,
+      "duration_ms": 0.026
+    },
+    {
+      "type": "model",
+      "step": 4,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcf091c5c6d16c2569e66e10e0cb",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 61,
+          "prompt_tokens": 2724,
+          "total_tokens": 2785,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2599
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 969.787
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_01a1acf4d64e70a3b62aef51",
+      "tool_args": {
+        "query": "远程访问 工单 审批 信息安全",
+        "top_k": 3,
+        "purpose": "查找 VPN 申请相关其他条款"
+      },
+      "purpose": "查找 VPN 申请相关其他条款",
+      "result_summary": {
+        "hits": 3
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D07",
+              "title": "VPN 远程访问申请",
+              "version_date": "2026-03-10",
+              "topic": "VPN申请",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 1,
+                "rrf_score": 0.032787,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D07",
+                  "title": "VPN 远程访问申请",
+                  "version_date": "2026-03-10",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D04",
+              "title": "差旅出行审批流程",
+              "version_date": "2026-02-10",
+              "topic": "差旅审批",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": null,
+                "rrf_score": 0.016129,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D04",
+                  "title": "差旅出行审批流程",
+                  "version_date": "2026-02-10",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D11",
+              "title": "技术支持服务指南",
+              "version_date": "2026-05-01",
+              "topic": "技术支持",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "技术故障通过 IT 服务台提交工单，附复现步骤、报错截图和设备编号；紧急故障拨打内部支持分机 6001。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D11",
+                  "title": "技术支持服务指南",
+                  "version_date": "2026-05-01",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 6
+        }
+      },
+      "success": true,
+      "duration_ms": 0.798
+    },
+    {
+      "type": "model",
+      "step": 5,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcf1188a3bcc9c3fdc30e2f85bca",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 62,
+          "prompt_tokens": 3448,
+          "total_tokens": 3510,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2724
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 806.195
+    },
+    {
+      "type": "tool",
+      "step": 5,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1acf4d98771858969378a",
+      "tool_args": {
+        "doc_id": "D07",
+        "span_id": "s1",
+        "purpose": "再次读取 D07 VPN 申请原文以取得可引用内容"
+      },
+      "purpose": "再次读取 D07 VPN 申请原文以取得可引用内容",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 3,
+          "tool_calls_remaining": 5
+        }
+      },
+      "success": false,
+      "duration_ms": 0.02
+    },
+    {
+      "type": "model",
+      "step": 6,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcf27d4ee2e29593961f6d11167c",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 101,
+          "prompt_tokens": 3579,
+          "total_tokens": 3680,
+          "completion_tokens_details": {
+            "reasoning_tokens": 46
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3448
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1127.923
+    },
+    {
+      "type": "tool",
+      "step": 6,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1acf4ddf3775a9f15798e",
+      "tool_args": {
+        "doc_id": "D11",
+        "span_id": "s1",
+        "purpose": "测试读取其他文档原文"
+      },
+      "purpose": "测试读取其他文档原文",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 2,
+          "tool_calls_remaining": 4
+        }
+      },
+      "success": false,
+      "duration_ms": 0.019
+    },
+    {
+      "type": "model",
+      "step": 7,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcf3086f162db9717570647df9de",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 56,
+          "prompt_tokens": 3749,
+          "total_tokens": 3805,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3579
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 936.337
+    },
+    {
+      "type": "tool",
+      "step": 7,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1acf4e17a724b9cfe11d6",
+      "tool_args": {
+        "doc_id": "D07",
+        "span_id": "s1",
+        "purpose": "重试读取 VPN 申请原文"
+      },
+      "purpose": "重试读取 VPN 申请原文",
+      "result_summary": {
+        "code": "INJECTED_FAILURE",
+        "message": "Injected tool failure",
+        "retryable": true
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "INJECTED_FAILURE",
+          "message": "Injected tool failure",
+          "retryable": true
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 1,
+          "tool_calls_remaining": 3
+        }
+      },
+      "success": false,
+      "duration_ms": 0.032
+    },
+    {
+      "type": "model",
+      "step": 8,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073bfcf4051308bf859ef56b69c632be",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 144,
+          "prompt_tokens": 3874,
+          "total_tokens": 4018,
+          "completion_tokens_details": {
+            "reasoning_tokens": 39
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3749
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1470.994
+    },
+    {
+      "type": "validation",
+      "step": 8,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "TOOL_ERROR",
+        "answer": "检索到《VPN 远程访问申请》(D07) 与该问题相关，但本轮多次调用原文读取接口均返回失败错误，无法读取可引用的原文，因此暂不能给出带出处的 VPN 申请流程说明。",
+        "citations": [],
+        "missing_information": [
+          "D07《VPN 远程访问申请》s1 原文未读取成功（读取接口连续返回 INJECTED_FAILURE）"
+        ],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "TOOL_ERROR",
+    "answer": "检索到《VPN 远程访问申请》(D07) 与该问题相关，但本轮多次调用原文读取接口均返回失败错误，无法读取可引用的原文，因此暂不能给出带出处的 VPN 申请流程说明。",
+    "citations": [],
+    "missing_information": [
+      "D07《VPN 远程访问申请》s1 原文未读取成功（读取接口连续返回 INJECTED_FAILURE）"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 8,
+      "tool_calls": 7,
+      "completed": false
+    }
+  },
+  "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 8193.118,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 23849,
+    "completion_tokens": 597,
+    "total_tokens": 24446
+  }
+}

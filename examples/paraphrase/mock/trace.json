@@ -1,6 +1,6 @@
 {
-  "run_id": "63bccdc637e44d70813c65cbe42a6bb7",
-  "timestamp": "2026-11-05T17:10:55.320163+00:00",
+  "run_id": "90474523847e417eb310c9456fd2966e",
+  "timestamp": "2026-11-06T02:34:25.930619+00:00",
   "mode": "mock",
   "model": "deterministic-offline-harness",
   "question": "花钱之后最晚隔多久得把报销单交上去？",
@@ -15,13 +15,14 @@
       "tool_names": [
         "search_docs"
       ],
-      "duration_ms": 0.031
+      "telemetry": {},
+      "duration_ms": 0.029
     },
     {
       "type": "tool",
       "step": 1,
       "tool_name": "search_docs",
-      "tool_call_id": "call_4588b0d918e44010",
+      "tool_call_id": "call_879aa00f9cec40c6",
       "tool_args": {
         "query": "花钱之后最晚隔多久得把报销单交上去？",
         "top_k": 5,
@@ -154,10 +155,14 @@
           ],
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
         }
       },
       "success": true,
-      "duration_ms": 4.681
+      "duration_ms": 3.929
     },
     {
       "type": "model",
@@ -166,13 +171,14 @@
       "tool_names": [
         "read_doc_span"
       ],
-      "duration_ms": 0.091
+      "telemetry": {},
+      "duration_ms": 0.067
     },
     {
       "type": "tool",
       "step": 2,
       "tool_name": "read_doc_span",
-      "tool_call_id": "call_fb69c3d41d724cc4",
+      "tool_call_id": "call_791a8d1bfae34d3b",
       "tool_args": {
         "doc_id": "D01",
         "span_id": "s1",
@@ -207,17 +213,22 @@
               ]
             }
           ]
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 8
         }
       },
       "success": true,
-      "duration_ms": 0.462
+      "duration_ms": 0.352
     },
     {
       "type": "model",
       "step": 3,
       "action": "final",
       "tool_names": [],
-      "duration_ms": 0.095
+      "telemetry": {},
+      "duration_ms": 0.073
     },
     {
       "type": "validation",
@@ -260,11 +271,22 @@
       "completed": true
     }
   },
+  "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": false,
   "evidence_validation": {
     "valid": true,
     "errors": [],
     "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
   },
-  "duration_ms": 5.776,
-  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+  "duration_ms": 4.76,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
 }

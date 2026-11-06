@@ -1,0 +1,12 @@
+{
+  "id": "C08",
+  "name": "live_limit",
+  "scenario": "normal",
+  "question": "请查证报销提交期限。",
+  "expected_status": "LIMIT_REACHED",
+  "relevant_docs": [
+    "D01"
+  ],
+  "max_model_steps": 1,
+  "required_patterns": []
+}

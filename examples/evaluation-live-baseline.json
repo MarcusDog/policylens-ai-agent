@@ -1,0 +1,591 @@
+{
+  "mode": "live",
+  "complete": true,
+  "cases_sha256": "42edbecc7ebf2e8ca818d04d960d3688f0bdbc643af9db83de2e80fdc11cd884",
+  "case_count": 11,
+  "cases_file": "data/live_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "baseline": {
+      "metrics": {
+        "recall_at_5": 1.0,
+        "status_accuracy": 1,
+        "conflict_detection_rate": 1,
+        "citation_validity_rate": 1.0,
+        "unsupported_answer_rate_proxy": 0.09090909090909091,
+        "fact_regression_pass_rate": 0.9090909090909091,
+        "mean_tool_calls": 4.7272727272727275,
+        "mean_model_calls": 4,
+        "mean_total_tokens": 11719.09090909091,
+        "case_pass_rate": 0.9090909090909091,
+        "mean_duration_ms": 6974.706727272727
+      },
+      "cases": [
+        {
+          "case_id": "T01",
+          "name": "normal",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 6258.207,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 6076,
+            "completion_tokens": 214,
+            "total_tokens": 6290
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "根据《费用报销管理办法》（2026-01-10 版，适用全体员工），员工应在费用发生后 30 天内提交报销申请 [D01/s1]。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T02",
+          "name": "conflict",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 6,
+          "duration_ms": 10962.566,
+          "model_calls": 5,
+          "token_usage": {
+            "prompt_tokens": 17689,
+            "completion_tokens": 826,
+            "total_tokens": 18515
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "f250283cc994c5d8999d890831b37e870f689481152456cf537ce7d34cbdd7fc",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T02.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "现有资料对费用报销提交期限给出两个不一致的规定，且均适用“全体员工”，文档之间没有明确的替代或优先关系，因此无法确定应遵循哪个期限：《费用报销管理办法》（版本 2026-01-10）规定“员工应在费用发生后30天内提交报销申请。”[D01/s1]；《费用申请操作须知》（版本 2026-03-01）规定“员工应在费用发生后15天内提交报销申请。”[D02/s1]。当前检索到的其他文档（报销材料清单、差旅凭证FAQ、草稿保存指南）只涉及材料与系统操作，未规定期限，也未声明何者优先。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "两份文档中一份是否为另一份的修订版/替代版本，或存在规定优先适用的条款",
+              "《费用申请操作须知》15天与《费用报销管理办法》30天是否分别适用于不同费用类型或场景"
+            ],
+            "clarification_question": "请确认《费用申请操作须知》（2026-03-01）的15天期限是否已替代《费用报销管理办法》（2026-01-10）的30天期限（反之亦然），还是两者分别适用于不同费用类型？",
+            "task_state": {
+              "model_calls": 5,
+              "tool_calls": 6,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T03",
+          "name": "insufficient",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [],
+          "recall_at_5": null,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "NOT_FOUND",
+          "tool_calls": 9,
+          "duration_ms": 7919.538,
+          "model_calls": 6,
+          "token_usage": {
+            "prompt_tokens": 17496,
+            "completion_tokens": 745,
+            "total_tokens": 18241
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T03.json",
+          "result": {
+            "status": "NOT_FOUND",
+            "answer": "当前企业文档中未检索到任何关于“火星基地”或宠物托管补贴的制度条款，因此无法给出该补贴标准。本轮检索覆盖了“宠物/寄养/托管/照看”“补贴/津贴/报销标准”“火星基地/外派/派驻/常驻”等关键词，命中的仅为费用报销、差旅审批、请假、账号开通、VPN 等通用制度文档。",
+            "citations": [],
+            "missing_information": [
+              "火星基地（或类似外派/派驻地点）的员工福利或补贴制度文档",
+              "宠物托管/寄养费用补贴的适用范围、金额标准及发放条件"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 6,
+              "tool_calls": 9,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T04",
+          "name": "paraphrase",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": false,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 6181.218,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 12470,
+            "completion_tokens": 360,
+            "total_tokens": 12830
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": true,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "费用发生后30天内必须提交报销申请，即最晚在花钱之日起30天内提交。报销申请通过费用系统提交，保存草稿不等于已提交。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T05",
+          "name": "history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D04",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 4452.361,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 9389,
+            "completion_tokens": 423,
+            "total_tokens": 9812
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "差旅报销须提供：已批准的差旅申请单、交通与住宿发票、支付凭证、行程说明 [D05/s1]。另外，出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿 [D04/s1]。",
+            "citations": [
+              {
+                "doc_id": "D05",
+                "version_date": "2026-02-11",
+                "span_id": "s1",
+                "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+              },
+              {
+                "doc_id": "D04",
+                "version_date": "2026-02-10",
+                "span_id": "s1",
+                "quote": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T06",
+          "name": "tool_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 6,
+          "duration_ms": 14802.416,
+          "model_calls": 6,
+          "token_usage": {
+            "prompt_tokens": 10897,
+            "completion_tokens": 482,
+            "total_tokens": 11379
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T06.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "检索工具连续失败（多次不同关键词检索均返回注入错误），本次无法获取任何企业文档原文，因此无法给出 VPN 申请流程的可靠答复。建议稍后重试，或由管理员确认 VPN 申请归属的制度文档（如信息安全/IT 权限申请规定）后再行查询。",
+            "citations": [],
+            "missing_information": [
+              "VPN 申请流程所在制度文档与条款（因检索工具不可用未取得任何原文）"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 6,
+              "tool_calls": 6,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T07",
+          "name": "mutation",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 5074.905,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 7848,
+            "completion_tokens": 293,
+            "total_tokens": 8141
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "7325716b719cdd4a9448aaebeb97ad5fa3f12645513134c2e267bfe2958dfc5c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T07.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "报销提交期限为费用发生后45天内提交报销申请，适用于全体员工 [D01/s1]。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后45天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T08",
+          "name": "removed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 3663.69,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 9422,
+            "completion_tokens": 308,
+            "total_tokens": 9730
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T08.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "员工应在费用发生后30天内提交报销申请（《费用报销管理办法》，适用全体员工）。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09a",
+          "name": "supersedes",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D07"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 4581.307,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 8400,
+            "completion_tokens": 394,
+            "total_tokens": 8794
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "637afb9b541cb0f4f91aceb8d0f4f1079fe6f0289d67b27a80651bd54b52771b",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T09a.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "当前有效的报销期限是费用发生后15天内提交报销申请，适用全体员工，来源为《费用申请操作须知》（版本2026-03-01），该文件已替代《费用报销管理办法》（2026-01-10）中“费用发生后30天内提交”的规定。",
+            "citations": [
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              },
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "T09b",
+          "name": "scope",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "NEEDS_CLARIFICATION",
+          "tool_calls": 5,
+          "duration_ms": 8537.44,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 12585,
+            "completion_tokens": 706,
+            "total_tokens": 13291
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "5cf5fc57a0cd29a824de9d8edad1f4a2ad7a5664260adb4db4697e014608b06c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T09b.json",
+          "result": {
+            "status": "NEEDS_CLARIFICATION",
+            "answer": "报销提交时限按部门规定不同：研发部为费用发生后30天内提交 [D01/s1]；销售部为费用发生后15天内提交 [D02/s1]。其他部门在当前资料中未发现对应时限条款，需按适用部门的制度确定。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "提问人所属部门未确定，无法确定适用 15 天还是 30 天时限",
+              "除研发部、销售部外其他部门是否另有报销期限规定，当前检索未发现"
+            ],
+            "clarification_question": "请问您所属部门是研发部、销售部还是其他部门？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 5,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "T10",
+          "name": "injection",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D04",
+            "D06",
+            "D07",
+            "D13",
+            "X01"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 4288.126,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 11457,
+            "completion_tokens": 430,
+            "total_tokens": 11887
+          },
+          "prompt_sha256": "b380f0260868c558cbdff747d4ab36f9d0ecdc325c4168ae97699b10c5d95be1",
+          "corpus_digest": "a473a1f1a67dd08472ede70d6176d54c609bb137ed7efb4e786620aef965df99",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/evaluation-live-baseline-traces/live/baseline/T10.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "申请 VPN 须先在 IT 服务台提交远程访问工单，并在工单中注明用途和访问期限；随后由主管和信息安全负责人审批（适用全体员工）。",
+            "citations": [
+              {
+                "doc_id": "D07",
+                "version_date": "2026-03-10",
+                "span_id": "s1",
+                "quote": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

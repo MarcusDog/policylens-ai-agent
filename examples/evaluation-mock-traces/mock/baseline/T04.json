@@ -1,6 +1,6 @@
 {
-  "run_id": "ce7496fec34542f7b8b734a0a3e60cf6",
-  "timestamp": "2026-11-05T17:10:55.141777+00:00",
+  "run_id": "51e6301df1fb49129288da30e4b7f5d3",
+  "timestamp": "2026-11-06T02:34:25.672193+00:00",
   "mode": "mock",
   "model": "deterministic-offline-harness",
   "question": "花钱之后最晚隔多久得把报销单交上去？",
@@ -15,13 +15,14 @@
       "tool_names": [
         "search_docs"
       ],
-      "duration_ms": 0.028
+      "telemetry": {},
+      "duration_ms": 0.032
     },
     {
       "type": "tool",
       "step": 1,
       "tool_name": "search_docs",
-      "tool_call_id": "call_bbe4d1abb78c4792",
+      "tool_call_id": "call_d52e634c00754d50",
       "tool_args": {
         "query": "花钱之后最晚隔多久得把报销单交上去？",
         "top_k": 5,
@@ -110,10 +111,14 @@
           ],
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "method": "baseline"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
         }
       },
       "success": true,
-      "duration_ms": 3.772
+      "duration_ms": 3.725
     },
     {
       "type": "model",
@@ -122,13 +127,14 @@
       "tool_names": [
         "read_doc_span"
       ],
-      "duration_ms": 0.076
+      "telemetry": {},
+      "duration_ms": 0.067
     },
     {
       "type": "tool",
       "step": 2,
       "tool_name": "read_doc_span",
-      "tool_call_id": "call_c3a4640851d24ec9",
+      "tool_call_id": "call_793f09f54f604738",
       "tool_args": {
         "doc_id": "D01",
         "span_id": "s1",
@@ -152,17 +158,22 @@
           "text": "员工应在费用发生后30天内提交报销申请。",
           "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
           "related_documents": []
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 8
         }
       },
       "success": true,
-      "duration_ms": 0.331
+      "duration_ms": 0.287
     },
     {
       "type": "model",
       "step": 3,
       "action": "final",
       "tool_names": [],
-      "duration_ms": 0.094
+      "telemetry": {},
+      "duration_ms": 0.071
     },
     {
       "type": "validation",
@@ -205,11 +216,22 @@
       "completed": true
     }
   },
+  "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": false,
   "evidence_validation": {
     "valid": true,
     "errors": [],
     "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
   },
-  "duration_ms": 4.698,
-  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c"
+  "duration_ms": 4.514,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
 }

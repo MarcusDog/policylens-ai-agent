@@ -1,0 +1,6 @@
+{"id":"S01","name":"exact_old_id","scenario":"conflict","question":"D01","relevant_docs":["D01","D02"],"expected_status":"CONFLICT"}
+{"id":"S02","name":"exact_other_id","scenario":"conflict","question":"D02","relevant_docs":["D01","D02"],"expected_status":"CONFLICT"}
+{"id":"S03","name":"version_related","scenario":"supersedes","question":"D01","relevant_docs":["D01","D02"],"expected_status":"ANSWERED"}
+{"id":"S04","name":"scope_related","scenario":"scope","question":"D01","relevant_docs":["D01","D02"],"expected_status":"NEEDS_CLARIFICATION"}
+{"id":"S05","name":"renamed_exact","scenario":"renamed","question":"R-82","relevant_docs":["R-82"],"expected_status":"ANSWERED"}
+{"id":"S06","name":"chain_related","scenario":"transitive","question":"VERSION_NEXT","relevant_docs":["D01","D02","VERSION_NEXT"],"expected_status":"ANSWERED"}

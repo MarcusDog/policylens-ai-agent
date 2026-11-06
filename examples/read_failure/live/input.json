@@ -1,0 +1,13 @@
+{
+  "id": "C03",
+  "name": "read_failure",
+  "scenario": "normal",
+  "question": "VPN 应该怎么申请？",
+  "expected_status": "TOOL_ERROR",
+  "relevant_docs": [
+    "D07"
+  ],
+  "fail_tool": "read_doc_span",
+  "fail_count": 100,
+  "required_patterns": []
+}

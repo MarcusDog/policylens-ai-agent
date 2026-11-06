@@ -1,0 +1,26 @@
+{
+  "id": "C02",
+  "name": "scope_history",
+  "scenario": "scope",
+  "question": "那我报销必须几天内提交？",
+  "history": [
+    {
+      "role": "user",
+      "content": "我是销售部的新员工。"
+    }
+  ],
+  "expected_status": "ANSWERED",
+  "relevant_docs": [
+    "D01",
+    "D02"
+  ],
+  "required_facts": [
+    "15"
+  ],
+  "required_citations": [
+    "D02"
+  ],
+  "required_patterns": [
+    "(?<!\\d)15\\s*天"
+  ]
+}

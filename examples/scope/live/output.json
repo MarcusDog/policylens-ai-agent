@@ -1,0 +1,27 @@
+{
+  "status": "NEEDS_CLARIFICATION",
+  "answer": "现有资料按部门分别规定报销申请提交期限：研发部为费用发生后30天内[D01/s1]，销售部为费用发生后15天内[D02/s1]。因用户未说明所属部门，无法确定适用天数。",
+  "citations": [
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    },
+    {
+      "doc_id": "D02",
+      "version_date": "2026-03-01",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后15天内提交报销申请。"
+    }
+  ],
+  "missing_information": [
+    "申请人所属部门（决定适用30天还是15天）"
+  ],
+  "clarification_question": "您属于研发部还是销售部（或不属于这两部门）？",
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 4,
+    "completed": false
+  }
+}

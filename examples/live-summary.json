@@ -1,8 +1,75 @@
 {
   "mode": "live",
-  "executed": false,
-  "status": "NOT_VERIFIED",
-  "reason": "Missing/invalid model configuration; no API request was made and no Mock fallback was used.",
-  "distinct_tool_paths": [],
-  "at_least_two_real_paths": false
+  "executed": true,
+  "status": "VERIFIED_WITH_DISCLOSED_ANNOTATION_RESCORE",
+  "report": "examples/evaluation-live-final.json",
+  "annotation_rescore": "examples/grounding-regression-rescore.json",
+  "all_improved_cases_passed_original_checks": false,
+  "all_improved_cases_passed_current_checks": true,
+  "all_challenge_cases_passed": true,
+  "distinct_tool_paths": [
+    [
+      "search_docs",
+      "read_doc_span",
+      "read_doc_span"
+    ],
+    [
+      "search_docs",
+      "read_doc_span",
+      "read_doc_span",
+      "search_docs"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "read_doc_span"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "read_doc_span",
+      "read_doc_span"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "read_doc_span",
+      "read_doc_span",
+      "read_doc_span"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "read_doc_span",
+      "search_docs"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "read_doc_span",
+      "search_docs",
+      "read_doc_span"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs"
+    ],
+    [
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs",
+      "search_docs"
+    ]
+  ],
+  "at_least_two_real_paths": true,
+  "note": "Original failed fact check retained; conditional citation obligation rescored existing outputs with zero new API requests. Small synthetic dataset, not production accuracy."
 }

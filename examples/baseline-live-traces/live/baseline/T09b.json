@@ -1,0 +1,51 @@
+{
+  "run_id": "5328d6d881934a63a1929cc1db6f9401",
+  "timestamp": "2026-11-05T18:19:56.030395+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "报销申请应在多少天内提交？",
+  "history_summary": [],
+  "model_calls": 1,
+  "tool_calls": 0,
+  "events": [
+    {
+      "type": "model_error",
+      "step": 1,
+      "error_type": "RateLimitError",
+      "success": false
+    }
+  ],
+  "final": {
+    "status": "TOOL_ERROR",
+    "answer": "模型 API 调用失败，任务未完成。",
+    "citations": [],
+    "missing_information": [
+      "可用的模型 API 响应；请检查配置、连通性和超时"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 1,
+      "tool_calls": 0,
+      "completed": false
+    }
+  },
+  "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "evidence_validation": {
+    "valid": false,
+    "errors": [
+      "Model API unavailable"
+    ],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 274.525,
+  "corpus_digest": "5cf5fc57a0cd29a824de9d8edad1f4a2ad7a5664260adb4db4697e014608b06c",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
+}

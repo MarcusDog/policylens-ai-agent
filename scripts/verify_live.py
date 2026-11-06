@@ -6,6 +6,7 @@ Usage: python scripts/verify_live.py --env-file /local/model.env
 import argparse
 import json
 import sys
+from uuid import uuid4
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +23,12 @@ def main():
         description="Explicit real-model acceptance (uses API credits)"
     )
     p.add_argument("--env-file", type=Path)
+    p.add_argument(
+        "--output",
+        type=Path,
+        default=ROOT / "runs/live" / f"verification-{uuid4().hex[:8]}.json",
+    )
+    p.add_argument("--case-delay", type=float, default=2)
     args = p.parse_args()
     if args.env_file and not args.env_file.is_file():
         p.error("Configuration file not found")
@@ -46,13 +53,17 @@ def main():
             file=sys.stderr,
         )
         return 2
-    output = ROOT / "examples/evaluation-live.json"
+    output = args.output
     report = evaluate(
         ROOT / "data/live_cases.jsonl",
         ROOT,
         "live",
         output,
         examples_dir=ROOT / "examples",
+        progress=lambda row: print(
+            f"[{row['method']}] {row['case_id']}: {row['status']}", flush=True
+        ),
+        case_delay_seconds=args.case_delay,
     )
     paths = set()
     passed = True
@@ -72,6 +83,9 @@ def main():
             passed = False
     summary = {
         "mode": "live",
+        "report": str(output.relative_to(ROOT))
+        if output.is_absolute() and output.is_relative_to(ROOT)
+        else str(output),
         "executed": True,
         "all_improved_cases_passed": passed,
         "distinct_tool_paths": [list(p) for p in sorted(paths)],

@@ -1,0 +1,25 @@
+{
+  "status": "ANSWERED",
+  "answer": "差旅报销须提供：已批准的差旅申请单、交通与住宿发票、支付凭证、行程说明[D05/s1]。差旅申请需在出差前于协同系统提交，并由直属主管审批通过后才可预订交通与住宿[D04/s1]。",
+  "citations": [
+    {
+      "doc_id": "D05",
+      "version_date": "2026-02-11",
+      "span_id": "s1",
+      "quote": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。"
+    },
+    {
+      "doc_id": "D04",
+      "version_date": "2026-02-10",
+      "span_id": "s1",
+      "quote": "出差前须在协同系统提交差旅申请，由直属主管审批通过后预订交通与住宿。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 3,
+    "completed": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "T01",
+  "name": "normal",
+  "scenario": "normal",
+  "question": "员工报销申请必须在费用发生后多少天提交？",
+  "relevant_docs": [
+    "D01"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "30"
+  ],
+  "forbidden_facts": [
+    "45天",
+    "15天",
+    "草稿",
+    "费用系统"
+  ],
+  "required_patterns": [
+    "(?<!\\d)30\\s*天"
+  ]
+}

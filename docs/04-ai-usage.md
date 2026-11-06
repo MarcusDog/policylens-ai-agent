@@ -1,66 +1,102 @@
-# AI Coding 使用记录
+# AI 使用与开发记录
 
-## 1. 原始任务与拆解
+2026-11-06。本文由 Codex 按实际对话、修改、测试和运行文件整理。候选人提供题目、路径、
+开发顺序和 MiniMax 选择；本人投入时间、手工修改和人工复核内容还没有确认。
 
-用户提供完整笔试执行要求和开发地址。按 M0—M5 拆解为数据与检索、工具协议、
-真实模型循环、证据校验、离线测试、Live 验收与交付文档。未使用多 Agent。
+## 1. 任务怎么拆
 
-## 2. 提供给 Codex 的上下文
+先做最小闭环：模型选择工具，工具真正读文件，结果回给模型，最终输出过引用检查。
+合成资料和检索先落地，再做 Function Calling、预算和出处校验，最后补场景评测。
+没有先做界面，也没有引入框架。初次没有模型配置，先用明确标记的 Mock 测运行时。
+当时 README 保留 Live 未验证状态，因为 Mock 能测试分发，但不能证明模型会自主查证。
 
-原始需求全文、Windows 工作目录、Python 3.12.12、空开发目录。
-初始环境中 OPENAI_API_KEY / OPENAI_BASE_URL / MODEL_NAME 均未设置。
-用户明确要求先完整开发，模型配置稍后提供。
+## 2. 给 Codex 的上下文
 
-## 3. 生成与修改
+输入是完整笔试要求和开发目录。用户先说明配置稍后提供，要求先完成开发；本轮实际追加：
 
-由 Codex 编写本项目代码、合成数据、pytest、CLI、评测脚本与文档。
-技术边界：轻量 Python；模型自主动作；确定性引用和竞争资料核查；
-Mock 仅为可重复的协议测试替身。具体执行与修复记录在后续追加。
+> 请你继续深入优化整个agent框架 核心目的是为了拿到agent的高分设计
 
-## 4. 实际测试
+同时要求优化使用记录、构造提示词，并选择 MiniMax。凭据仅存被 Git 忽略的本地配置。
+[coding-maintenance.md](../prompts/coding-maintenance.md) 是本轮新整理的复用提示，不是伪造的历史原文。
 
-实际执行：
+## 3. 实际生成和修改
+
+代码、合成数据、测试、CLI、评测脚本和文档由 Codex 编写或修改。
+本轮补 MiniMax 续接处理、response_id 与 token 用量、Prompt 哈希、剩余预算、
+多片段候选检查、单 Agent 最终复核、逐例落盘、原子保存和真实历史保存。
+生产 Agent 没有按 D01/D02 或期限数字写答案分支。
+服务商的续接字段只在内存回传，不作为答案或 Trace 内容。
+
+## 4. 真正执行的检查
+
+初次默认 python 指向 LibreOffice 的内置解释器，venv 报权限错误，改用 py -3.11 后成功。
+pytest 最初 59 通过、1 失败，修复后到 60、62，初次交付为 72。
+本轮增加多片段、MiniMax 信息隔离、预算、Prompt 哈希、精确 ID、原子保存、最终复核、
+数字边界、Mock 不读凭据及历史保存测试。最终数量见 [pytest XML](test-results.xml)。
+最终实测 84 项通过。uvx 曾因本机缓存临时文件限制启动失败，后续直接使用已安装的同一 Ruff
+可执行程序完成格式与静态检查；没有删除全局缓存。初版实现提交为 c839b3101d5404bb7373c0d62baa3f55adb0916b。
+
+实际使用的命令包括：
 
 ```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts/build_data.py
 .\.venv\Scripts\python.exe -m pytest -q --junitxml=docs/test-results.xml
-.\.venv\Scripts\python.exe -m src.cli eval --mode mock --output examples/evaluation-mock.json --examples-dir examples
-.\.venv\Scripts\python.exe -m src.cli eval --retrieval-only --output docs/retrieval-evaluation.json
-uvx ruff format src tests scripts
 uvx ruff check src tests scripts --select E9,F63,F7,F82,F401
 .\.venv\Scripts\python.exe scripts/verify_live.py
+.\.venv\Scripts\python.exe -m src.cli eval --mode live --cases data/challenge_cases.jsonl --methods improved --output examples/challenge-final-live.json
+.\.venv\Scripts\python.exe -m src.cli eval --retrieval-only --cases data/retrieval_stress_cases.jsonl --output docs/retrieval-stress.json
 ```
 
-最终 pytest 72 passed；Ruff 静态检查通过。
-16 个案例在 Baseline / Improved 下均符合预期；Recall@5 两者均为 1.0。
-CLI 额外真实执行明确答案并保存 runs/mock/cli-smoke.json 与输出。
-Live 预检查已执行，因缺配置明确返回 NOT_VERIFIED，未发出真实 API 请求。
-examples/live-summary.json 保存未验证状态；没有任何真实模型成功记录。
+最终结果与失败项由 [Live 证据报告](06-live-evidence.md) 汇总，不以一个成功截图代替全套验证。
 
-## 5—7. 观察、修复与复验
+## 5. 遇到的问题
 
-实际问题与修复：
+“公司配的电脑丢了”起初检不到设备规范。资料没有把设备与电脑联系起来，补充定义后原测试通过。
+这是资料覆盖改善，不是证明 n-gram 理解了同义词。
+随后发现“公司”误召回、跨标点字符拼接造成改写排名退化，修正停用词和字符边界。
+首次失败保留在 docs/evaluation-first-mock.json。
 
-- 默认解释器是 LibreOffice 自带 Python，venv 报 Permission denied；改用系统 py -3.11。
-- 首轮测试 59 passed / 1 failed：设备资料未定义电脑；补充合成资料定义，原断言保留，复验 60 passed。
-- 首次完整 Mock 评测发现泛词“公司”误召回，以及跨标点 n-gram 造成改写排名退化。
-  保存原始 JSON 后修正停用词和字符边界，添加回归案例，复验 62 passed。
-- 审查补充同轮变更、异常与 CLI 端到端验证，最终 72 passed。
-- 来源正确但答案错误：单测构造 30 天引文搭配 90 天回答，证实来源校验无法单独证明语义；
-  独立 fixture 事实检查可检测此例。没有声称它等价完整语义蕴涵评估。
-- 完整失败数据和指标口径见 docs/03-evaluation.md 与 docs/evaluation-first-mock.json。
+接入 MiniMax 后，期限回答会夹带只见于 preview 的费用系统或草稿说明，正式引用却只有期限条款。
+自动状态和来源检查可以通过，语义仍有缺口。后来补了禁止事实回归和补充语义审查。
+替代链回答还出现过把版本日期推成“某日起适用”；强调不能推断后，又有过度拒答。
+需要同时说清“可按明确关系回答当前规则”和“不能编出历史生效区间”。
 
-代码、测试、合成数据、示例和文档均在项目内生成；当前提交哈希由 git 实测后交付。
+范围判断也有真实问题：模型列出两个部门的期限，却标 ANSWERED，未确认用户部门。
+数值正确不代表适用结论已经确定。这促成了同一 Agent 的最终复核。
+并行批量调用还出现过 RateLimitError；保留失败记录，后续控制间隔。这不能被解释为检索方案优劣。
 
-## 8. 本人真实技术决策
+## 6. Prompt 的实际迭代
 
-用户确认题目、开发路径、先开发后配置的顺序。
-候选人本人其他手工贡献和实际投入时间：待本人确认。
-代码中的实现取舍由 AI 提出并实现，不冒充候选人手工成果。
+| 版本 | 改动 | 观察 |
+|---|---|---|
+| v1 | 初版证据和冲突规则 | 能查证、识别冲突，但会混入预览事实 |
+| v2 | 只按最终引用回答，补范围、停止和替代链准则 | 基础状态检查通过，逐条审读仍有语义缺口 |
+| v3 | 强调版本日期不等于生效日、范围与事实边界 | 仍出现范围状态错误和替代链过度拒答 |
+| v4 | 明确当前规则可按替代链回答，笼统问题缺部门须澄清 | 与最终复核一起复验，结果见实际报告 |
 
-## 9. 使用范围与限制
+原文在 prompts/v1.txt 至 v4.txt，最终 Trace 带哈希。
+这些不是受控的大样本 A/B：中间还改了运行时、断言，出现过限流，不能把所有变化归因于 Prompt。
 
-AI 参与代码、测试、合成资料和文档。真实语义正确性仍需 Live 验收与人工抽查；
-字符串引用校验不等于完整语义蕴涵判断。不记录内部思维链或真实密钥。
+## 7. 修复后怎么复验
+
+保留旧失败，用新报告路径测试。基础集检查六项必验、替换与删除；扩展集检查部门和历史条件、
+读失败、搜索恢复、替代链、重命名、多段冲突、上限和旧历史。原 Mock 测试也持续运行。
+最终复核曾把故障退出挤到上限，后来限定为带企业结论的输出；默认仍是 8 轮、10 次工具调用。
+精确 ID 竞争资料压力集单独报告，不混进普通问题集夸大召回提升。
+
+复验还发现评测本身的一处误报：改写题补充的草稿提醒已经读取并引用 D13，过宽的禁止词断言仍判失败。
+修订为“出现该事实就须有相应引文”，保留无引文同句必须失败的回归测试。原始 10/11 的事实检查不改写，
+另存明确标为 annotation-rescore 的结果，重评分没有调用模型，也不伪装成新运行。
+补充语义审查的初次输入又漏了文档标题，造成若干标题类误报；补齐真实元数据后用新文件复验，旧判定仍保留。
+
+## 8. 人与 AI 的边界
+
+确认的人类输入：题目与路径、先离线后接模型、MiniMax 选择、本轮继续优化及记录要求。
+实现、测试执行、失败定位和文字整理由 Codex 完成。
+候选人亲自复核了什么、接受哪些取舍、修改哪些内容、实际花多久：待本人确认。
+这份记录不能用来把 AI 操作说成本人手写。
+
+## 9. 使用限制
+
+资料全部合成。Mock、Live 和补充模型语义审查分别标记。
+补充审查也可能错，不是独立真值；数字/关键词回归也不是完整蕴涵检测。
+出处校验、最终复核、语义审查和人工确认承担不同职责，不能互相替代。

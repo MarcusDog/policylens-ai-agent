@@ -1,0 +1,23 @@
+{
+  "id": "T02",
+  "name": "conflict",
+  "scenario": "conflict",
+  "question": "费用报销的提交期限是多久？",
+  "relevant_docs": [
+    "D01",
+    "D02"
+  ],
+  "expected_status": "CONFLICT",
+  "required_facts": [
+    "30",
+    "15"
+  ],
+  "required_citations": [
+    "D01",
+    "D02"
+  ],
+  "required_patterns": [
+    "(?<!\\d)30\\s*天",
+    "(?<!\\d)15\\s*天"
+  ]
+}

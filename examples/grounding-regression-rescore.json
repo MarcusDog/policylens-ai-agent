@@ -1,0 +1,218 @@
+{
+  "type": "annotation-rescore-of-existing-live-outputs",
+  "new_model_calls": 0,
+  "source_report": "examples/evaluation-live-final.json",
+  "source_sha256": "25bb0d6e0b100baae0b239fe26386ff25be76a211bac3e4cde0ed116885e6710",
+  "case_annotations_sha256": "3788506f86d3d81827c2a38aa43a4f4ad476015e9eeb7311673d3281dfd5c0dc",
+  "reason": "Blanket banned terms wrongly rejected a reminder that had a real, read D13 citation. Conditional citation obligations still reject the same claim without its supporting quote. All original outputs and failed checks are retained.",
+  "reports": {
+    "baseline": {
+      "case_pass_rate": 1,
+      "cases": [
+        {
+          "case_id": "T01",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T01.json"
+        },
+        {
+          "case_id": "T02",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T02.json"
+        },
+        {
+          "case_id": "T03",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T03.json"
+        },
+        {
+          "case_id": "T04",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T04.json"
+        },
+        {
+          "case_id": "T05",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T05.json"
+        },
+        {
+          "case_id": "T06",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T06.json"
+        },
+        {
+          "case_id": "T07",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T07.json"
+        },
+        {
+          "case_id": "T08",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T08.json"
+        },
+        {
+          "case_id": "T09a",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T09a.json"
+        },
+        {
+          "case_id": "T09b",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T09b.json"
+        },
+        {
+          "case_id": "T10",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/baseline/T10.json"
+        }
+      ]
+    },
+    "improved": {
+      "case_pass_rate": 1,
+      "cases": [
+        {
+          "case_id": "T01",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T01.json"
+        },
+        {
+          "case_id": "T02",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T02.json"
+        },
+        {
+          "case_id": "T03",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T03.json"
+        },
+        {
+          "case_id": "T04",
+          "original_fact_check": false,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T04.json"
+        },
+        {
+          "case_id": "T05",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T05.json"
+        },
+        {
+          "case_id": "T06",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T06.json"
+        },
+        {
+          "case_id": "T07",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T07.json"
+        },
+        {
+          "case_id": "T08",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T08.json"
+        },
+        {
+          "case_id": "T09a",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T09a.json"
+        },
+        {
+          "case_id": "T09b",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T09b.json"
+        },
+        {
+          "case_id": "T10",
+          "original_fact_check": true,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "passed": true,
+          "trace": "examples/evaluation-live-final-traces/live/improved/T10.json"
+        }
+      ]
+    }
+  }
+}

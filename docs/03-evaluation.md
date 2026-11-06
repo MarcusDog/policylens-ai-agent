@@ -1,6 +1,7 @@
 # 实际评测
 
-当前评测日：2026-11-06（Asia/Shanghai）。Live 尚未验证。以下为实际离线运行结果。
+当前评测日：2026-11-06（Asia/Shanghai）。本页保留初次离线交付阶段的结果与失败历史。
+**当前 Live 已验证**；84 项测试、基础/扩展真实运行、评分口径修订及语义检查见 [最新证据索引](06-live-evidence.md)。
 
 ## 命令与记录
 
@@ -10,7 +11,7 @@
 .\.venv\Scripts\python.exe -m src.cli eval --mode mock --output examples/evaluation-mock.json --examples-dir examples
 ```
 
-最终一次已执行 pytest：**72 passed**。
+初次交付最后一次已执行 pytest：**72 passed**。
 16 个外部化案例，每种检索器各执行一次；Mock 运行时验收全部符合预期。
 原始数据：[pytest XML](test-results.xml)、[检索结果](retrieval-evaluation.json)、
 [Mock 完整评测](../examples/evaluation-mock.json)。
@@ -40,7 +41,7 @@ Improved 的可验证作用是 top_k 截断时仍发现同主题候选，测试�
 
 ## 六项验收与变更
 
-| 验收 | 离线实录 | Live |
+| 验收 | 离线实录 | 初次交付时的 Live 状态 |
 |---|---|---|
 | 明确答案 | normal：30 天，D01 | 待配置 |
 | 文档冲突 | conflict：CONFLICT，引用 D01/D02 | 待配置 |

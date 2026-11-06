@@ -1,0 +1,51 @@
+{
+  "run_id": "78d55cc51b0f482c98afff8ce738c89f",
+  "timestamp": "2026-11-05T18:19:57.216983+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "申请 VPN 要经过哪些审批？",
+  "history_summary": [],
+  "model_calls": 1,
+  "tool_calls": 0,
+  "events": [
+    {
+      "type": "model_error",
+      "step": 1,
+      "error_type": "RateLimitError",
+      "success": false
+    }
+  ],
+  "final": {
+    "status": "TOOL_ERROR",
+    "answer": "模型 API 调用失败，任务未完成。",
+    "citations": [],
+    "missing_information": [
+      "可用的模型 API 响应；请检查配置、连通性和超时"
+    ],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 1,
+      "tool_calls": 0,
+      "completed": false
+    }
+  },
+  "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "evidence_validation": {
+    "valid": false,
+    "errors": [
+      "Model API unavailable"
+    ],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 244.966,
+  "corpus_digest": "a473a1f1a67dd08472ede70d6176d54c609bb137ed7efb4e786620aef965df99",
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
+}

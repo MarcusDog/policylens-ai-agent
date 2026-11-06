@@ -1,0 +1,21 @@
+{
+  "status": "ANSWERED",
+  "answer": "根据《费用报销管理办法》（版本日期 2026-01-10，适用全体员工），员工应在费用发生后30天内提交报销申请。文档未规定超期处理方式或例外情形；提交需通过费用系统进行（草稿保存不等于已提交）。",
+  "citations": [
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    }
+  ],
+  "missing_information": [
+    "超过30天提交的处理方式与例外条件未在现有文档中说明"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 3,
+    "tool_calls": 4,
+    "completed": true
+  }
+}

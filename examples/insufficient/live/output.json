@@ -1,0 +1,15 @@
+{
+  "status": "NOT_FOUND",
+  "answer": "当前企业文档库中未检索到任何关于“火星基地”或“宠物托管补贴”的制度条款，因此无法提供该项补贴标准。检索到的文档集中于费用报销、差旅凭证、账号权限等事项，与该问题无关。",
+  "citations": [],
+  "missing_information": [
+    "缺少载明火星基地（或其他基地/驻外机构）员工福利或补贴标准的制度文档",
+    "缺少载明宠物托管/寄养照护费用报销标准或限额的制度文档"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 7,
+    "tool_calls": 10,
+    "completed": true
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "status": "ANSWERED",
+  "answer": "报销提交期限按替代链末端文件《费用提交期限修订》（version_date 2026-08-01，supersedes《费用申请操作须知》）执行：员工应在费用发生后7天内提交报销申请 [VERSION_NEXT/s1]。前序版本《费用申请操作须知》（2026-03-01，supersedes《费用报销管理办法》）为15天 [D02/s1]，《费用报销管理办法》（2026-01-10）为30天 [D01/s1]，二者已被替代，不适用于全体员工当前的提交期限。上述文件均未载明明确生效日期，故无法判断该7天期限自何时起适用。",
+  "citations": [
+    {
+      "doc_id": "VERSION_NEXT",
+      "version_date": "2026-08-01",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后7天内提交报销申请。"
+    },
+    {
+      "doc_id": "D02",
+      "version_date": "2026-03-01",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后15天内提交报销申请。"
+    },
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    }
+  ],
+  "missing_information": [
+    "《费用提交期限修订》的明确生效日期"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 5,
+    "tool_calls": 6,
+    "completed": true
+  }
+}

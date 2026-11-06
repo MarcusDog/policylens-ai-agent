@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "根据《费用报销管理办法》（R-82，版本日期 2026-09-01，适用全体员工，无被替代版本），员工应在费用发生后77天内提交报销申请 [R-82/p9]。",
+  "citations": [
+    {
+      "doc_id": "R-82",
+      "version_date": "2026-09-01",
+      "span_id": "p9",
+      "quote": "员工应在费用发生后77天内提交报销申请。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 3,
+    "completed": true
+  }
+}

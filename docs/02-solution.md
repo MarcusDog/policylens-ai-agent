@@ -5,7 +5,8 @@
 LiveModel 使用 OpenAI SDK Chat Completions。模型每轮接收全部可观察消息，
 tool_choice=auto；搜索、换词、读取、补查、澄清和结束均由模型决定。
 SDK 自动重试为 0，避免“固定重试”掩盖调用计数；API 超时默认 45 秒，可配置。
-模型正文只作为工具请求或最终 JSON；不读取或保存 reasoning_content。
+模型正文只作为工具请求或最终 JSON。MiniMax 要求的 reasoning_content 仅在内存中续接回传，
+不写入 Trace 或用户输出；OpenAI 兼容路径不额外注入此字段。
 
 Agent 只执行模型选择、维护上限、回传观察和验证输出。没有按报销主题或文档 ID 分支的生产逻辑。
 MockModel 有明确的固定步骤和合成模式规则，属于测试基础设施，不是 Live 实现。

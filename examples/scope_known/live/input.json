@@ -1,0 +1,20 @@
+{
+  "id": "C01",
+  "name": "scope_known",
+  "scenario": "scope",
+  "question": "我是研发部员工，报销提交期限是多久？",
+  "expected_status": "ANSWERED",
+  "relevant_docs": [
+    "D01",
+    "D02"
+  ],
+  "required_facts": [
+    "30"
+  ],
+  "required_citations": [
+    "D01"
+  ],
+  "required_patterns": [
+    "(?<!\\d)30\\s*天"
+  ]
+}

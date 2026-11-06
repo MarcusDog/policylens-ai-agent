@@ -87,3 +87,47 @@ def test_cli_history_file(root, tmp_path, capsys):
     assert code == 0
     result = json.loads(capsys.readouterr().out)
     assert result["citations"][0]["doc_id"] == "D05"
+
+
+def test_cli_persists_actual_dialogue(tmp_path, capsys):
+    history = tmp_path / "dialogue.json"
+    assert (
+        main(
+            [
+                "ask",
+                "--mode",
+                "mock",
+                "--question",
+                "VPN怎么申请？",
+                "--save-history",
+                str(history),
+                "--save-trace",
+                str(tmp_path / "trace.json"),
+            ]
+        )
+        == 0
+    )
+    messages = json.loads(history.read_text(encoding="utf-8"))
+    assert messages[0] == {"role": "user", "content": "VPN怎么申请？"}
+    assert json.loads(messages[1]["content"])["status"] == "ANSWERED"
+
+
+def test_mock_does_not_load_live_credentials(monkeypatch, tmp_path, capsys):
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Mock must not read the live env file")
+
+    monkeypatch.setattr("src.cli.load_dotenv", forbidden)
+    assert (
+        main(
+            [
+                "ask",
+                "--mode",
+                "mock",
+                "--question",
+                "VPN",
+                "--save-trace",
+                str(tmp_path / "trace.json"),
+            ]
+        )
+        == 0
+    )

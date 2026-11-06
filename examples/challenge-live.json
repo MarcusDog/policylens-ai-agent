@@ -1,0 +1,494 @@
+{
+  "mode": "live",
+  "complete": true,
+  "cases_sha256": "f531a0a3f8c93846a3c0b884fef2cb9d4e8edb12116ff107d25c58bd99881937",
+  "case_count": 9,
+  "cases_file": "data/challenge_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "improved": {
+      "metrics": {
+        "recall_at_5": 1.0,
+        "status_accuracy": 0.8888888888888888,
+        "conflict_detection_rate": 1,
+        "citation_validity_rate": 1.0,
+        "unsupported_answer_rate_proxy": 0,
+        "fact_regression_pass_rate": 0.8888888888888888,
+        "mean_tool_calls": 4.666666666666667,
+        "mean_model_calls": 4.111111111111111,
+        "mean_total_tokens": 15811.555555555555,
+        "case_pass_rate": 0.8888888888888888,
+        "mean_duration_ms": 5354.432333333333
+      },
+      "cases": [
+        {
+          "case_id": "C01",
+          "name": "scope_known",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 4693.982,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 9774,
+            "completion_tokens": 366,
+            "total_tokens": 10140
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "5cf5fc57a0cd29a824de9d8edad1f4a2ad7a5664260adb4db4697e014608b06c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "研发部员工应在费用发生后30天内提交报销申请（《费用报销管理办法》，版本日期2026-01-10，适用范围：研发部）。销售部另有15天的规定，不适用于研发部。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "C02",
+          "name": "scope_history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D05",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 6623.813,
+          "model_calls": 5,
+          "token_usage": {
+            "prompt_tokens": 17133,
+            "completion_tokens": 489,
+            "total_tokens": 17622
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "5cf5fc57a0cd29a824de9d8edad1f4a2ad7a5664260adb4db4697e014608b06c",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C02.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "作为销售部员工，你应在费用发生后15天内提交报销申请，依据销售部适用的《费用申请操作须知》（版本日期2026-03-01）。另一份《费用报销管理办法》的30天时限其适用范围为研发部，不适用销售部。",
+            "citations": [
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              },
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 5,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "C03",
+          "name": "read_failure",
+          "expected_status": "TOOL_ERROR",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "TOOL_ERROR",
+          "tool_calls": 8,
+          "duration_ms": 8606.685,
+          "model_calls": 8,
+          "token_usage": {
+            "prompt_tokens": 33961,
+            "completion_tokens": 632,
+            "total_tokens": 34593
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C03.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "检索到《VPN 远程访问申请》(D07, 2026-03-10)，但本轮多次读取原文均失败，无法取得可引用的正式原文，因此不对 VPN 申请的具体流程步骤作结论。请稍后重试或联系 IT 服务台确认。",
+            "citations": [],
+            "missing_information": [
+              "D07《VPN 远程访问申请》的正式原文内容（提交入口、需填信息、审批人、时效等）无法读取"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 8,
+              "tool_calls": 8,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "C04",
+          "name": "search_recovery",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D04",
+            "D07",
+            "D08",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 3945.216,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 7901,
+            "completion_tokens": 294,
+            "total_tokens": 8195
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，并由主管和信息安全负责人审批。该规定适用于全体员工（文档版本日期 2026-03-10）。",
+            "citations": [
+              {
+                "doc_id": "D07",
+                "version_date": "2026-03-10",
+                "span_id": "s1",
+                "quote": "申请 VPN 须在 IT 服务台提交远程访问工单，注明用途和访问期限，由主管和信息安全负责人审批。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "C05",
+          "name": "transitive",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D13",
+            "VERSION_NEXT"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 9,
+          "duration_ms": 9891.751,
+          "model_calls": 6,
+          "token_usage": {
+            "prompt_tokens": 38503,
+            "completion_tokens": 1539,
+            "total_tokens": 40042
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "03115256a0d9e1e4fb80dba1e34380ae8000cdd4637f1e0ffdc8c102c3dceba0",
+          "citation_count": 3,
+          "valid_citations": 3,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "报销期限按版本替代链适用最新版本：原《费用报销管理办法》(D01，2026-01-10) 规定费用发生后30天内提交，已被《费用申请操作须知》(D02，2026-03-01，supersedes D01) 取代为费用发生后15天内提交；《费用提交期限修订》(VERSION_NEXT，2026-08-01，supersedes D02) 进一步改为费用发生后7天内提交。因此：2026-08-01 起适用 VERSION_NEXT《费用提交期限修订》，7天内提交；该日期之前适用 D02《费用申请操作须知》，15天内提交（D01 的30天已失效）。适用范围均为全体员工。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              },
+              {
+                "doc_id": "VERSION_NEXT",
+                "version_date": "2026-08-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后7天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 6,
+              "tool_calls": 9,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "C06",
+          "name": "renamed",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D03",
+            "D04",
+            "D13",
+            "D14",
+            "R-82"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 2,
+          "duration_ms": 2891.204,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 6630,
+            "completion_tokens": 204,
+            "total_tokens": 6834
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "1f357c097c4a2b12ec7cd05c9c52c177a3f87e4e36469fe6c03eafc9173117c3",
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C06.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "根据《费用报销管理办法》(R-82，2026-09-01)，员工应在费用发生后77天内提交报销申请。",
+            "citations": [
+              {
+                "doc_id": "R-82",
+                "version_date": "2026-09-01",
+                "span_id": "p9",
+                "quote": "员工应在费用发生后77天内提交报销申请。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 2,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "C07",
+          "name": "multispan",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "D01",
+            "D02",
+            "D03",
+            "D07"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 6,
+          "duration_ms": 6563.55,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 18673,
+            "completion_tokens": 658,
+            "total_tokens": 19331
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "0369f64a0d2622c827518e90f80e3c81dc33cce29dd7d714cd6634d75cd71f69",
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C07.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "现有两份同范围（全体员工）的文件对报销申请期限规定不一致：《费用报销管理办法》(2026-01-10) 规定费用发生后30天内提交；《费用申请操作须知》(2026-03-01) 规定费用发生后15天内提交。两者均未标注替代/废止关系，文档中也未见明确优先级条款，因此无法确定应以哪个期限为准。",
+            "citations": [
+              {
+                "doc_id": "D01",
+                "version_date": "2026-01-10",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后30天内提交报销申请。"
+              },
+              {
+                "doc_id": "D02",
+                "version_date": "2026-03-01",
+                "span_id": "s1",
+                "quote": "员工应在费用发生后15天内提交报销申请。"
+              }
+            ],
+            "missing_information": [
+              "D02《费用申请操作须知》是否构成对 D01《费用报销管理办法》的修订/替代，或仅为流程操作指引",
+              "两份文件对报销期限不一致时是否有专门的优先级或解释条款"
+            ],
+            "clarification_question": "《费用申请操作须知》(2026-03-01) 是否已修订并取代《费用报销管理办法》(2026-01-10) 中的30天期限，即当前生效的报销申请期限是15天还是30天？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 6,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "C08",
+          "name": "live_limit",
+          "expected_status": "LIMIT_REACHED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "status": "LIMIT_REACHED",
+          "tool_calls": 2,
+          "duration_ms": 1545.177,
+          "model_calls": 1,
+          "token_usage": {
+            "prompt_tokens": 1272,
+            "completion_tokens": 107,
+            "total_tokens": 1379
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C08.json",
+          "result": {
+            "status": "LIMIT_REACHED",
+            "answer": "已达模型轮次上限，尚未形成有效答案。",
+            "citations": [],
+            "missing_information": [
+              "剩余文档核查与最终回答"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 1,
+              "tool_calls": 2,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "C09",
+          "name": "stale_history",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "D01",
+            "D03",
+            "D05",
+            "D07",
+            "D13"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": false,
+          "fact_checks_pass": false,
+          "citation_expectations_pass": false,
+          "status": "TOOL_ERROR",
+          "tool_calls": 4,
+          "duration_ms": 3428.513,
+          "model_calls": 3,
+          "token_usage": {
+            "prompt_tokens": 3949,
+            "completion_tokens": 219,
+            "total_tokens": 4168
+          },
+          "prompt_sha256": "d75ac390809caebb3c5d3f61d8c318f6d520df03eb30e6d6ba79cee8a38795f3",
+          "corpus_digest": "7325716b719cdd4a9448aaebeb97ad5fa3f12645513134c2e267bfe2958dfc5c",
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/challenge-live-traces/live/improved/C09.json",
+          "result": {
+            "status": "TOOL_ERROR",
+            "answer": "模型 API 调用失败，任务未完成。",
+            "citations": [],
+            "missing_information": [
+              "可用的模型 API 响应；请检查配置、连通性和超时"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 3,
+              "tool_calls": 4,
+              "completed": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

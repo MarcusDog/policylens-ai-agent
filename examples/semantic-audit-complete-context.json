@@ -1,0 +1,78 @@
+{
+  "type": "supplementary-model-audit",
+  "checks": [
+    {
+      "case_id": "T01",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c702bd8b01f46c733f32bef531341",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T02",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c702e10fc860676772e9fc0bbd2e0",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T04",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c7030e454ff394ca03df77c55dbde",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T05",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c70312e354ff16181d8c904544133",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T07",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c7032307758341b31990bc8630dbd",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T08",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c70353196fde6897f677ca0209e6d",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T09a",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c7035cdbdcecd6fce6aac8899b552",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T09b",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c703af582f07e280c689c5172c3cc",
+      "verdict": "SUPPORTED",
+      "issues": []
+    },
+    {
+      "case_id": "T10",
+      "method": "improved",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c703bba0603bd4f73cb52b39ee165",
+      "verdict": "SUPPORTED",
+      "issues": []
+    }
+  ],
+  "not_a_ground_truth_or_runtime_agent": true
+}

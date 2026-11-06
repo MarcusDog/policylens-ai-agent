@@ -132,6 +132,22 @@ class EvidenceValidator:
                         "Read known same-topic candidate documents before deciding: "
                         + ", ".join(sorted(known - checked))
                     )
+                for doc_id in sorted(known & checked):
+                    unread = [
+                        s["span_id"]
+                        for s in self.tools.corpus.docs[doc_id]["sections"]
+                        if (doc_id, s["span_id"]) not in self.tools.reads
+                        or not self._read_is_current(
+                            doc_id,
+                            s["span_id"],
+                            self.tools.reads[(doc_id, s["span_id"])],
+                        )
+                    ]
+                    if unread:
+                        errors.append(
+                            f"Known same-topic document {doc_id} has unchecked sections: "
+                            + ", ".join(unread)
+                        )
         return list(dict.fromkeys(errors))
 
     def _read_is_current(self, doc_id: str, span_id: str, read: dict) -> bool:

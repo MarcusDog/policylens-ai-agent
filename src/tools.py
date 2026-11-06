@@ -39,7 +39,7 @@ TOOLS = [
     ),
     tool_spec(
         "read_doc_span",
-        "读取当前磁盘上的原文与版本元数据，正式引用必须先读取。",
+        "读取当前磁盘上的原文与版本元数据，正式引用必须先读取。related_documents 的 span_ids 列出同主题候选条款；不能只读无关段落就排除竞争制度。",
         {
             "doc_id": {"type": "string"},
             "span_id": {"type": "string"},

@@ -1,0 +1,25 @@
+{
+  "status": "ANSWERED",
+  "answer": "销售部适用《费用申请操作须知》：员工应在费用发生后15天内提交报销申请 [D02/s1]。同主题的《费用报销管理办法》规定30天，但适用范围为研发部，不适用于销售部 [D01/s1]。",
+  "citations": [
+    {
+      "doc_id": "D02",
+      "version_date": "2026-03-01",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后15天内提交报销申请。"
+    },
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 4,
+    "completed": true
+  }
+}

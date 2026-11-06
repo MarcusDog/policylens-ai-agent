@@ -25,6 +25,9 @@ def parser() -> argparse.ArgumentParser:
     ask.add_argument("--question", required=True)
     ask.add_argument("--data-dir", type=Path, default=ROOT / "data")
     ask.add_argument("--history-file", type=Path)
+    ask.add_argument(
+        "--save-history", type=Path, help="Save the actual dialogue for the next turn"
+    )
     ask.add_argument("--method", choices=["baseline", "improved"], default="improved")
     ask.add_argument("--fail-tool", choices=["search_docs", "read_doc_span"])
     ask.add_argument("--fail-count", type=int, default=1)
@@ -38,7 +41,23 @@ def parser() -> argparse.ArgumentParser:
     ev.add_argument("--output", type=Path, default=ROOT / "runs/evaluation.json")
     ev.add_argument("--retrieval-only", action="store_true")
     ev.add_argument("--examples-dir", type=Path)
+    ev.add_argument(
+        "--methods",
+        nargs="+",
+        choices=["baseline", "improved"],
+        default=["baseline", "improved"],
+    )
     for cmd in (ask, ev):
+        cmd.add_argument(
+            "--no-final-review",
+            action="store_true",
+            help="Disable the single-agent final review for an explicit ablation",
+        )
+        cmd.add_argument(
+            "--prompt-file",
+            type=Path,
+            help="Use a versioned system prompt for a reproducible comparison",
+        )
         cmd.add_argument("--mode", choices=["live", "mock"], default="live")
         cmd.add_argument(
             "--env-file",
@@ -53,8 +72,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.env_file and not args.env_file.is_file():
         print("Configuration file not found.", file=sys.stderr)
         return 2
-    load_dotenv(args.env_file or ROOT / ".env", override=False)
+    if args.mode == "live" and not getattr(args, "retrieval_only", False):
+        load_dotenv(args.env_file or ROOT / ".env", override=False)
     try:
+        prompt = (
+            args.prompt_file.read_text(encoding="utf-8") if args.prompt_file else None
+        )
         if args.command == "eval":
             report = evaluate(
                 args.cases,
@@ -63,6 +86,18 @@ def main(argv: list[str] | None = None) -> int:
                 args.output,
                 args.retrieval_only,
                 args.examples_dir,
+                system_prompt=prompt,
+                final_review=False if args.no_final_review else None,
+                methods=tuple(args.methods),
+                progress=(
+                    lambda row: print(
+                        f"[{row['method']}] {row['case_id']}: {row['status']}",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                )
+                if args.mode == "live"
+                else None,
             )
             print(
                 json.dumps(
@@ -100,11 +135,29 @@ def main(argv: list[str] | None = None) -> int:
             max_tool_calls=args.max_tool_calls,
             fail_tool=args.fail_tool,
             fail_count=args.fail_count,
+            system_prompt=prompt,
+            final_review=False if args.no_final_review else None,
         )
         trace_path = args.save_trace or ROOT / "runs" / args.mode / "latest-trace.json"
-        result = agent.run(args.question, history, trace_path)
+        try:
+            result = agent.run(args.question, history, trace_path)
+        finally:
+            if args.mode == "live":
+                model.client.close()
         if args.output:
             write_json(args.output, result)
+        if args.save_history:
+            write_json(
+                args.save_history,
+                (history or [])
+                + [
+                    {"role": "user", "content": args.question},
+                    {
+                        "role": "assistant",
+                        "content": json.dumps(result, ensure_ascii=False),
+                    },
+                ],
+            )
         if args.json:
             print(json.dumps(result, ensure_ascii=False, indent=2))
         else:
