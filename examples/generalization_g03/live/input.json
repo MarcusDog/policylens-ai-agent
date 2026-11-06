@@ -1,0 +1,14 @@
+{
+  "id": "G03",
+  "scenario": "generalization/scope",
+  "question": "我的导出文件能保留多久？",
+  "relevant_docs": [
+    "K-704",
+    "K-705"
+  ],
+  "expected_status": "NEEDS_CLARIFICATION",
+  "clarification_patterns": [
+    "社区|商业|租户|版本"
+  ],
+  "name": "generalization_g03"
+}

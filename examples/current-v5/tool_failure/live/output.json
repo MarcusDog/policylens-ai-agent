@@ -1,0 +1,15 @@
+{
+  "status": "TOOL_ERROR",
+  "answer": "检索与读取工具持续返回失败（INJECTED_FAILURE / 文档不存在），本轮无法获取任何关于 VPN 申请流程的原文依据，因此无法回答 VPN 怎么申请，也不能凭推测给出步骤或责任部门。",
+  "citations": [],
+  "missing_information": [
+    "VPN 申请流程文档（申请入口/系统、审批角色、开通时长）",
+    "适用条件：申请人的地区、岗位或身份范围"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 8,
+    "tool_calls": 7,
+    "completed": false
+  }
+}

@@ -109,13 +109,16 @@ class Corpus:
                     for k in ("span_id", "text")
                 ):
                     raise ValueError("Invalid section")
+                if set(section) & set(required):
+                    raise ValueError("Section contains reserved document metadata")
                 if section["span_id"] in seen:
                     raise ValueError("Duplicate span ID within document")
                 seen.add(section["span_id"])
-                spans.append({k: doc[k] for k in required if k != "sections"} | section)
+                spans.append(
+                    {k: doc[k] for k in required if k != "sections"}
+                    | {k: section[k] for k in ("span_id", "text")}
+                )
             docs[doc["doc_id"]] = doc
-        if not docs:
-            raise ValueError("Corpus is empty")
 
         # Contradictory version graph cannot authorize choosing a policy.
         def visit(doc_id: str, visiting: set[str], done: set[str]) -> None:
@@ -159,15 +162,26 @@ class Retriever:
         ]
         self.words = [tokens(t) for t in self.texts]
         self.grams = [ngrams(t) for t in self.texts]
-        self.bm25 = BM25Okapi(self.words)
+        self.bm25 = BM25Okapi(self.words) if self.words else None
+        if self.bm25 is not None:
+            # Lucene-style positive IDF. Okapi's epsilon*mean floor can still
+            # be negative in a one-document corpus, hiding every lexical hit.
+            word_df = Counter(word for words in self.words for word in set(words))
+            count = len(self.words)
+            self.bm25.idf = {
+                word: math.log1p((count - df + 0.5) / (df + 0.5))
+                for word, df in word_df.items()
+            }
         df = Counter(g for gs in self.grams for g in gs)
         self.idf = {g: math.log(1 + len(self.rows) / count) for g, count in df.items()}
         self._digest = self.corpus.digest
 
     def search(self, query: str, top_k: int = 5) -> list[dict]:
+        if not isinstance(query, str) or type(top_k) is not int or not 1 <= top_k <= 8:
+            raise ValueError("Expected string query and top_k in [1,8]")
         self._index()
         qwords, qgrams = tokens(query), ngrams(query)
-        if not qwords:
+        if not qwords or not self.rows:
             return []
         bm_scores = self.bm25.get_scores(qwords)
         exact = {

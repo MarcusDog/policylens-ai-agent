@@ -1,0 +1,16 @@
+{
+  "id": "G01",
+  "scenario": "generalization/single",
+  "question": "导出的临时文件多久清理？",
+  "relevant_docs": [
+    "K-701"
+  ],
+  "expected_status": "ANSWERED",
+  "required_patterns": [
+    "9\\s*小时"
+  ],
+  "required_citations": [
+    "K-701"
+  ],
+  "name": "generalization_g01"
+}

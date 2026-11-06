@@ -1,0 +1,17 @@
+{
+  "id": "G04",
+  "scenario": "generalization/scope",
+  "question": "我是商业版租户，临时导出文件保留多久？",
+  "relevant_docs": [
+    "K-704",
+    "K-705"
+  ],
+  "expected_status": "ANSWERED",
+  "required_patterns": [
+    "36\\s*小时"
+  ],
+  "required_citations": [
+    "K-705"
+  ],
+  "name": "generalization_g04"
+}

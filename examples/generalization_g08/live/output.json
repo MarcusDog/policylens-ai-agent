@@ -1,0 +1,21 @@
+{
+  "status": "ANSWERED",
+  "answer": "不可以。《账号协作 FAQ》（版本日期 2026-10-03，适用范围：所有员工）明确规定：企业账号禁止共享使用。因此不能把企业账号给同事共用。该文档未说明其他协作或授权方式。",
+  "citations": [
+    {
+      "doc_id": "K-709",
+      "version_date": "2026-10-03",
+      "span_id": "faq",
+      "quote": "企业账号禁止共享使用。"
+    }
+  ],
+  "missing_information": [
+    "资料中未提供在禁止共享前提下可采用的合规协作方式（如成员账号开通、权限分配）的具体规定"
+  ],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 3,
+    "completed": true
+  }
+}

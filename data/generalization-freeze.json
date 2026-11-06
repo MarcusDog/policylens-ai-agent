@@ -1,0 +1,14 @@
+{
+  "purpose": "new-domain frozen synthetic checks",
+  "independent_blind_test": false,
+  "files_sha256": {
+    "data/scenarios/generalization/single/documents.jsonl": "2d79948619a685fa89e0a0ceaf69169b9e4228de0a614b843fa695fe01560d06",
+    "data/scenarios/generalization/conflict/documents.jsonl": "21666fca3a12ac167a96f6df304e33db6a4911e660f8553e052bb52a7854f62e",
+    "data/scenarios/generalization/scope/documents.jsonl": "18241449d65af360139a6d68877df43d076f1c5d9b487e977f8b2e224fcd8002",
+    "data/scenarios/generalization/internal/documents.jsonl": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+    "data/scenarios/generalization/scope_supersedes/documents.jsonl": "cb50dfb9e667ac2d23aff88e6cb6e0376c7d604c8a915f34375e25ecb1644408",
+    "data/scenarios/generalization/empty/documents.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/scenarios/generalization/unmarked_injection/documents.jsonl": "392e731e0330637d7808c4745b450c104db0e2085a5b1afae33182c32515f4bb",
+    "data/generalization_cases.jsonl": "d04b6ea1efad0da382f9787e08c281c40a658fd94eba010603d459158ff32533"
+  }
+}

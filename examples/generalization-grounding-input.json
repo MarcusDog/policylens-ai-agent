@@ -1,0 +1,124 @@
+{
+  "reports": {
+    "v4": {
+      "cases": [
+        {
+          "case_id": "G05",
+          "name": "generalization_g05",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "K-706"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": false,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 5,
+          "duration_ms": 11473.783,
+          "model_calls": 5,
+          "token_usage": {
+            "prompt_tokens": 14832,
+            "completion_tokens": 945,
+            "total_tokens": 15777
+          },
+          "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": true,
+          "trace": "examples/generalization-v4-live-traces/live/improved/G05.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "临时导出文件保留 11 小时后自动清理 [K-706/new]（适用于所有租户）。同一文档中“保留5小时后自动清理”的条款为旧版本 [K-706/old]，已被新版替代。",
+            "citations": [
+              {
+                "doc_id": "K-706",
+                "version_date": "2026-10-02",
+                "span_id": "new",
+                "quote": "临时导出文件保留11小时后自动清理。"
+              },
+              {
+                "doc_id": "K-706",
+                "version_date": "2026-10-02",
+                "span_id": "old",
+                "quote": "临时导出文件保留5小时后自动清理。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 5,
+              "tool_calls": 5,
+              "completed": true
+            }
+          }
+        }
+      ]
+    },
+    "v5": {
+      "cases": [
+        {
+          "case_id": "G05",
+          "name": "generalization_g05",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "K-706"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 5,
+          "duration_ms": 11816.869,
+          "model_calls": 5,
+          "token_usage": {
+            "prompt_tokens": 13957,
+            "completion_tokens": 968,
+            "total_tokens": 14925
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G05.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "同一文档 K-706《导出文件保留说明》（版本日期 2026-10-02，适用所有租户）中存在两处互相矛盾的规定：一处为临时导出文件保留 5 小时后自动清理，另一处为保留 11 小时后自动清理。两条的适用对象与范围相同（临时导出文件、所有租户），文档元数据未标注任何 supersedes/替代关系或生效区间，因此无法判定以哪个为准，当前资料无法给出唯一的小时数。",
+            "citations": [
+              {
+                "doc_id": "K-706",
+                "version_date": "2026-10-02",
+                "span_id": "old",
+                "quote": "临时导出文件保留5小时后自动清理。"
+              },
+              {
+                "doc_id": "K-706",
+                "version_date": "2026-10-02",
+                "span_id": "new",
+                "quote": "临时导出文件保留11小时后自动清理。"
+              }
+            ],
+            "missing_information": [
+              "K-706 中 5 小时与 11 小时两条规定的适用条件差异或明确的替代关系",
+              "哪一条为当前生效条款（文档中缺少相应说明）"
+            ],
+            "clarification_question": "K-706 中的“5 小时”与“11 小时”是否针对不同类型的导出文件或不同场景，还是同一规则的新旧版本——哪一条为当前生效规定？",
+            "task_state": {
+              "model_calls": 5,
+              "tool_calls": 5,
+              "completed": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "source": "Actual G05 outputs from paired v4/v5 runs; no rewritten answers."
+}

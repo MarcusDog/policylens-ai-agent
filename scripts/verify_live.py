@@ -77,6 +77,7 @@ def main():
             case["status_correct"]
             and case["fact_checks_pass"]
             and case["citation_expectations_pass"]
+            and case["clarification_checks_pass"]
         ):
             paths.add(path)
         else:

@@ -1,0 +1,17 @@
+{
+  "id": "G06",
+  "scenario": "generalization/scope_supersedes",
+  "question": "我是社区版租户，我的导出文件应保留多久？",
+  "relevant_docs": [
+    "K-707",
+    "K-708"
+  ],
+  "expected_status": "ANSWERED",
+  "required_patterns": [
+    "8\\s*小时"
+  ],
+  "required_citations": [
+    "K-707"
+  ],
+  "name": "generalization_g06"
+}

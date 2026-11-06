@@ -26,6 +26,7 @@ def read_cases(path: Path) -> list[dict]:
 def check_case(case: dict, result: dict) -> dict:
     answer = result["answer"]
     ids = {c["doc_id"] for c in result["citations"]}
+    spans = {(c["doc_id"], c.get("span_id")) for c in result["citations"]}
     obligations_pass = all(
         not re.search(rule["trigger_pattern"], answer)
         or any(
@@ -47,7 +48,12 @@ def check_case(case: dict, result: dict) -> dict:
         )
         and obligations_pass,
         "citation_expectations_pass": set(case.get("required_citations", [])) <= ids
-        and not (set(case.get("forbidden_citations", [])) & ids),
+        and not (set(case.get("forbidden_citations", [])) & ids)
+        and set(map(tuple, case.get("required_spans", []))) <= spans,
+        "clarification_checks_pass": all(
+            re.search(pattern, result.get("clarification_question") or "")
+            for pattern in case.get("clarification_patterns", [])
+        ),
     }
 
 
@@ -212,6 +218,7 @@ def evaluate(
                     r["status_correct"]
                     and r["fact_checks_pass"]
                     and r["citation_expectations_pass"]
+                    and r["clarification_checks_pass"]
                     for r in rows
                 ),
                 "api_error_rate": mean(bool(r["api_errors"]) for r in rows),

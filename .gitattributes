@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Preserve original pytest failure traceback text, including trailing spaces.
+docs/review-before.xml whitespace=-blank-at-eol

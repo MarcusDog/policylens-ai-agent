@@ -1,0 +1,27 @@
+{
+  "status": "NEEDS_CLARIFICATION",
+  "answer": "导出文件（临时导出）到期会自动清理，保留时长取决于你所在租户的版本：社区版租户保留4小时后自动清理 [K-704/rule]；商业版租户保留36小时后自动清理 [K-705/rule]。两条规则适用租户版本不同、互不替代，需确认你所属版本后才能给出唯一时长。",
+  "citations": [
+    {
+      "doc_id": "K-704",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留4小时后自动清理。"
+    },
+    {
+      "doc_id": "K-705",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留36小时后自动清理。"
+    }
+  ],
+  "missing_information": [
+    "用户所在租户版本（社区版或商业版）未知"
+  ],
+  "clarification_question": "你所在的是社区版租户还是商业版租户？",
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 4,
+    "completed": false
+  }
+}

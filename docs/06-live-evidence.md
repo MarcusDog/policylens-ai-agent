@@ -1,5 +1,7 @@
 # Live 证据索引
 
+本页保留上一轮 v4 的基础/扩展验收；当前 v5 和第二轮测试见 [08-second-review.md](08-second-review.md)。
+
 本页由 scripts/summarize_results.py 从实际产物生成，不发出模型调用。
 
 pytest：84 项，失败 0，错误 0。

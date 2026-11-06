@@ -1,0 +1,27 @@
+{
+  "id": "G05",
+  "scenario": "generalization/internal",
+  "question": "临时导出文件到底保留多少小时？",
+  "relevant_docs": [
+    "K-706"
+  ],
+  "expected_status": "CONFLICT",
+  "required_patterns": [
+    "5\\s*小时",
+    "11\\s*小时"
+  ],
+  "required_citations": [
+    "K-706"
+  ],
+  "required_spans": [
+    [
+      "K-706",
+      "old"
+    ],
+    [
+      "K-706",
+      "new"
+    ]
+  ],
+  "name": "generalization_g05"
+}

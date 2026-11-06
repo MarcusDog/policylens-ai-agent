@@ -9,3 +9,5 @@
 - Run `.venv/Scripts/python -m pytest -q` on Windows (bin/python on Unix).
 - Preserve genuine failure records; do not present Mock results as Live evidence.
 - Keep docs/04-ai-usage.md up to date with actual actions. Human time/contributions remain unconfirmed.
+- Default system prompt is prompts/v5.txt. Preserve older versions and original failed outputs.
+- Paired comparisons must verify matching questions, data, runtime and budgets. Never label a reused regression set as an independent blind test.

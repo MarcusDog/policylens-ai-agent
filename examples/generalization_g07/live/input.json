@@ -1,0 +1,8 @@
+{
+  "id": "G07",
+  "scenario": "generalization/empty",
+  "question": "临时导出文件能保存多久？",
+  "relevant_docs": [],
+  "expected_status": "NOT_FOUND",
+  "name": "generalization_g07"
+}

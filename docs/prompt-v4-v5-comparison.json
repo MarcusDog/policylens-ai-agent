@@ -1,0 +1,102 @@
+{
+  "type": "checked-paired-prompt-comparison",
+  "independent_blind_test": false,
+  "limitations": "Same AI authored the set. Prompt v5 was refined after observing v4's G05 failure; this is a frozen regression comparison, not unseen-test accuracy or a statistical significance claim.",
+  "source_reports": [
+    "D:\\求职\\小影科技\\ai-agent\\policylens\\examples\\generalization-v4-live.json",
+    "D:\\求职\\小影科技\\ai-agent\\policylens\\examples\\generalization-v5-live.json"
+  ],
+  "source_reports_sha256": [
+    "4ebd50c20f0e0c29a277670c25162e2473660999f165b3860d18deab1c1fee1c",
+    "bd939cdad30c3d2ee5fdcf38c8cb460b11a3899ac11e0c9fe3b010b4b82e7721"
+  ],
+  "case_count": 8,
+  "shared_source_tree_sha256": "175ea0d871ed76c7e0b39f6c81996603c5e05d43e42275375a5c050c784ed629",
+  "left_metrics": {
+    "recall_at_5": 1.0,
+    "status_accuracy": 0.875,
+    "conflict_detection_rate": 0.5,
+    "citation_validity_rate": 1.0,
+    "unsupported_answer_rate_proxy": 0.125,
+    "fact_regression_pass_rate": 1,
+    "mean_tool_calls": 4.25,
+    "mean_model_calls": 4.75,
+    "mean_total_tokens": 13840.125,
+    "case_pass_rate": 0.875,
+    "api_error_rate": 0,
+    "mean_duration_ms": 12879.779375
+  },
+  "right_metrics": {
+    "recall_at_5": 1.0,
+    "status_accuracy": 1,
+    "conflict_detection_rate": 1,
+    "citation_validity_rate": 1.0,
+    "unsupported_answer_rate_proxy": 0,
+    "fact_regression_pass_rate": 1,
+    "mean_tool_calls": 3.875,
+    "mean_model_calls": 4.625,
+    "mean_total_tokens": 11808.125,
+    "case_pass_rate": 1,
+    "api_error_rate": 0,
+    "mean_duration_ms": 11458.361499999999
+  },
+  "observed_token_reduction": 0.14681948320553462,
+  "cases": [
+    {
+      "case_id": "G01",
+      "left_status": "ANSWERED",
+      "right_status": "ANSWERED",
+      "left_pass": true,
+      "right_pass": true
+    },
+    {
+      "case_id": "G02",
+      "left_status": "CONFLICT",
+      "right_status": "CONFLICT",
+      "left_pass": true,
+      "right_pass": true
+    },
+    {
+      "case_id": "G03",
+      "left_status": "NEEDS_CLARIFICATION",
+      "right_status": "NEEDS_CLARIFICATION",
+      "left_pass": true,
+      "right_pass": true
+    },
+    {
+      "case_id": "G04",
+      "left_status": "ANSWERED",
+      "right_status": "ANSWERED",
+      "left_pass": true,
+      "right_pass": true
+    },
+    {
+      "case_id": "G05",
+      "left_status": "ANSWERED",
+      "right_status": "CONFLICT",
+      "left_pass": false,
+      "right_pass": true
+    },
+    {
+      "case_id": "G06",
+      "left_status": "ANSWERED",
+      "right_status": "ANSWERED",
+      "left_pass": true,
+      "right_pass": true
+    },
+    {
+      "case_id": "G07",
+      "left_status": "NOT_FOUND",
+      "right_status": "NOT_FOUND",
+      "left_pass": true,
+      "right_pass": true
+    },
+    {
+      "case_id": "G08",
+      "left_status": "ANSWERED",
+      "right_status": "ANSWERED",
+      "left_pass": true,
+      "right_pass": true
+    }
+  ]
+}

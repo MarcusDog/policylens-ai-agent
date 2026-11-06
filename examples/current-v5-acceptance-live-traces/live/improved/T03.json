@@ -1,0 +1,687 @@
+{
+  "run_id": "a8cec9a3fd06498aa5b7d266cb9123b8",
+  "timestamp": "2026-11-06T05:22:18.265424+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "公司在火星基地的宠物托管补贴标准是多少？",
+  "history_summary": [],
+  "model_calls": 7,
+  "tool_calls": 10,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c970aa3c0dc37a096b6ec75abb094",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 117,
+          "prompt_tokens": 1350,
+          "total_tokens": 1467,
+          "completion_tokens_details": {
+            "reasoning_tokens": 7
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1260.937
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_df7b526b0d5947c29e4f2167",
+      "tool_args": {
+        "query": "火星基地 宠物托管 补贴",
+        "top_k": 6,
+        "purpose": "查找火星基地宠物托管补贴标准"
+      },
+      "purpose": "查找火星基地宠物托管补贴标准",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
+        }
+      },
+      "success": true,
+      "duration_ms": 4.501
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_bca5dd2bbd0141568c9821f2",
+      "tool_args": {
+        "query": "宠物托管 补贴标准 金额",
+        "top_k": 6,
+        "purpose": "查找宠物托管补贴标准"
+      },
+      "purpose": "查找宠物托管补贴标准",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 8
+        }
+      },
+      "success": true,
+      "duration_ms": 0.689
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c970cfad26db65ee8411141f26684",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 100,
+          "prompt_tokens": 1666,
+          "total_tokens": 1766,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1951.79
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_0165791c46f94d72968b4fd3",
+      "tool_args": {
+        "query": "福利补贴",
+        "top_k": 8,
+        "purpose": "扩大关键词检索宠物相关政策"
+      },
+      "purpose": "扩大关键词检索宠物相关政策",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 7
+        }
+      },
+      "success": true,
+      "duration_ms": 0.759
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_2940bdaaebe84915b17e7040",
+      "tool_args": {
+        "query": "火星基地",
+        "top_k": 8,
+        "purpose": "检索火星基地相关文档"
+      },
+      "purpose": "检索火星基地相关文档",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 6
+        }
+      },
+      "success": true,
+      "duration_ms": 0.678
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c970e66a52e19cbb3a86c5f4fda87",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 116,
+          "prompt_tokens": 1965,
+          "total_tokens": 2081,
+          "completion_tokens_details": {
+            "reasoning_tokens": 20
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1664
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1816.463
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_d578db5bec0a4c61974a6910",
+      "tool_args": {
+        "query": "补贴",
+        "top_k": 8,
+        "purpose": "通用检索补贴条款"
+      },
+      "purpose": "通用检索补贴条款",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 5
+        }
+      },
+      "success": true,
+      "duration_ms": 0.599
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_8950a0e1c539480da93c2fd7",
+      "tool_args": {
+        "query": "员工福利",
+        "top_k": 8,
+        "purpose": "通用检索员工福利制度"
+      },
+      "purpose": "通用检索员工福利制度",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 4
+        }
+      },
+      "success": true,
+      "duration_ms": 0.722
+    },
+    {
+      "type": "model",
+      "step": 4,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c97104c8e33cbf09e93dc558f55d7",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 118,
+          "prompt_tokens": 2280,
+          "total_tokens": 2398,
+          "completion_tokens_details": {
+            "reasoning_tokens": 16
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1920
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 2143.736
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_f6e4b3e175d84a2795762b95",
+      "tool_args": {
+        "query": "规定",
+        "top_k": 8,
+        "purpose": "检索任意常见文档词探测语料"
+      },
+      "purpose": "检索任意常见文档词探测语料",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 3
+        }
+      },
+      "success": true,
+      "duration_ms": 0.716
+    },
+    {
+      "type": "tool",
+      "step": 4,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_2c2123ef67af49c180ef96bc",
+      "tool_args": {
+        "query": "pet boarding allowance Mars base",
+        "top_k": 8,
+        "purpose": "英文检索宠物托管"
+      },
+      "purpose": "英文检索宠物托管",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 4,
+          "tool_calls_remaining": 2
+        }
+      },
+      "success": true,
+      "duration_ms": 0.639
+    },
+    {
+      "type": "model",
+      "step": 5,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c97122fe29558cfa8b39c0a105805",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 83,
+          "prompt_tokens": 2597,
+          "total_tokens": 2680,
+          "completion_tokens_details": {
+            "reasoning_tokens": 29
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2176
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1948.765
+    },
+    {
+      "type": "tool",
+      "step": 5,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_19f46653c3144f67bf486936",
+      "tool_args": {
+        "query": "报销",
+        "top_k": 8,
+        "purpose": "探测语料是否含报销制度文档"
+      },
+      "purpose": "探测语料是否含报销制度文档",
+      "result_summary": {
+        "hits": 4
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "D01",
+              "title": "费用报销管理办法",
+              "version_date": "2026-01-10",
+              "topic": "报销期限",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "员工应在费用发生后30天内提交报销申请。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": null,
+                "rrf_score": 0.016393,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D01",
+                  "title": "费用报销管理办法",
+                  "version_date": "2026-01-10",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D03",
+              "title": "日常报销材料清单",
+              "version_date": "2026-02-02",
+              "topic": "报销材料",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "日常报销需要提供合规发票、付款凭证和费用用途说明，通过费用系统提交。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": null,
+                "rrf_score": 0.016129,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D03",
+                  "title": "日常报销材料清单",
+                  "version_date": "2026-02-02",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D05",
+              "title": "差旅费用凭证 FAQ",
+              "version_date": "2026-02-11",
+              "topic": "差旅报销",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "差旅报销须提供已批准的差旅申请单、交通与住宿发票、支付凭证和行程说明。",
+              "rank": 3,
+              "ranking": {
+                "bm25_rank": 3,
+                "ngram_rank": null,
+                "rrf_score": 0.015873,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D05",
+                  "title": "差旅费用凭证 FAQ",
+                  "version_date": "2026-02-11",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "D13",
+              "title": "费用申请草稿保存指南",
+              "version_date": "2026-05-03",
+              "topic": "费用系统操作",
+              "scope": "全体员工",
+              "supersedes": [],
+              "span_id": "s1",
+              "preview": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。",
+              "rank": 4,
+              "ranking": {
+                "bm25_rank": 4,
+                "ngram_rank": null,
+                "rrf_score": 0.015625,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "D13",
+                  "title": "费用申请草稿保存指南",
+                  "version_date": "2026-05-03",
+                  "scope": "全体员工",
+                  "supersedes": [],
+                  "span_ids": [
+                    "s1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 3,
+          "tool_calls_remaining": 1
+        }
+      },
+      "success": true,
+      "duration_ms": 0.725
+    },
+    {
+      "type": "model",
+      "step": 6,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c9714b6cc07080a0c25cf8f882f8a",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 83,
+          "prompt_tokens": 3498,
+          "total_tokens": 3581,
+          "completion_tokens_details": {
+            "reasoning_tokens": 33
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2560
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 3063.232
+    },
+    {
+      "type": "tool",
+      "step": 6,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_5f829da576834350bf4667e3",
+      "tool_args": {
+        "query": "宠物",
+        "top_k": 8,
+        "purpose": "检索宠物相关制度"
+      },
+      "purpose": "检索宠物相关制度",
+      "result_summary": {
+        "hits": 0
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [],
+          "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 2,
+          "tool_calls_remaining": 0
+        }
+      },
+      "success": true,
+      "duration_ms": 0.722
+    },
+    {
+      "type": "model",
+      "step": 7,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c9716000291ca9bc006ed9efc4124",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 225,
+          "prompt_tokens": 3685,
+          "total_tokens": 3910,
+          "completion_tokens_details": {
+            "reasoning_tokens": 32
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3456
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 2464.918
+    },
+    {
+      "type": "validation",
+      "step": 7,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "NOT_FOUND",
+        "answer": "当前资料中未检索到“火星基地”或“宠物托管补贴”的任何规定。多次以“火星基地”“宠物”“宠物托管 补贴”“福利补贴”等关键词检索均无结果；可检索到的文档均属费用报销/差旅凭证类通用制度（D01、D03、D05、D13），其中不含宠物托管或外星基地场景的补贴标准。因此无法给出补贴金额，也不能据此断言公司不存在该政策。",
+        "citations": [],
+        "missing_information": [
+          "公司是否存在面向火星基地（外派/驻站场景）的宠物托管补贴制度及其适用人群与适用范围",
+          "若存在，该制度的补贴计算方式、金额上限与发放条件",
+          "文档标题/关键词线索，以便定位对应原文"
+        ],
+        "clarification_question": "请问该补贴制度所在的文档名称或大致主题（例如是否属于外派驻站福利/员工关怀类文件），以便在正确范围内检索？",
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "NOT_FOUND",
+    "answer": "当前资料中未检索到“火星基地”或“宠物托管补贴”的任何规定。多次以“火星基地”“宠物”“宠物托管 补贴”“福利补贴”等关键词检索均无结果；可检索到的文档均属费用报销/差旅凭证类通用制度（D01、D03、D05、D13），其中不含宠物托管或外星基地场景的补贴标准。因此无法给出补贴金额，也不能据此断言公司不存在该政策。",
+    "citations": [],
+    "missing_information": [
+      "公司是否存在面向火星基地（外派/驻站场景）的宠物托管补贴制度及其适用人群与适用范围",
+      "若存在，该制度的补贴计算方式、金额上限与发放条件",
+      "文档标题/关键词线索，以便定位对应原文"
+    ],
+    "clarification_question": "请问该补贴制度所在的文档名称或大致主题（例如是否属于外派驻站福利/员工关怀类文件），以便在正确范围内检索？",
+    "task_state": {
+      "model_calls": 7,
+      "tool_calls": 10,
+      "completed": true
+    }
+  },
+  "state": "FINISHED",
+  "in_flight": null,
+  "implementation": {
+    "python": "3.11.9",
+    "source_files_sha256": {
+      "src/__init__.py": "846ba6dcced21e7d8901bae5975f48f6c1fd07b8686fcbb6c4b361ee85b8b16e",
+      "src/agent.py": "9ee7e069f6aa6c9ca23091b9ae4ab3c3022df59ec50b301028cbc35991cf1d09",
+      "src/cli.py": "d4e08717f699c2ee145b80e0bff1203e9f76c4b64d1e647876287104bef09b3e",
+      "src/evaluation.py": "52f648029262f1b8243a59dbce46debcd83921b5425627cec66b5c15854a871e",
+      "src/evidence.py": "19e6a3e47834c151d84480b28aa7aab53d17ea96ae98d934079b950715f475c3",
+      "src/model.py": "36cc20e1d536e994124c68dde86b98cf750fc24dce74ee6a9fc94cc9f0665be7",
+      "src/retriever.py": "fc3aa162d01843ece540827b6dff5f96012201a6b422cb4768018d9528b252c0",
+      "src/tools.py": "ae381a60a68c4db49b1ef8a126b67b60454847b69fcd4e8e384918ef16abcaf1",
+      "src/trace.py": "ac41e49b613e6969cfd1ea426f5c1b26023dc734acdc069a2c4df70b6cbe99af"
+    },
+    "source_tree_sha256": "30516fd255ed9d64d8fbd872e9556b32ab34a9df442139670775299c66a2d73a",
+    "requirements_sha256": "dffb51c94d50ac6793b20eb12ee7b0cf4abc5f5e9b7fe74ef78bc29659d3ec87"
+  },
+  "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": true,
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 14715.661,
+  "corpus_digest": "bc1279ca59b94f4bc9304c1c54cb3cba61007ab6c7360e8b89ad779a0c23d19c",
+  "token_usage": {
+    "prompt_tokens": 17041,
+    "completion_tokens": 842,
+    "total_tokens": 17883
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "supplementary-model-audit",
+  "checks": [
+    {
+      "case_id": "G05",
+      "method": "v4",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c946a3b7a221cd6c4c4c2e796785a",
+      "verdict": "UNSUPPORTED",
+      "issues": [
+        {
+          "claim": "“保留5小时后自动清理”的条款为旧版本，已被新版替代",
+          "reason": "两段日期相同且supersedes均为空，未证明替代关系"
+        }
+      ]
+    },
+    {
+      "case_id": "G05",
+      "method": "v5",
+      "model": "MiniMax-M3.1-Flash",
+      "response_id": "073c946cbf37d6fd9ab4beff57ceefbf",
+      "verdict": "SUPPORTED",
+      "issues": []
+    }
+  ],
+  "not_a_ground_truth_or_runtime_agent": true
+}

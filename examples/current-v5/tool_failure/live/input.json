@@ -1,0 +1,13 @@
+{
+  "id": "T06",
+  "name": "tool_failure",
+  "scenario": "normal",
+  "question": "VPN 怎么申请？",
+  "relevant_docs": [
+    "D07"
+  ],
+  "fail_tool": "search_docs",
+  "fail_count": 100,
+  "expected_status": "TOOL_ERROR",
+  "required_patterns": []
+}

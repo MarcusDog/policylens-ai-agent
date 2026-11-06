@@ -1,0 +1,25 @@
+{
+  "status": "ANSWERED",
+  "answer": "商业版租户的临时导出文件保留36小时后自动清理。社区版的4小时条款属不同适用范围，不适用于你。",
+  "citations": [
+    {
+      "doc_id": "K-705",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留36小时后自动清理。"
+    },
+    {
+      "doc_id": "K-704",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留4小时后自动清理。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 6,
+    "tool_calls": 4,
+    "completed": true
+  }
+}

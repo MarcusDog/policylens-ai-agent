@@ -1,0 +1,450 @@
+{
+  "mode": "live",
+  "complete": true,
+  "cases_sha256": "d04b6ea1efad0da382f9787e08c281c40a658fd94eba010603d459158ff32533",
+  "case_count": 8,
+  "cases_file": "data/generalization_cases.jsonl",
+  "limitations": "Mock state metrics are harness checks, not LLM capability. Citation validity is provenance only; unsupported-answer rate is a fixture proxy, not complete semantic support assessment. Recall excludes empty relevance sets.",
+  "reports": {
+    "improved": {
+      "metrics": {
+        "recall_at_5": 1.0,
+        "status_accuracy": 1,
+        "conflict_detection_rate": 1,
+        "citation_validity_rate": 1.0,
+        "unsupported_answer_rate_proxy": 0,
+        "fact_regression_pass_rate": 1,
+        "mean_tool_calls": 3.875,
+        "mean_model_calls": 4.625,
+        "mean_total_tokens": 11808.125,
+        "case_pass_rate": 1,
+        "api_error_rate": 0,
+        "mean_duration_ms": 11458.361499999999
+      },
+      "cases": [
+        {
+          "case_id": "G01",
+          "name": "generalization_g01",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "K-701"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 11905.988,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 8212,
+            "completion_tokens": 409,
+            "total_tokens": 8621
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "2d79948619a685fa89e0a0ceaf69169b9e4228de0a614b843fa695fe01560d06",
+          "api_errors": [],
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G01.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "临时导出的文件保留 9 小时后由系统自动清理；该说明适用范围为所有租户。",
+            "citations": [
+              {
+                "doc_id": "K-701",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留9小时后自动清理。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "G02",
+          "name": "generalization_g02",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "K-702",
+            "K-703"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 3,
+          "duration_ms": 10993.247,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 8996,
+            "completion_tokens": 716,
+            "total_tokens": 9712
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "21666fca3a12ac167a96f6df304e33db6a4911e660f8553e052bb52a7854f62e",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G02.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "现有资料中临时导出文件的保留期限存在冲突：K-702《导出文件保留说明》（范围：所有租户，版本日期2026-10-02）规定保留9小时后自动清理；K-703《导出文件保留说明》（范围：所有租户，版本日期2026-10-02）规定保留12小时后自动清理。两者适用范围与版本日期相同，且均未声明替代关系，因此无法确定当前生效的保留期限。",
+            "citations": [
+              {
+                "doc_id": "K-702",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留9小时后自动清理。"
+              },
+              {
+                "doc_id": "K-703",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留12小时后自动清理。"
+              }
+            ],
+            "missing_information": [
+              "缺少可解除K-702与K-703冲突的依据：两份文档适用范围均为“所有租户”，且无替代/优先条款，无法判定哪份为当前有效规则"
+            ],
+            "clarification_question": "K-702与K-703是否分别适用于不同租户或部署环境，或其中一份已被替代？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "G03",
+          "name": "generalization_g03",
+          "expected_status": "NEEDS_CLARIFICATION",
+          "recalled_docs": [
+            "K-704",
+            "K-705"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "NEEDS_CLARIFICATION",
+          "tool_calls": 4,
+          "duration_ms": 7184.199,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 10787,
+            "completion_tokens": 665,
+            "total_tokens": 11452
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "18241449d65af360139a6d68877df43d076f1c5d9b487e977f8b2e224fcd8002",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G03.json",
+          "result": {
+            "status": "NEEDS_CLARIFICATION",
+            "answer": "导出文件（临时导出）到期会自动清理，保留时长取决于你所在租户的版本：社区版租户保留4小时后自动清理 [K-704/rule]；商业版租户保留36小时后自动清理 [K-705/rule]。两条规则适用租户版本不同、互不替代，需确认你所属版本后才能给出唯一时长。",
+            "citations": [
+              {
+                "doc_id": "K-704",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留4小时后自动清理。"
+              },
+              {
+                "doc_id": "K-705",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留36小时后自动清理。"
+              }
+            ],
+            "missing_information": [
+              "用户所在租户版本（社区版或商业版）未知"
+            ],
+            "clarification_question": "你所在的是社区版租户还是商业版租户？",
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 4,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "G04",
+          "name": "generalization_g04",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "K-704",
+            "K-705"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 11916.856,
+          "model_calls": 6,
+          "token_usage": {
+            "prompt_tokens": 16854,
+            "completion_tokens": 574,
+            "total_tokens": 17428
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "18241449d65af360139a6d68877df43d076f1c5d9b487e977f8b2e224fcd8002",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G04.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "商业版租户的临时导出文件保留36小时后自动清理。社区版的4小时条款属不同适用范围，不适用于你。",
+            "citations": [
+              {
+                "doc_id": "K-705",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留36小时后自动清理。"
+              },
+              {
+                "doc_id": "K-704",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留4小时后自动清理。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 6,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "G05",
+          "name": "generalization_g05",
+          "expected_status": "CONFLICT",
+          "recalled_docs": [
+            "K-706"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "CONFLICT",
+          "tool_calls": 5,
+          "duration_ms": 11816.869,
+          "model_calls": 5,
+          "token_usage": {
+            "prompt_tokens": 13957,
+            "completion_tokens": 968,
+            "total_tokens": 14925
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G05.json",
+          "result": {
+            "status": "CONFLICT",
+            "answer": "同一文档 K-706《导出文件保留说明》（版本日期 2026-10-02，适用所有租户）中存在两处互相矛盾的规定：一处为临时导出文件保留 5 小时后自动清理，另一处为保留 11 小时后自动清理。两条的适用对象与范围相同（临时导出文件、所有租户），文档元数据未标注任何 supersedes/替代关系或生效区间，因此无法判定以哪个为准，当前资料无法给出唯一的小时数。",
+            "citations": [
+              {
+                "doc_id": "K-706",
+                "version_date": "2026-10-02",
+                "span_id": "old",
+                "quote": "临时导出文件保留5小时后自动清理。"
+              },
+              {
+                "doc_id": "K-706",
+                "version_date": "2026-10-02",
+                "span_id": "new",
+                "quote": "临时导出文件保留11小时后自动清理。"
+              }
+            ],
+            "missing_information": [
+              "K-706 中 5 小时与 11 小时两条规定的适用条件差异或明确的替代关系",
+              "哪一条为当前生效条款（文档中缺少相应说明）"
+            ],
+            "clarification_question": "K-706 中的“5 小时”与“11 小时”是否针对不同类型的导出文件或不同场景，还是同一规则的新旧版本——哪一条为当前生效规定？",
+            "task_state": {
+              "model_calls": 5,
+              "tool_calls": 5,
+              "completed": false
+            }
+          }
+        },
+        {
+          "case_id": "G06",
+          "name": "generalization_g06",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "K-707",
+            "K-708"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 4,
+          "duration_ms": 11223.534,
+          "model_calls": 6,
+          "token_usage": {
+            "prompt_tokens": 14996,
+            "completion_tokens": 712,
+            "total_tokens": 15708
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "cb50dfb9e667ac2d23aff88e6cb6e0376c7d604c8a915f34375e25ecb1644408",
+          "api_errors": [],
+          "citation_count": 2,
+          "valid_citations": 2,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G06.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "社区版租户的临时导出文件保留8小时后自动清理 [K-707/rule]。同主题K-708为商业版租户规定32小时 [K-708/rule]，其替代声明仅在商业版范围内生效，不影响社区版的8小时规则。",
+            "citations": [
+              {
+                "doc_id": "K-707",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留8小时后自动清理。"
+              },
+              {
+                "doc_id": "K-708",
+                "version_date": "2026-10-02",
+                "span_id": "rule",
+                "quote": "临时导出文件保留32小时后自动清理。"
+              }
+            ],
+            "missing_information": [],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 6,
+              "tool_calls": 4,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "G07",
+          "name": "generalization_g07",
+          "expected_status": "NOT_FOUND",
+          "recalled_docs": [],
+          "recall_at_5": null,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "NOT_FOUND",
+          "tool_calls": 5,
+          "duration_ms": 7744.475,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 7069,
+            "completion_tokens": 426,
+            "total_tokens": 7495
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "api_errors": [],
+          "citation_count": 0,
+          "valid_citations": 0,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G07.json",
+          "result": {
+            "status": "NOT_FOUND",
+            "answer": "当前知识库中未检索到任何关于临时导出文件保留时长的文档或条款（多次检索均无结果），因此无法给出具体保存期限。需要补充包含导出文件生命周期/清理策略的文档（例如平台使用手册、导出与下载管理规范或数据保留政策）后才能确定答案；未检得不等于企业不存在该项规定。",
+            "citations": [],
+            "missing_information": [
+              "临时导出文件的保留时长规定",
+              "导出文件过期/自动清理策略所在文档",
+              "适用系统或版本范围（是否区分租户版本/地区等）"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 5,
+              "completed": true
+            }
+          }
+        },
+        {
+          "case_id": "G08",
+          "name": "generalization_g08",
+          "expected_status": "ANSWERED",
+          "recalled_docs": [
+            "K-709"
+          ],
+          "recall_at_5": 1.0,
+          "status_correct": true,
+          "fact_checks_pass": true,
+          "citation_expectations_pass": true,
+          "clarification_checks_pass": true,
+          "status": "ANSWERED",
+          "tool_calls": 3,
+          "duration_ms": 18881.724,
+          "model_calls": 4,
+          "token_usage": {
+            "prompt_tokens": 8464,
+            "completion_tokens": 660,
+            "total_tokens": 9124
+          },
+          "prompt_sha256": "dd26bed63080416a8600d1cf033f7d79d04cc0ddef04013d2a7a38fc6fc400cf",
+          "corpus_digest": "392e731e0330637d7808c4745b450c104db0e2085a5b1afae33182c32515f4bb",
+          "api_errors": [],
+          "citation_count": 1,
+          "valid_citations": 1,
+          "unsupported_answer": false,
+          "trace": "examples/generalization-v5-live-traces/live/improved/G08.json",
+          "result": {
+            "status": "ANSWERED",
+            "answer": "不可以。《账号协作 FAQ》（版本日期 2026-10-03，适用范围：所有员工）明确规定：企业账号禁止共享使用。因此不能把企业账号给同事共用。该文档未说明其他协作或授权方式。",
+            "citations": [
+              {
+                "doc_id": "K-709",
+                "version_date": "2026-10-03",
+                "span_id": "faq",
+                "quote": "企业账号禁止共享使用。"
+              }
+            ],
+            "missing_information": [
+              "资料中未提供在禁止共享前提下可采用的合规协作方式（如成员账号开通、权限分配）的具体规定"
+            ],
+            "clarification_question": null,
+            "task_state": {
+              "model_calls": 4,
+              "tool_calls": 3,
+              "completed": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

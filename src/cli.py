@@ -114,6 +114,7 @@ def main(argv: list[str] | None = None) -> int:
                     r["status_correct"]
                     and r["fact_checks_pass"]
                     and r["citation_expectations_pass"]
+                    and r["clarification_checks_pass"]
                     for v in report["reports"].values()
                     for r in v["cases"]
                 )
@@ -173,6 +174,12 @@ def main(argv: list[str] | None = None) -> int:
             print("任务状态：" + json.dumps(result["task_state"], ensure_ascii=False))
             print(f"Trace: {trace_path}")
         return 1 if result["status"] in {"TOOL_ERROR", "LIMIT_REACHED"} else 0
+    except KeyboardInterrupt:
+        print(
+            "运行已取消；已写入的 Trace 保留实际执行观察，不标记为成功。",
+            file=sys.stderr,
+        )
+        return 130
     except (ValueError, OSError, TypeError) as exc:
         # Only controlled local errors. Avoid printing content of a malformed .env/data file.
         print(

@@ -1,0 +1,25 @@
+{
+  "status": "ANSWERED",
+  "answer": "员工应在费用发生后30天内提交报销申请，即花钱（发生费用）后最晚30天内须提交报销单，适用于全体员工。注意：费用系统中保存的草稿不算提交，只有正式提交才算提交。",
+  "citations": [
+    {
+      "doc_id": "D01",
+      "version_date": "2026-01-10",
+      "span_id": "s1",
+      "quote": "员工应在费用发生后30天内提交报销申请。"
+    },
+    {
+      "doc_id": "D13",
+      "version_date": "2026-05-03",
+      "span_id": "s1",
+      "quote": "费用系统可保存未提交申请的草稿；草稿状态不代表报销已经提交，也不代表审批通过。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 5,
+    "tool_calls": 5,
+    "completed": true
+  }
+}

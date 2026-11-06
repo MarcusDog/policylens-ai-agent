@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="6" time="1.039" timestamp="2026-11-06T13:03:13.431188+08:00" hostname="TIAN"><testcase classname="tests.test_review_findings" name="test_literal_single_document_is_retrievable[baseline]" time="0.546"><failure message="assert ([])">tmp_path = WindowsPath('C:/Users/lenovo/AppData/Local/Temp/pytest-of-lenovo/pytest-35/test_literal_single_document_i0')
+method = 'baseline'
+
+    @pytest.mark.parametrize("method", ["baseline", "improved"])
+    def test_literal_single_document_is_retrievable(tmp_path, method):
+        path = tmp_path / "documents.jsonl"
+        save(path, [doc()])
+        hits = Retriever(Corpus(path), method).search("导出")
+&gt;       assert hits and hits[0]["doc_id"] == "POL-A"
+E       assert ([])
+
+tests\test_review_findings.py:34: AssertionError</failure></testcase><testcase classname="tests.test_review_findings" name="test_literal_single_document_is_retrievable[improved]" time="0.006"><failure message="assert ([])">tmp_path = WindowsPath('C:/Users/lenovo/AppData/Local/Temp/pytest-of-lenovo/pytest-35/test_literal_single_document_i1')
+method = 'improved'
+
+    @pytest.mark.parametrize("method", ["baseline", "improved"])
+    def test_literal_single_document_is_retrievable(tmp_path, method):
+        path = tmp_path / "documents.jsonl"
+        save(path, [doc()])
+        hits = Retriever(Corpus(path), method).search("导出")
+&gt;       assert hits and hits[0]["doc_id"] == "POL-A"
+E       assert ([])
+
+tests\test_review_findings.py:34: AssertionError</failure></testcase><testcase classname="tests.test_review_findings" name="test_empty_corpus_is_a_searchable_knowledge_gap" time="0.005"><failure message="ValueError: Corpus is empty">tmp_path = WindowsPath('C:/Users/lenovo/AppData/Local/Temp/pytest-of-lenovo/pytest-35/test_empty_corpus_is_a_searcha0')
+
+    def test_empty_corpus_is_a_searchable_knowledge_gap(tmp_path):
+        path = tmp_path / "documents.jsonl"
+        path.write_text("", encoding="utf-8")
+&gt;       result = Agent(MockModel(), Corpus(path)).run("导出文件保留多久？")
+                                    ^^^^^^^^^^^^
+
+tests\test_review_findings.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\retriever.py:69: in __init__
+    self.refresh()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;src.retriever.Corpus object at 0x00000131219F9CD0&gt;
+
+    def refresh(self) -&gt; bool:
+        raw = self.path.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest == self.digest:
+            return False
+        docs, spans = {}, []
+        for line_no, line in enumerate(raw.decode("utf-8-sig").splitlines(), 1):
+            if not line.strip():
+                continue
+            doc = json.loads(line)
+            required = (
+                "doc_id",
+                "title",
+                "version_date",
+                "topic",
+                "scope",
+                "supersedes",
+                "sections",
+            )
+            if not isinstance(doc, dict) or any(k not in doc for k in required):
+                raise ValueError(f"Invalid document at line {line_no}")
+            if any(
+                not isinstance(doc[k], str) or not doc[k].strip() for k in required[:5]
+            ):
+                raise ValueError(f"Invalid metadata at line {line_no}")
+            date.fromisoformat(doc["version_date"])
+            if doc["doc_id"] in docs:
+                raise ValueError("Duplicate document ID")
+            if not isinstance(doc["supersedes"], list) or any(
+                not isinstance(x, str) for x in doc["supersedes"]
+            ):
+                raise ValueError("supersedes must be a list of IDs")
+            if not isinstance(doc["sections"], list) or not doc["sections"]:
+                raise ValueError("Document must have sections")
+            seen = set()
+            for section in doc["sections"]:
+                if not isinstance(section, dict) or any(
+                    not isinstance(section.get(k), str) or not section[k].strip()
+                    for k in ("span_id", "text")
+                ):
+                    raise ValueError("Invalid section")
+                if section["span_id"] in seen:
+                    raise ValueError("Duplicate span ID within document")
+                seen.add(section["span_id"])
+                spans.append({k: doc[k] for k in required if k != "sections"} | section)
+            docs[doc["doc_id"]] = doc
+        if not docs:
+&gt;           raise ValueError("Corpus is empty")
+E           ValueError: Corpus is empty
+
+src\retriever.py:118: ValueError</failure></testcase><testcase classname="tests.test_review_findings" name="test_section_cannot_override_document_metadata" time="0.012"><failure message="Failed: DID NOT RAISE ValueError">tmp_path = WindowsPath('C:/Users/lenovo/AppData/Local/Temp/pytest-of-lenovo/pytest-35/test_section_cannot_override_d0')
+
+    def test_section_cannot_override_document_metadata(tmp_path):
+        source = doc()
+        source["sections"][0]["scope"] = "伪造的管理员范围"
+        path = tmp_path / "documents.jsonl"
+        save(path, [source])
+&gt;       with pytest.raises(ValueError, match="reserved"):
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_review_findings.py:49: Failed</failure></testcase><testcase classname="tests.test_review_findings" name="test_title_or_topic_mutation_invalidates_prior_read" time="0.019"><failure message="AssertionError: assert []&#10; +  where [] = validate({'status': 'ANSWERED', 'answer': '保留6小时。', 'citations': [{'doc_id': 'POL-A', 'version_date': '2026-10-01', 'span_id': 's1', 'quote': '临时导出文件保留6小时后清理。'}], 'missing_information': [], ...})&#10; +    where validate = &lt;src.evidence.EvidenceValidator object at 0x0000013103493310&gt;.validate&#10; +      where &lt;src.evidence.EvidenceValidator object at 0x0000013103493310&gt; = EvidenceValidator(&lt;src.tools.ToolDispatcher object at 0x00000131269A7B50&gt;)&#10;[+1 more line; full report in element text]">tmp_path = WindowsPath('C:/Users/lenovo/AppData/Local/Temp/pytest-of-lenovo/pytest-35/test_title_or_topic_mutation_i0')
+
+    def test_title_or_topic_mutation_invalidates_prior_read(tmp_path):
+        first, other = doc(), doc("OTHER", "其他主题", "这是无关内容。")
+        path = tmp_path / "documents.jsonl"
+        save(path, [first, other])
+        tools = ToolDispatcher(Corpus(path))
+        tools.dispatch("read_doc_span", {"doc_id": "POL-A", "span_id": "s1", "purpose": "read"})
+        changed = dict(first, title="新标题", topic="新主题")
+        save(path, [changed, other])
+        # A different successful observation must not refresh this old read proof.
+        tools.dispatch("read_doc_span", {"doc_id": "OTHER", "span_id": "s1", "purpose": "read"})
+&gt;       assert EvidenceValidator(tools).validate(final_payload("ANSWERED", "保留6小时。", [citation(first)]))
+E       AssertionError: assert []
+E        +  where [] = validate({'status': 'ANSWERED', 'answer': '保留6小时。', 'citations': [{'doc_id': 'POL-A', 'version_date': '2026-10-01', 'span_id': 's1', 'quote': '临时导出文件保留6小时后清理。'}], 'missing_information': [], ...})
+E        +    where validate = &lt;src.evidence.EvidenceValidator object at 0x0000013103493310&gt;.validate
+E        +      where &lt;src.evidence.EvidenceValidator object at 0x0000013103493310&gt; = EvidenceValidator(&lt;src.tools.ToolDispatcher object at 0x00000131269A7B50&gt;)
+E        +    and   {'status': 'ANSWERED', 'answer': '保留6小时。', 'citations': [{'doc_id': 'POL-A', 'version_date': '2026-10-01', 'span_id': 's1', 'quote': '临时导出文件保留6小时后清理。'}], 'missing_information': [], ...} = final_payload('ANSWERED', '保留6小时。', [{'doc_id': 'POL-A', 'version_date': '2026-10-01', 'span_id': 's1', 'quote': '临时导出文件保留6小时后清理。'}])
+
+tests\test_review_findings.py:63: AssertionError</failure></testcase><testcase classname="tests.test_review_findings" name="test_internal_conflict_can_cite_two_spans_in_one_document" time="0.012"><failure message="AssertionError: assert ['CONFLICT re...wo documents'] == []&#10;  &#10;  Left contains one more item: 'CONFLICT requires citations from at least two documents'&#10;  Use -v to get more diff">tmp_path = WindowsPath('C:/Users/lenovo/AppData/Local/Temp/pytest-of-lenovo/pytest-35/test_internal_conflict_can_cit0')
+
+    def test_internal_conflict_can_cite_two_spans_in_one_document(tmp_path):
+        source = doc()
+        source["sections"].append({"span_id": "s2", "text": "临时导出文件保留9小时后清理。"})
+        path = tmp_path / "documents.jsonl"
+        save(path, [source])
+        tools = ToolDispatcher(Corpus(path))
+        for span_id in ("s1", "s2"):
+            tools.dispatch("read_doc_span", {"doc_id": "POL-A", "span_id": span_id, "purpose": "read"})
+        final = final_payload("CONFLICT", "同一文件分别规定6小时和9小时。", [citation(source), citation(source, "s2")], ["条款优先级"], "请确认应执行哪个条款？")
+&gt;       assert EvidenceValidator(tools).validate(final) == []
+E       AssertionError: assert ['CONFLICT re...wo documents'] == []
+E         
+E         Left contains one more item: 'CONFLICT requires citations from at least two documents'
+E         Use -v to get more diff
+
+tests\test_review_findings.py:75: AssertionError</failure></testcase></testsuite></testsuites>

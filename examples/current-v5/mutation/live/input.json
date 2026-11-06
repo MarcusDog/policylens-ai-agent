@@ -1,0 +1,19 @@
+{
+  "id": "T07",
+  "name": "mutation",
+  "scenario": "mutation",
+  "question": "报销提交期限是几天？",
+  "relevant_docs": [
+    "D01"
+  ],
+  "expected_status": "ANSWERED",
+  "required_facts": [
+    "45"
+  ],
+  "forbidden_facts": [
+    "30天"
+  ],
+  "required_patterns": [
+    "(?<!\\d)45\\s*天"
+  ]
+}

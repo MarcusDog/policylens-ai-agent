@@ -1,0 +1,19 @@
+{
+  "id": "G02",
+  "scenario": "generalization/conflict",
+  "question": "临时导出文件的保留期限是多久？",
+  "relevant_docs": [
+    "K-702",
+    "K-703"
+  ],
+  "expected_status": "CONFLICT",
+  "required_patterns": [
+    "9\\s*小时",
+    "12\\s*小时"
+  ],
+  "required_citations": [
+    "K-702",
+    "K-703"
+  ],
+  "name": "generalization_g02"
+}

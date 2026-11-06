@@ -1,0 +1,19 @@
+{
+  "status": "ANSWERED",
+  "answer": "临时导出的文件保留 9 小时后由系统自动清理；该说明适用范围为所有租户。",
+  "citations": [
+    {
+      "doc_id": "K-701",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留9小时后自动清理。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 4,
+    "tool_calls": 3,
+    "completed": true
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "run_id": "81213f7a02c74266a00fda0d87386332",
+  "timestamp": "2026-11-06T05:07:56.534935+00:00",
+  "mode": "live",
+  "model": "MiniMax-M3.1-Flash",
+  "question": "临时导出文件到底保留多少小时？",
+  "history_summary": [],
+  "model_calls": 5,
+  "tool_calls": 5,
+  "events": [
+    {
+      "type": "model",
+      "step": 1,
+      "action": "tools",
+      "tool_names": [
+        "search_docs",
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c93ac01119e1c05ab33113a68d890",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 125,
+          "prompt_tokens": 1472,
+          "total_tokens": 1597,
+          "completion_tokens_details": {
+            "reasoning_tokens": 11
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1173.147
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_01a1af41a5c97632ad11d452",
+      "tool_args": {
+        "query": "临时导出文件 保留 小时",
+        "top_k": 6,
+        "purpose": "定位临时导出文件保留时长条款"
+      },
+      "purpose": "定位临时导出文件保留时长条款",
+      "result_summary": {
+        "hits": 2
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "version_date": "2026-10-02",
+              "topic": "临时导出保留",
+              "scope": "所有租户",
+              "supersedes": [],
+              "span_id": "old",
+              "preview": "临时导出文件保留5小时后自动清理。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 1,
+                "rrf_score": 0.032787,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "K-706",
+                  "title": "导出文件保留说明",
+                  "version_date": "2026-10-02",
+                  "scope": "所有租户",
+                  "supersedes": [],
+                  "span_ids": [
+                    "old",
+                    "new"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "version_date": "2026-10-02",
+              "topic": "临时导出保留",
+              "scope": "所有租户",
+              "supersedes": [],
+              "span_id": "new",
+              "preview": "临时导出文件保留11小时后自动清理。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": 2,
+                "rrf_score": 0.032258,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "K-706",
+                  "title": "导出文件保留说明",
+                  "version_date": "2026-10-02",
+                  "scope": "所有租户",
+                  "supersedes": [],
+                  "span_ids": [
+                    "old",
+                    "new"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 9
+        }
+      },
+      "success": true,
+      "duration_ms": 1.064
+    },
+    {
+      "type": "tool",
+      "step": 1,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_01a1af41a5c97632ad11d453",
+      "tool_args": {
+        "query": "导出文件 自动删除 临时文件 保留时长",
+        "top_k": 6,
+        "purpose": "查找临时文件清理规则"
+      },
+      "purpose": "查找临时文件清理规则",
+      "result_summary": {
+        "hits": 2
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "version_date": "2026-10-02",
+              "topic": "临时导出保留",
+              "scope": "所有租户",
+              "supersedes": [],
+              "span_id": "old",
+              "preview": "临时导出文件保留5小时后自动清理。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 1,
+                "rrf_score": 0.032787,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "K-706",
+                  "title": "导出文件保留说明",
+                  "version_date": "2026-10-02",
+                  "scope": "所有租户",
+                  "supersedes": [],
+                  "span_ids": [
+                    "old",
+                    "new"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "version_date": "2026-10-02",
+              "topic": "临时导出保留",
+              "scope": "所有租户",
+              "supersedes": [],
+              "span_id": "new",
+              "preview": "临时导出文件保留11小时后自动清理。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": 2,
+                "rrf_score": 0.032258,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "K-706",
+                  "title": "导出文件保留说明",
+                  "version_date": "2026-10-02",
+                  "scope": "所有租户",
+                  "supersedes": [],
+                  "span_ids": [
+                    "old",
+                    "new"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 7,
+          "tool_calls_remaining": 8
+        }
+      },
+      "success": true,
+      "duration_ms": 0.685
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "action": "tools",
+      "tool_names": [
+        "read_doc_span",
+        "read_doc_span"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c93ae55c7b5a8fbb3593c3cb83a1a",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 106,
+          "prompt_tokens": 2488,
+          "total_tokens": 2594,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 1472
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 3312.054
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1af41b2b97096a57f2996",
+      "tool_args": {
+        "doc_id": "K-706",
+        "span_id": "new",
+        "purpose": "读取现行保留时长条款原文"
+      },
+      "purpose": "读取现行保留时长条款原文",
+      "result_summary": {
+        "doc_id": "K-706",
+        "span_id": "new"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "K-706",
+          "title": "导出文件保留说明",
+          "version_date": "2026-10-02",
+          "topic": "临时导出保留",
+          "scope": "所有租户",
+          "supersedes": [],
+          "span_id": "new",
+          "text": "临时导出文件保留11小时后自动清理。",
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "related_documents": [
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "scope": "所有租户",
+              "version_date": "2026-10-02",
+              "supersedes": [],
+              "span_ids": [
+                "old",
+                "new"
+              ]
+            }
+          ]
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 7
+        }
+      },
+      "success": true,
+      "duration_ms": 0.338
+    },
+    {
+      "type": "tool",
+      "step": 2,
+      "tool_name": "read_doc_span",
+      "tool_call_id": "call_01a1af41b2b97096a57f2997",
+      "tool_args": {
+        "doc_id": "K-706",
+        "span_id": "old",
+        "purpose": "读取旧版条款确认替代关系"
+      },
+      "purpose": "读取旧版条款确认替代关系",
+      "result_summary": {
+        "doc_id": "K-706",
+        "span_id": "old"
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "doc_id": "K-706",
+          "title": "导出文件保留说明",
+          "version_date": "2026-10-02",
+          "topic": "临时导出保留",
+          "scope": "所有租户",
+          "supersedes": [],
+          "span_id": "old",
+          "text": "临时导出文件保留5小时后自动清理。",
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "related_documents": [
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "scope": "所有租户",
+              "version_date": "2026-10-02",
+              "supersedes": [],
+              "span_ids": [
+                "old",
+                "new"
+              ]
+            }
+          ]
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 6,
+          "tool_calls_remaining": 6
+        }
+      },
+      "success": true,
+      "duration_ms": 0.251
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "action": "tools",
+      "tool_names": [
+        "search_docs"
+      ],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c93b1455128cba4ca50e9c6da516c",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 196,
+          "prompt_tokens": 3025,
+          "total_tokens": 3221,
+          "completion_tokens_details": {
+            "reasoning_tokens": 123
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2488
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 3436.12
+    },
+    {
+      "type": "tool",
+      "step": 3,
+      "tool_name": "search_docs",
+      "tool_call_id": "call_01a1af41c03b71f5a1e641fc",
+      "tool_args": {
+        "query": "K-706 导出文件保留说明 修订 废止 11小时 5小时 生效",
+        "top_k": 8,
+        "purpose": "查找版本替代或修订说明"
+      },
+      "purpose": "查找版本替代或修订说明",
+      "result_summary": {
+        "hits": 2
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "hits": [
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "version_date": "2026-10-02",
+              "topic": "临时导出保留",
+              "scope": "所有租户",
+              "supersedes": [],
+              "span_id": "old",
+              "preview": "临时导出文件保留5小时后自动清理。",
+              "rank": 1,
+              "ranking": {
+                "bm25_rank": 1,
+                "ngram_rank": 2,
+                "rrf_score": 1.032522,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "K-706",
+                  "title": "导出文件保留说明",
+                  "version_date": "2026-10-02",
+                  "scope": "所有租户",
+                  "supersedes": [],
+                  "span_ids": [
+                    "old",
+                    "new"
+                  ]
+                }
+              ]
+            },
+            {
+              "doc_id": "K-706",
+              "title": "导出文件保留说明",
+              "version_date": "2026-10-02",
+              "topic": "临时导出保留",
+              "scope": "所有租户",
+              "supersedes": [],
+              "span_id": "new",
+              "preview": "临时导出文件保留11小时后自动清理。",
+              "rank": 2,
+              "ranking": {
+                "bm25_rank": 2,
+                "ngram_rank": 1,
+                "rrf_score": 1.032522,
+                "topic_expanded": false
+              },
+              "related_documents": [
+                {
+                  "doc_id": "K-706",
+                  "title": "导出文件保留说明",
+                  "version_date": "2026-10-02",
+                  "scope": "所有租户",
+                  "supersedes": [],
+                  "span_ids": [
+                    "old",
+                    "new"
+                  ]
+                }
+              ]
+            }
+          ],
+          "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+          "method": "improved"
+        },
+        "runtime_budget": {
+          "model_steps_remaining": 5,
+          "tool_calls_remaining": 5
+        }
+      },
+      "success": true,
+      "duration_ms": 0.783
+    },
+    {
+      "type": "model",
+      "step": 4,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c93b4d8be8bbe10e8c66caba06189",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 288,
+          "prompt_tokens": 3671,
+          "total_tokens": 3959,
+          "completion_tokens_details": {
+            "reasoning_tokens": 141
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3025
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 2014.194
+    },
+    {
+      "type": "validation",
+      "step": 4,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "临时导出文件保留 11 小时后自动清理 [K-706/new]（适用于所有租户）。同一文档中“保留5小时后自动清理”的条款为旧版本 [K-706/old]，已被新版替代。",
+        "citations": [
+          {
+            "doc_id": "K-706",
+            "version_date": "2026-10-02",
+            "span_id": "new",
+            "quote": "临时导出文件保留11小时后自动清理。"
+          },
+          {
+            "doc_id": "K-706",
+            "version_date": "2026-10-02",
+            "span_id": "old",
+            "quote": "临时导出文件保留5小时后自动清理。"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    },
+    {
+      "type": "final_review",
+      "step": 4,
+      "checklist": [
+        "answer 每项企业事实是否由本轮读取且最终引用的原文或元数据支持？删除只见于 search preview 的附加流程。",
+        "用户问自己的或笼统的适用规则，而资料按不同部门给出不同结论：用户/历史是否已明确部门？未明确就应 NEEDS_CLARIFICATION 并提一个问题，不可用 ANSWERED 罗列条件让用户自选；明确问各部门对比则可回答比较。",
+        "是否擅自把 version_date 当成生效日期、推断历史适用时段，或把最新日期当优先级？明确替代关系和范围已足以确定当前规则时，可以回答当前规则，不必因缺生效日而拒答。",
+        "冲突是否引用各方、无依据是否明确缺口、持续工具失败是否停止？"
+      ]
+    },
+    {
+      "type": "model",
+      "step": 5,
+      "action": "final",
+      "tool_names": [],
+      "telemetry": {
+        "provider": "minimax",
+        "requested_model": "MiniMax-M3.1-Flash",
+        "actual_model": "MiniMax-M3.1-Flash",
+        "response_id": "073c93b69b38cd750a70a594e6b73d3d",
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 230,
+          "prompt_tokens": 4176,
+          "total_tokens": 4406,
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 3671
+          },
+          "total_characters": 0
+        }
+      },
+      "duration_ms": 1499.303
+    },
+    {
+      "type": "validation",
+      "step": 5,
+      "valid": true,
+      "errors": [],
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "临时导出文件保留 11 小时后自动清理 [K-706/new]（适用于所有租户）。同一文档中“保留5小时后自动清理”的条款为旧版本 [K-706/old]，已被新版替代。",
+        "citations": [
+          {
+            "doc_id": "K-706",
+            "version_date": "2026-10-02",
+            "span_id": "new",
+            "quote": "临时导出文件保留11小时后自动清理。"
+          },
+          {
+            "doc_id": "K-706",
+            "version_date": "2026-10-02",
+            "span_id": "old",
+            "quote": "临时导出文件保留5小时后自动清理。"
+          }
+        ],
+        "missing_information": [],
+        "clarification_question": null,
+        "task_state": {}
+      }
+    }
+  ],
+  "final": {
+    "status": "ANSWERED",
+    "answer": "临时导出文件保留 11 小时后自动清理 [K-706/new]（适用于所有租户）。同一文档中“保留5小时后自动清理”的条款为旧版本 [K-706/old]，已被新版替代。",
+    "citations": [
+      {
+        "doc_id": "K-706",
+        "version_date": "2026-10-02",
+        "span_id": "new",
+        "quote": "临时导出文件保留11小时后自动清理。"
+      },
+      {
+        "doc_id": "K-706",
+        "version_date": "2026-10-02",
+        "span_id": "old",
+        "quote": "临时导出文件保留5小时后自动清理。"
+      }
+    ],
+    "missing_information": [],
+    "clarification_question": null,
+    "task_state": {
+      "model_calls": 5,
+      "tool_calls": 5,
+      "completed": true
+    }
+  },
+  "state": "FINISHED",
+  "in_flight": null,
+  "implementation": {
+    "python": "3.11.9",
+    "source_files_sha256": {
+      "src/__init__.py": "846ba6dcced21e7d8901bae5975f48f6c1fd07b8686fcbb6c4b361ee85b8b16e",
+      "src/agent.py": "ca29fa6bfe3f43dbf21e6f41a162df8d64f111c375915a0194d4a31b61608e41",
+      "src/cli.py": "237ebb3af979a0294fc4a49f34aa14556c52eac68ad006990cc3ac41e1f78208",
+      "src/evaluation.py": "a05d9a6f74690120ed79433715101b3e5a99e660b26afb0e2213f517d899bfd5",
+      "src/evidence.py": "42b3d12467621df0f729edc8c486bbcb6d1c3d3a29e22ebeafff676f0ab567bf",
+      "src/model.py": "36cc20e1d536e994124c68dde86b98cf750fc24dce74ee6a9fc94cc9f0665be7",
+      "src/retriever.py": "87998b505b3107f456b7e63cc4b5f70982681de63e56d40b0308432d4ed53e96",
+      "src/tools.py": "ae381a60a68c4db49b1ef8a126b67b60454847b69fcd4e8e384918ef16abcaf1",
+      "src/trace.py": "fc88277c1d0e1897f8ccd1963caf6908c71f9e890b00734c5b3abd39308dcafb"
+    },
+    "source_tree_sha256": "175ea0d871ed76c7e0b39f6c81996603c5e05d43e42275375a5c050c784ed629",
+    "requirements_sha256": "dffb51c94d50ac6793b20eb12ee7b0cf4abc5f5e9b7fe74ef78bc29659d3ec87"
+  },
+  "prompt_sha256": "0f840bb5eda79b5233d681b9507e8114cb1d91a2264ae78ff2c52a840ffb9d93",
+  "limits": {
+    "max_model_steps": 8,
+    "max_tool_calls": 10
+  },
+  "final_review_enabled": true,
+  "evidence_validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "structure/provenance/known-candidate coverage; not semantic entailment"
+  },
+  "duration_ms": 11473.783,
+  "corpus_digest": "40de72ffaedb1b059674f00c0e2521d11683612fc002c763a4239b0dd6e262c7",
+  "token_usage": {
+    "prompt_tokens": 14832,
+    "completion_tokens": 945,
+    "total_tokens": 15777
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "ANSWERED",
+  "answer": "社区版租户的临时导出文件保留8小时后自动清理 [K-707/rule]。同主题K-708为商业版租户规定32小时 [K-708/rule]，其替代声明仅在商业版范围内生效，不影响社区版的8小时规则。",
+  "citations": [
+    {
+      "doc_id": "K-707",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留8小时后自动清理。"
+    },
+    {
+      "doc_id": "K-708",
+      "version_date": "2026-10-02",
+      "span_id": "rule",
+      "quote": "临时导出文件保留32小时后自动清理。"
+    }
+  ],
+  "missing_information": [],
+  "clarification_question": null,
+  "task_state": {
+    "model_calls": 6,
+    "tool_calls": 4,
+    "completed": true
+  }
+}

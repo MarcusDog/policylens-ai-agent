@@ -1,0 +1,1 @@
+{"doc_id": "K-706", "title": "导出文件保留说明", "version_date": "2026-10-02", "topic": "临时导出保留", "scope": "所有租户", "supersedes": [], "sections": [{"span_id": "old", "text": "临时导出文件保留5小时后自动清理。"}, {"span_id": "new", "text": "临时导出文件保留11小时后自动清理。"}]}

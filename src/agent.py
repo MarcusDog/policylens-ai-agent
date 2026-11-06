@@ -14,7 +14,7 @@ from .retriever import Corpus
 from .tools import TOOLS, ToolDispatcher
 from .trace import new_trace, write_json
 
-SYSTEM_PROMPT = (Path(__file__).resolve().parents[1] / "prompts/v4.txt").read_text(
+SYSTEM_PROMPT = (Path(__file__).resolve().parents[1] / "prompts/v5.txt").read_text(
     encoding="utf-8"
 )
 
@@ -89,6 +89,12 @@ class Agent:
         self.trace["final_review_enabled"] = self.final_review
         started = time.perf_counter()
 
+        def checkpoint() -> None:
+            if save_trace:
+                write_json(save_trace, self.trace)
+
+        checkpoint()
+
         def finish(
             final: dict, valid: bool, validation_errors: list[str] | None = None
         ) -> dict:
@@ -98,6 +104,8 @@ class Agent:
                 "completed": final["status"] in {"ANSWERED", "NOT_FOUND"},
             }
             self.trace["final"] = final
+            self.trace["state"] = "FINISHED"
+            self.trace["in_flight"] = None
             self.trace["evidence_validation"] = {
                 "valid": valid,
                 "errors": validation_errors or [],
@@ -114,8 +122,7 @@ class Agent:
                 k: sum(u.get(k, 0) or 0 for u in usages)
                 for k in ("prompt_tokens", "completion_tokens", "total_tokens")
             }
-            if save_trace:
-                write_json(save_trace, self.trace)
+            checkpoint()
             return final
 
         last_errors: list[str] = []
@@ -123,8 +130,16 @@ class Agent:
         for step in range(1, self.max_model_steps + 1):
             self.trace["model_calls"] += 1
             tick = time.perf_counter()
+            self.trace["in_flight"] = {"kind": "model", "step": step}
+            checkpoint()
             try:
                 reply = self.model.complete(messages, TOOLS)
+            except KeyboardInterrupt:
+                self.trace["state"] = "CANCELLED"
+                self.trace["in_flight"] = None
+                self.trace["events"].append({"type": "cancelled", "step": step})
+                checkpoint()
+                raise
             except Exception as exc:
                 # Provider exception strings can contain URLs, request headers or secrets.
                 self.trace["events"].append(
@@ -148,6 +163,7 @@ class Agent:
                     ["Model API unavailable"],
                 )
             messages.append(reply.message())
+            self.trace["in_flight"] = None
             self.trace["events"].append(
                 {
                     "type": "model",
@@ -158,6 +174,7 @@ class Agent:
                     "duration_ms": round((time.perf_counter() - tick) * 1000, 3),
                 }
             )
+            checkpoint()
             if reply.tool_calls:
                 for call in reply.tool_calls:
                     if self.trace["tool_calls"] >= self.max_tool_calls:
@@ -171,6 +188,12 @@ class Agent:
                             last_errors,
                         )
                     self.trace["tool_calls"] += 1
+                    self.trace["in_flight"] = {
+                        "kind": "tool",
+                        "step": step,
+                        "tool_name": call.name,
+                    }
+                    checkpoint()
                     tick = time.perf_counter()
                     result = dispatcher.dispatch(call.name, call.arguments)
                     result["runtime_budget"] = {
@@ -219,6 +242,8 @@ class Agent:
                             "content": json.dumps(result, ensure_ascii=False),
                         }
                     )
+                    self.trace["in_flight"] = None
+                    checkpoint()
                 continue
             try:
                 final = json.loads(reply.content or "")
@@ -234,6 +259,7 @@ class Agent:
                     "candidate": deepcopy(final),
                 }
             )
+            checkpoint()
             if not last_errors:
                 if (
                     self.final_review
@@ -265,6 +291,7 @@ class Agent:
                             "content": json.dumps(review, ensure_ascii=False),
                         }
                     )
+                    checkpoint()
                     last_errors = ["Final self-review not yet completed"]
                     continue
                 return finish(final, True)

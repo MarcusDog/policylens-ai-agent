@@ -12,6 +12,16 @@ STATUSES = {
     "TOOL_ERROR",
     "LIMIT_REACHED",
 }
+PROOF_FIELDS = (
+    "doc_id",
+    "title",
+    "version_date",
+    "topic",
+    "scope",
+    "supersedes",
+    "span_id",
+    "text",
+)
 
 
 class EvidenceValidator:
@@ -83,10 +93,7 @@ class EvidenceValidator:
             if cite["quote"] not in span["text"]:
                 errors.append("Quote is not an exact original substring")
             read = self.tools.reads.get((cite["doc_id"], cite["span_id"]))
-            if read is None or any(
-                read[k] != span[k]
-                for k in ("text", "version_date", "scope", "supersedes")
-            ):
+            if read is None or any(read[k] != span[k] for k in PROOF_FIELDS):
                 errors.append(
                     "Citation must have been read successfully in THIS run at its current version"
                 )
@@ -102,14 +109,16 @@ class EvidenceValidator:
             status == "CONFLICT"
             and len(
                 {
-                    c.get("doc_id")
+                    (c.get("doc_id"), c.get("span_id"))
                     for c in citations
-                    if isinstance(c, dict) and isinstance(c.get("doc_id"), str)
+                    if isinstance(c, dict)
+                    and isinstance(c.get("doc_id"), str)
+                    and isinstance(c.get("span_id"), str)
                 }
             )
             < 2
         ):
-            errors.append("CONFLICT requires citations from at least two documents")
+            errors.append("CONFLICT requires at least two distinct evidence spans")
         if status == "NOT_FOUND" and not self.tools.successful_searches:
             errors.append("NOT_FOUND requires a successful search in this run")
         if status == "TOOL_ERROR" and not self.tools.errors:
@@ -155,7 +164,4 @@ class EvidenceValidator:
             current = self.tools.corpus.get_span(doc_id, span_id)
         except KeyError:
             return False
-        return all(
-            current[k] == read[k]
-            for k in ("text", "version_date", "scope", "supersedes")
-        )
+        return all(current[k] == read[k] for k in PROOF_FIELDS)
