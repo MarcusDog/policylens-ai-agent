@@ -1,0 +1,7 @@
+Tested Git index tree: fbdd3cc5b89c92533cae86b72f457020f69996b3
+Private .env copied: false
+Local source changes copied from index only
+Exit code: 0
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 7.08s

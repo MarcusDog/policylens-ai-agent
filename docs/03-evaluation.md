@@ -3,6 +3,8 @@
 当前评测日：2026-11-06（Asia/Shanghai）。本页保留初次离线交付阶段的结果与失败历史。
 **Live 已验证**；上一轮 84 项测试、基础/扩展真实运行、评分修订及语义检查见 [证据索引](06-live-evidence.md)。
 当前 95 项测试及 v4/v5 的冻结回归对比见 [第二轮审查](08-second-review.md)。
+2026-11-08 提交前复验的测试结果在 [examples/submission/test-results.xml](../examples/submission/test-results.xml)，
+实际检查日志在 [examples/submission/check-results.txt](../examples/submission/check-results.txt)。
 
 ## 命令与记录
 

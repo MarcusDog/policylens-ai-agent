@@ -5,6 +5,9 @@ Evidence-Grounded Enterprise Knowledge Agent · 小影科技 AI Agent 开发笔�
 通过真实 Function Calling 自主检索企业制度、读取原文，并输出可核验引用、冲突、资料缺口和任务状态。
 Python CLI，无 Agent 框架、数据库或 Web UI。
 
+**提交入口：[SUBMISSION.md](SUBMISSION.md)**。题目标识：企业知识问答 Agent；本人投入 **3 小时**（2026-11-08 确认）。
+公开仓库：https://github.com/MarcusDog/policylens-ai-agent 。最终提交 SHA 见交付消息。
+
 **已接入 MiniMax-M3.1-Flash，并完成真实模型验收。** 基础集两种检索器各 11 次真实运行，
 扩展集 9 次真实运行，以及完整两轮对话均已保存。当前 **95 项 pytest 通过**，16 个离线案例通过。
 原始评分曾有一项过宽禁止词误报，按条件引文回归重新评分，原始结果和修订说明均保留。
@@ -49,7 +52,7 @@ python -m src.cli ask --mode mock --question "那差旅报销呢？" --history-f
 `--json` 打印机器可读输出。未指定 Trace 时自动保存到 `runs/<mode>/latest-trace.json`；保留多次记录请指定不同路径。
 `--max-model-steps` 默认 8，`--max-tool-calls` 默认 10。
 `--save-history <path>` 保存实际问答，可作为下一轮的 `--history-file`，历史引用仍须本轮重读。
-Ctrl-C 时保留已执行观察，Trace 标记 CANCELLED，CLI 返回 130；运行中也会逐步写入 Trace。
+模型请求阶段 Ctrl-C 会保留观察并标记 CANCELLED，CLI 返回 130；强制结束可能留下 RUNNING/in_flight 的未完成记录。
 退出码：0 为已回答/已报告冲突或资料缺口；1 为工具/API故障、限额或评测未通过；2 为配置/输入错误。
 
 ## 模型配置与 Live
@@ -212,8 +215,8 @@ prompts/      v1—v5 真实提示版本及可复用的 Codex 维护提示
 - 程序能验证来源与候选核查，不能证明回答的全部语义受原文支持；有独立事实回归检查，仍需人工审查。
 - 字符检索不是语义向量；泛化同义词、长文档、跨主题隐式冲突、部门包含关系未充分评测。
 - 语料在一次执行中频繁变化时可能耗尽核查额度；当前设计为小规模单机合成语料。
-- 未运行 macOS / Linux 环境，GitHub Actions 配置已提供但尚未在远端执行；未建立远程仓库或发布。
-- 实际投入时间：待本人确认；本人手工贡献：待本人确认。
+- GitHub Actions 覆盖 Windows/Linux、Python 3.11/3.12；实际远端状态见 Actions，发布检查见 [提交前审查](docs/09-submission-review.md)。
+- 实际投入 3 小时；本人已验证全部描述功能（2026-11-08 确认）。实现、数据、测试与文档由 Codex 辅助，未宣称本人独立手写。
 - AI 使用声明：代码、测试、数据、文档由 Codex 协助编写；详见 [真实工作记录](docs/04-ai-usage.md)。
 - 最终 commit SHA：运行 `git rev-parse HEAD` 获取，具体 SHA 在交付消息中提供；避免将 commit 自身的哈希嵌入同一提交造成自引用。
 

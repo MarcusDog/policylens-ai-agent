@@ -1,0 +1,18 @@
+Submission review date (client): 2026-11-08
+Original pytest command: python -m pytest -q --junitxml=runs/final-review/test-results.xml
+Archived JUnit result: tests=95, failures=0, errors=0, skipped=0
+
+Command: python -m ruff format --check src tests scripts
+Exit code: 0
+29 files already formatted
+
+
+Command: python -m ruff check src tests scripts --select E9,F63,F7,F82,F401
+Exit code: 0
+All checks passed!
+
+
+Command: python -m pip check
+Exit code: 0
+No broken requirements found.
+
