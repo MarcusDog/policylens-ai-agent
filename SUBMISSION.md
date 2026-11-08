@@ -45,6 +45,8 @@ Mock 只验证流程，不证明模型决策。已有 Live 实录来自 MiniMax-
 
 ## 三组最短审阅入口
 
+本地及干净导出副本均通过 95 项测试。GitHub 托管 CI 因账户级限制未启动，原始说明和本地验证证据见 [提交前检查](docs/09-submission-review.md)。
+
 - 正常：[输入](examples/current-v5/normal/live/input.json)、[输出](examples/current-v5/normal/live/output.json)、[Trace](examples/current-v5/normal/live/trace.json)。
 - 资料不足：[输入](examples/current-v5/insufficient/live/input.json)、[输出](examples/current-v5/insufficient/live/output.json)、[Trace](examples/current-v5/insufficient/live/trace.json)。
 - 工具失败：[输入](examples/current-v5/tool_failure/live/input.json)、[输出](examples/current-v5/tool_failure/live/output.json)、[Trace](examples/current-v5/tool_failure/live/trace.json)。

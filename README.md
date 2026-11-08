@@ -6,7 +6,7 @@ Evidence-Grounded Enterprise Knowledge Agent · 小影科技 AI Agent 开发笔�
 Python CLI，无 Agent 框架、数据库或 Web UI。
 
 **提交入口：[SUBMISSION.md](SUBMISSION.md)**。题目标识：企业知识问答 Agent；本人投入 **3 小时**（2026-11-08 确认）。
-公开仓库：https://github.com/MarcusDog/policylens-ai-agent 。最终提交 SHA 见交付消息。
+公开仓库：[MarcusDog/policylens-ai-agent](https://github.com/MarcusDog/policylens-ai-agent)。最终提交 SHA 见交付消息。
 
 **已接入 MiniMax-M3.1-Flash，并完成真实模型验收。** 基础集两种检索器各 11 次真实运行，
 扩展集 9 次真实运行，以及完整两轮对话均已保存。当前 **95 项 pytest 通过**，16 个离线案例通过。
@@ -216,6 +216,7 @@ prompts/      v1—v5 真实提示版本及可复用的 Codex 维护提示
 - 字符检索不是语义向量；泛化同义词、长文档、跨主题隐式冲突、部门包含关系未充分评测。
 - 语料在一次执行中频繁变化时可能耗尽核查额度；当前设计为小规模单机合成语料。
 - GitHub Actions 覆盖 Windows/Linux、Python 3.11/3.12；实际远端状态见 Actions，发布检查见 [提交前审查](docs/09-submission-review.md)。
+- 首次公开推送的 Actions 因 GitHub 账户级限制未启动，尚未执行托管测试；本地与干净导出副本均为 95 项通过，不宣称远端 CI 已通过。
 - 实际投入 3 小时；本人已验证全部描述功能（2026-11-08 确认）。实现、数据、测试与文档由 Codex 辅助，未宣称本人独立手写。
 - AI 使用声明：代码、测试、数据、文档由 Codex 协助编写；详见 [真实工作记录](docs/04-ai-usage.md)。
 - 最终 commit SHA：运行 `git rev-parse HEAD` 获取，具体 SHA 在交付消息中提供；避免将 commit 自身的哈希嵌入同一提交造成自引用。

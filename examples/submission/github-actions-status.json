@@ -1,0 +1,27 @@
+{
+  "repo": "https://github.com/MarcusDog/policylens-ai-agent",
+  "anonymous_repo_read": true,
+  "anonymous_submission_read": true,
+  "anonymous_read_transport": "HTTPS GitHub API via curl without credentials",
+  "inspected_commit": "05f64d9ed10770e2f504927ad7b9bf44a2100df7",
+  "workflow_run_url": "https://github.com/MarcusDog/policylens-ai-agent/actions/runs/42453018402",
+  "workflow_run_id": 42453018402,
+  "job_started": false,
+  "test_steps_executed": false,
+  "classification": "GITHUB_ACCOUNT_RESTRICTION",
+  "github_annotations": [
+    {
+      "path": ".github",
+      "blob_href": "https://github.com/MarcusDog/policylens-ai-agent/blob/05f64d9ed10770e2f504927ad7b9bf44a2100df7/.github",
+      "start_line": 1,
+      "start_column": null,
+      "end_line": 1,
+      "end_column": null,
+      "annotation_level": "failure",
+      "title": "",
+      "message": "The job was not started because your account is locked due to a billing issue.",
+      "raw_details": ""
+    }
+  ],
+  "note": "No workflow test steps were executed. Local checks and clean-export checks both passed 95 tests. Hosted CI is not claimed to have passed."
+}

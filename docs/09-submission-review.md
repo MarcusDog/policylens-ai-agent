@@ -28,6 +28,13 @@
 - v5 的配对集利用了 v4 失败反馈，属于冻结回归集，不称独立盲测。
 - 没有线上服务、真实企业资料或生产可用性承诺。
 - 强制终止可能留下 RUNNING/in_flight；模型请求阶段正常 Ctrl-C 有 CANCELLED 记录。
-- GitHub Actions 跨平台状态发布后实际核对，不预先声明通过。
+- GitHub Actions 首次公开推送后受到 GitHub 账户级限制，托管任务未启动、未执行测试步骤；不能声称远端 CI 通过。
 
-题目标识按候选人给出的“企业知识问答 Agent”填写；原材料没有数字编号，不自行推测。
+## 已核对的公开交付状态
+
+公开仓库已创建并推送，匿名读取仓库和已提交的 SUBMISSION.md 均返回 HTTP 200。
+首次 CI 的原始说明与读取核对结果留在 [github-actions-status.json](../examples/submission/github-actions-status.json)。
+GitHub 返回账户账单锁定导致任务不能启动；这不是 pytest 报错，不通过修改或关闭工作流掩盖。
+恢复账户 Actions 使用权限后可重新运行。当前已验证的是本地与干净导出副本各 95 项测试通过。
+
+提交题目标识为“企业知识问答 Agent”，与候选人确认的题名一致。

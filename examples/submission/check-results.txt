@@ -15,4 +15,3 @@ All checks passed!
 Command: python -m pip check
 Exit code: 0
 No broken requirements found.
-
